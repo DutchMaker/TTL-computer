@@ -37,7 +37,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -47,20 +47,20 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 3850 1250 0    60   Input ~ 0
-BUS_PC-X_IN[0..7]
+Text HLabel 4100 1250 0    60   Input ~ 0
+BUS_PC-Y_IN[0..7]
 Text HLabel 1600 3050 0    60   BiDi ~ 0
 BUS_DATA[0..7]
 Text HLabel 1600 3400 0    60   Output ~ 0
-BUS_X-MAR[0..7]
+BUS_Y-MAR[0..7]
 Text HLabel 1600 3750 0    60   Input ~ 0
 CLOCK
 Text HLabel 1600 4100 0    60   Input ~ 0
-X_IN
+Y_IN
 Text HLabel 1600 4450 0    60   Input ~ 0
-X_OUT
+Y_OUT
 Text HLabel 1600 4800 0    60   Input ~ 0
-X_PC-IN
+Y_PC-IN
 NoConn ~ 3650 3050
 NoConn ~ 3650 3400
 NoConn ~ 1800 3750
@@ -68,7 +68,7 @@ NoConn ~ 1800 4100
 NoConn ~ 1800 4450
 NoConn ~ 1800 4800
 Text HLabel 1600 1250 0    60   Output ~ 0
-BUS_PC-X_OUT[0..7]
+BUS_PC-Y_OUT[0..7]
 Entry Wire Line
 	1750 1500 1850 1600
 Entry Wire Line
@@ -94,7 +94,7 @@ NoConn ~ 2500 2350
 NoConn ~ 2500 2500
 NoConn ~ 2500 2650
 Wire Bus Line
-	3850 1250 4000 1400
+	4100 1250 4250 1400
 Wire Bus Line
 	1600 3050 3650 3050
 Wire Bus Line
@@ -128,77 +128,77 @@ Wire Wire Line
 Wire Wire Line
 	2500 2650 1850 2650
 Text Label 1900 1600 0    60   ~ 0
-BUS_PC-X_OUT0
+BUS_PC-Y_OUT0
 Text Label 1900 1750 0    60   ~ 0
-BUS_PC-X_OUT1
+BUS_PC-Y_OUT1
 Text Label 1900 1900 0    60   ~ 0
-BUS_PC-X_OUT2
+BUS_PC-Y_OUT2
 Text Label 1900 2050 0    60   ~ 0
-BUS_PC-X_OUT3
+BUS_PC-Y_OUT3
 Text Label 1900 2200 0    60   ~ 0
-BUS_PC-X_OUT4
+BUS_PC-Y_OUT4
 Text Label 1900 2350 0    60   ~ 0
-BUS_PC-X_OUT5
+BUS_PC-Y_OUT5
 Text Label 1900 2500 0    60   ~ 0
-BUS_PC-X_OUT6
+BUS_PC-Y_OUT6
 Text Label 1900 2650 0    60   ~ 0
-BUS_PC-X_OUT7
+BUS_PC-Y_OUT7
 Wire Bus Line
-	4000 1400 4000 2600
+	4250 1400 4250 2600
 Entry Wire Line
-	4000 1500 4100 1600
+	4250 1500 4350 1600
 Entry Wire Line
-	4000 1650 4100 1750
+	4250 1650 4350 1750
 Entry Wire Line
-	4000 1800 4100 1900
+	4250 1800 4350 1900
 Entry Wire Line
-	4000 1950 4100 2050
+	4250 1950 4350 2050
 Entry Wire Line
-	4000 2100 4100 2200
+	4250 2100 4350 2200
 Entry Wire Line
-	4000 2250 4100 2350
+	4250 2250 4350 2350
 Entry Wire Line
-	4000 2400 4100 2500
+	4250 2400 4350 2500
 Entry Wire Line
-	4000 2550 4100 2650
-NoConn ~ 4800 1600
-NoConn ~ 4800 1750
-NoConn ~ 4800 1900
-NoConn ~ 4800 2050
-NoConn ~ 4800 2200
-NoConn ~ 4800 2350
-NoConn ~ 4800 2500
-NoConn ~ 4800 2650
+	4250 2550 4350 2650
+NoConn ~ 5250 1600
+NoConn ~ 5250 1750
+NoConn ~ 5250 1900
+NoConn ~ 5250 2050
+NoConn ~ 5250 2200
+NoConn ~ 5250 2350
+NoConn ~ 5250 2500
+NoConn ~ 5250 2650
 Wire Wire Line
-	4800 1600 4100 1600
+	5250 1600 4350 1600
 Wire Wire Line
-	4800 1750 4100 1750
+	5250 1750 4350 1750
 Wire Wire Line
-	4800 1900 4100 1900
+	5250 1900 4350 1900
 Wire Wire Line
-	4800 2050 4100 2050
+	5250 2050 4350 2050
 Wire Wire Line
-	4800 2200 4100 2200
+	5250 2200 4350 2200
 Wire Wire Line
-	4800 2350 4100 2350
+	5250 2350 4350 2350
 Wire Wire Line
-	4800 2500 4100 2500
+	5250 2500 4350 2500
 Wire Wire Line
-	4800 2650 4100 2650
-Text Label 4150 1600 0    60   ~ 0
-BUS_PC-X_IN0
-Text Label 4150 1750 0    60   ~ 0
-BUS_PC-X_IN1
-Text Label 4150 1900 0    60   ~ 0
-BUS_PC-X_IN2
-Text Label 4150 2050 0    60   ~ 0
-BUS_PC-X_IN3
-Text Label 4150 2200 0    60   ~ 0
-BUS_PC-X_IN4
-Text Label 4150 2350 0    60   ~ 0
-BUS_PC-X_IN5
-Text Label 4150 2500 0    60   ~ 0
-BUS_PC-X_IN6
-Text Label 4150 2650 0    60   ~ 0
-BUS_PC-X_IN7
+	5250 2650 4350 2650
+Text Label 4400 1600 0    60   ~ 0
+BUS_PC-Y_IN0
+Text Label 4400 1750 0    60   ~ 0
+BUS_PC-Y_IN1
+Text Label 4400 1900 0    60   ~ 0
+BUS_PC-Y_IN2
+Text Label 4400 2050 0    60   ~ 0
+BUS_PC-Y_IN3
+Text Label 4400 2200 0    60   ~ 0
+BUS_PC-Y_IN4
+Text Label 4400 2350 0    60   ~ 0
+BUS_PC-Y_IN5
+Text Label 4400 2500 0    60   ~ 0
+BUS_PC-Y_IN6
+Text Label 4400 2650 0    60   ~ 0
+BUS_PC-Y_IN7
 $EndSCHEMATC
