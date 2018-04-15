@@ -35,9 +35,9 @@ LIBS:valves
 LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
-$Descr A4 8268 11693 portrait
+$Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 1 5
+Sheet 1 6
 Title ""
 Date ""
 Rev ""
@@ -138,4 +138,10 @@ $EndSheet
 Wire Wire Line
 	2500 6400 2300 6400
 Connection ~ 2500 4100
+$Sheet
+S 2900 8450 1300 1400
+U 5AD5CFF9
+F0 "ALU" 60
+F1 "./ALU/ALU.sch" 60
+$EndSheet
 $EndSCHEMATC
