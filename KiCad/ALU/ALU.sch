@@ -37,8 +37,8 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 8
-Title ""
+Sheet 6 10
+Title "Arithmetic Logic Unit"
 Date ""
 Rev ""
 Comp ""
@@ -249,7 +249,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 2800 5400 2800
 Text HLabel 6650 2700 2    60   Output ~ 0
-ALU_F-EQ
+ALU_Feq
 Wire Wire Line
 	6650 2700 6600 2700
 $Comp
@@ -307,11 +307,11 @@ Wire Wire Line
 Wire Wire Line
 	5300 4600 5300 3550
 Text HLabel 6650 1900 2    60   Output ~ 0
-ALU_F-LT
+ALU_Flt
 Wire Wire Line
 	6550 1900 6650 1900
 Text HLabel 6650 3450 2    60   Output ~ 0
-ALU_F-GT
+ALU_Fgt
 Wire Wire Line
 	6600 3450 6650 3450
 Text GLabel 4250 1750 2    60   Output ~ 0
@@ -723,9 +723,9 @@ Wire Wire Line
 Wire Wire Line
 	7950 2700 7900 2700
 Text HLabel 5450 4950 2    60   Output ~ 0
-ALU_F-Z
+ALU_Fz
 Text HLabel 5450 4600 2    60   Output ~ 0
-ALU_F-C
+ALU_Fc
 Connection ~ 5300 4600
 Text Notes 1950 900  0    60   ~ 12
 Input from A & B register
