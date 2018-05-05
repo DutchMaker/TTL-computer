@@ -51,7 +51,7 @@ $Sheet
 S 1650 1000 1200 650 
 U 5ACF3206
 F0 "Clock" 60
-F1 "./Clock/Clock.sch" 0
+F1 "./Clock/Clock.sch" 4
 F2 "CLOCK" O R 2850 1550 60 
 F3 "CLK_HLT" I R 2850 1100 60 
 $EndSheet
@@ -59,7 +59,7 @@ $Sheet
 S 1650 2300 1200 1350
 U 5ACF2F0F
 F0 "X Register" 60
-F1 "./Register-X/Register-X.sch" 0
+F1 "./Register-X/Register-X.sch" 4
 F2 "CLOCK" I R 2850 2400 60 
 F3 "/X_IN" I R 2850 2550 60 
 F4 "/X_OUT" I R 2850 2700 60 
@@ -73,7 +73,7 @@ $Sheet
 S 1650 6500 1200 1350
 U 5AD0848F
 F0 "Y Register" 60
-F1 "./Register-Y/Register-Y.sch" 0
+F1 "./Register-Y/Register-Y.sch" 4
 F2 "BUS_PC-Y_IN[0..7]" I L 1650 7600 60 
 F3 "BUS_DATA[0..7]" B L 1650 7450 60 
 F4 "CLOCK" I R 2850 6600 60 
@@ -87,7 +87,7 @@ $Sheet
 S 1650 4200 1200 1750
 U 5ACF340E
 F0 "Program Counter" 60
-F1 "./Program-Counter/Program-Counter.sch" 0
+F1 "./Program-Counter/Program-Counter.sch" 4
 F2 "/PC_X-IN" I R 2850 4450 60 
 F3 "/PC_Y-IN" I R 2850 4600 60 
 F4 "PC_INC" I R 2850 4750 60 
@@ -103,7 +103,7 @@ $Sheet
 S 5050 8400 1200 2350
 U 5AD5CFF9
 F0 "ALU" 60
-F1 "./ALU/ALU.sch" 0
+F1 "./ALU/ALU.sch" 4
 F2 "ALU_Cn" I R 6250 8500 60 
 F3 "ALU_M" I R 6250 8650 60 
 F4 "BUS_A-ALU[0..7]" I L 5050 10500 60 
@@ -130,7 +130,7 @@ $Sheet
 S 1650 9850 1200 900 
 U 5AEB52B5
 F0 "B Register" 60
-F1 "./Register-B/Register-B.sch" 0
+F1 "./Register-B/Register-B.sch" 4
 F2 "/B_OUT" I R 2850 10250 60 
 F3 "CLOCK" I R 2850 9950 60 
 F4 "BUS_DATA[0..7]" B L 1650 10650 60 
@@ -145,7 +145,7 @@ $Sheet
 S 1650 8400 1200 900 
 U 5AEB1288
 F0 "A Register" 60
-F1 "./Register-A/Register-A.sch" 0
+F1 "./Register-A/Register-A.sch" 4
 F2 "/A_OUT" I R 2850 8800 60 
 F3 "CLOCK" I R 2850 8500 60 
 F4 "BUS_DATA[0..7]" B L 1650 9200 60 
@@ -160,7 +160,7 @@ $Sheet
 S 5050 11300 1200 1250
 U 5AECAFE0
 F0 "Flags Register" 60
-F1 "./Register-Flags/Register-Flags.sch" 0
+F1 "./Register-Flags/Register-Flags.sch" 4
 F2 "CLOCK" I R 6250 11400 60 
 F3 "/F_IN" I R 6250 11550 60 
 F4 "Fz_IN" I L 5050 12450 60 
@@ -524,7 +524,7 @@ $Sheet
 S 8850 8400 1200 4450
 U 5AF221CC
 F0 "Controller & Sequencer" 60
-F1 "./Controller-Sequencer/Controller-Sequencer.sch" 0
+F1 "./Controller-Sequencer/Controller-Sequencer.sch" 4
 F2 "CTRL_Fc" I L 8850 8500 60 
 F3 "CTRL_Feq" I L 8850 8650 60 
 F4 "CTRL_Flt" I L 8850 8800 60 

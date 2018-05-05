@@ -676,8 +676,6 @@ Wire Wire Line
 Wire Wire Line
 	10550 2600 9500 2600
 Wire Wire Line
-	9400 1550 10550 1550
-Wire Wire Line
 	9400 1650 9800 1650
 Wire Wire Line
 	9800 1650 9800 1700
@@ -729,4 +727,9 @@ ALU_Fc
 Connection ~ 5300 4600
 Text Notes 1950 900  0    60   ~ 12
 Input from A & B register
+Wire Wire Line
+	5450 4950 5350 4950
+NoConn ~ 5350 4950
+Wire Wire Line
+	9400 1550 10550 1550
 $EndSCHEMATC

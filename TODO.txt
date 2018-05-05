@@ -1,0 +1,15 @@
+- Indicate active low lines on Architecture overview
+- Update X -> C and Y -> D (in Excel and KiCad, note all the labels / control lines)
+- Update ALU with internal register and new control line
+- Update mnemonic/opcode list
+
+- Modules:
+  - Memory
+  - MAR
+    - In program mode: clock pulse = RAM write
+  - Stack Pointer
+  - Instruction register
+  - Output 1
+  - Output 2
+  - Input
+  - Controller / Sequencer
