@@ -74,10 +74,10 @@ F 3 "" H 6800 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR028
+L +5V #PWR029
 U 1 1 5AECCA08
 P 6100 2350
-F 0 "#PWR028" H 6100 2200 50  0001 C CNN
+F 0 "#PWR029" H 6100 2200 50  0001 C CNN
 F 1 "+5V" H 6100 2490 50  0000 C CNN
 F 2 "" H 6100 2350 50  0001 C CNN
 F 3 "" H 6100 2350 50  0001 C CNN
@@ -151,58 +151,6 @@ A_OUTPUT5
 Text GLabel 5500 2350 0    60   Input ~ 0
 A_OUTPUT6
 Text GLabel 5500 2500 0    60   Input ~ 0
-A_OUTPUT7
-Text HLabel 4300 1250 0    60   Output ~ 0
-BUS_A-ALU[0..7]
-Entry Wire Line
-	4350 1350 4250 1450
-Entry Wire Line
-	4350 1500 4250 1600
-Entry Wire Line
-	4350 1650 4250 1750
-Entry Wire Line
-	4350 1800 4250 1900
-Entry Wire Line
-	4350 1950 4250 2050
-Entry Wire Line
-	4350 2100 4250 2200
-Entry Wire Line
-	4350 2250 4250 2350
-Entry Wire Line
-	4350 2400 4250 2500
-Text Label 4200 1450 2    60   ~ 0
-BUS_A-ALU0
-Text Label 4200 1600 2    60   ~ 0
-BUS_A-ALU1
-Text Label 4200 1750 2    60   ~ 0
-BUS_A-ALU2
-Text Label 4200 1900 2    60   ~ 0
-BUS_A-ALU3
-Text Label 4200 2050 2    60   ~ 0
-BUS_A-ALU4
-Text Label 4200 2200 2    60   ~ 0
-BUS_A-ALU5
-Text Label 4200 2350 2    60   ~ 0
-BUS_A-ALU6
-Text Label 4200 2500 2    60   ~ 0
-BUS_A-ALU7
-Text Notes 3500 1100 0    60   ~ 12
-Output to ALU
-Text GLabel 3400 1450 0    60   Input ~ 0
-A_OUTPUT0
-Text GLabel 3400 1600 0    60   Input ~ 0
-A_OUTPUT1
-Text GLabel 3400 1750 0    60   Input ~ 0
-A_OUTPUT2
-Text GLabel 3400 1900 0    60   Input ~ 0
-A_OUTPUT3
-Text GLabel 3400 2050 0    60   Input ~ 0
-A_OUTPUT4
-Text GLabel 3400 2200 0    60   Input ~ 0
-A_OUTPUT5
-Text GLabel 3400 2350 0    60   Input ~ 0
-A_OUTPUT6
-Text GLabel 3400 2500 0    60   Input ~ 0
 A_OUTPUT7
 Text GLabel 1550 3650 0    60   Input ~ 0
 A_INPUT0
@@ -449,10 +397,10 @@ F 3 "" H 5250 6050 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR029
+L GND #PWR030
 U 1 1 5AECCA3B
 P 5050 6250
-F 0 "#PWR029" H 5050 6000 50  0001 C CNN
+F 0 "#PWR030" H 5050 6000 50  0001 C CNN
 F 1 "GND" H 5050 6100 50  0000 C CNN
 F 2 "" H 5050 6250 50  0001 C CNN
 F 3 "" H 5050 6250 50  0001 C CNN
@@ -621,26 +569,6 @@ Wire Wire Line
 	5850 2150 5850 2500
 Wire Wire Line
 	5850 2500 5500 2500
-Wire Bus Line
-	4300 1250 4350 1250
-Wire Bus Line
-	4350 1250 4350 2450
-Wire Wire Line
-	3400 1600 4250 1600
-Wire Wire Line
-	3400 1750 4250 1750
-Wire Wire Line
-	3400 1900 4250 1900
-Wire Wire Line
-	3400 2050 4250 2050
-Wire Wire Line
-	3400 2200 4250 2200
-Wire Wire Line
-	3400 2350 4250 2350
-Wire Wire Line
-	3400 2500 4250 2500
-Wire Wire Line
-	3400 1450 4250 1450
 Wire Wire Line
 	1550 3650 2050 3650
 Wire Wire Line

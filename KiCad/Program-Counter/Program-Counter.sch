@@ -98,17 +98,17 @@ $EndComp
 Text HLabel 1500 2000 0    60   Input ~ 0
 CLOCK
 Text HLabel 1500 1600 0    60   Input ~ 0
-/PC_X-IN
+/PC_C-IN
 Text HLabel 1500 4250 0    60   Input ~ 0
-/PC_Y-IN
+/PC_D-IN
 Text HLabel 1300 6450 0    60   Input ~ 0
 PC_INC
 Text HLabel 1300 7450 0    60   Input ~ 0
 PC_DEC
 Text HLabel 4900 950  0    60   Output ~ 0
-BUS_PC-X_OUT[0..7]
+BUS_PC-C_OUT[0..7]
 Text HLabel 4900 3650 0    60   BiDi ~ 0
-BUS_PC-Y_OUT[0..7]
+BUS_PC-D_OUT[0..7]
 NoConn ~ 3950 5650
 Text GLabel 1600 1800 0    60   Input ~ 0
 PC-/UP_DOWN
@@ -280,47 +280,47 @@ Wire Wire Line
 Wire Wire Line
 	3950 5450 6450 5450
 Text Label 4050 1150 0    60   ~ 0
-BUS_PC-X_OUT0
+BUS_PC-C_OUT0
 Text Label 4050 1250 0    60   ~ 0
-BUS_PC-X_OUT1
+BUS_PC-C_OUT1
 Text Label 4050 1350 0    60   ~ 0
-BUS_PC-X_OUT2
+BUS_PC-C_OUT2
 Text Label 4050 1450 0    60   ~ 0
-BUS_PC-X_OUT3
+BUS_PC-C_OUT3
 Text Label 4050 2450 0    60   ~ 0
-BUS_PC-X_OUT4
+BUS_PC-C_OUT4
 Text Label 4050 2550 0    60   ~ 0
-BUS_PC-X_OUT5
+BUS_PC-C_OUT5
 Text Label 4050 2650 0    60   ~ 0
-BUS_PC-X_OUT6
+BUS_PC-C_OUT6
 Text Label 4050 2750 0    60   ~ 0
-BUS_PC-X_OUT7
+BUS_PC-C_OUT7
 Text Label 4050 3800 0    60   ~ 0
-BUS_PC-Y_OUT0
+BUS_PC-D_OUT0
 Text Label 4050 3900 0    60   ~ 0
-BUS_PC-Y_OUT1
+BUS_PC-D_OUT1
 Text Label 4050 4000 0    60   ~ 0
-BUS_PC-Y_OUT2
+BUS_PC-D_OUT2
 Text Label 4050 4100 0    60   ~ 0
-BUS_PC-Y_OUT3
+BUS_PC-D_OUT3
 Text Label 4050 5150 0    60   ~ 0
-BUS_PC-Y_OUT4
+BUS_PC-D_OUT4
 Text Label 4050 5250 0    60   ~ 0
-BUS_PC-Y_OUT5
+BUS_PC-D_OUT5
 Text Label 4050 5350 0    60   ~ 0
-BUS_PC-Y_OUT6
+BUS_PC-D_OUT6
 Text Label 4050 5450 0    60   ~ 0
-BUS_PC-Y_OUT7
+BUS_PC-D_OUT7
 Wire Bus Line
 	750  950  750  2750
 Wire Bus Line
 	750  3650 750  5450
 Text HLabel 800  950  2    60   Input ~ 0
-BUS_PC-X_IN[0..7]
+BUS_PC-C_IN[0..7]
 Wire Bus Line
 	750  950  800  950 
 Text HLabel 800  3650 2    60   Input ~ 0
-BUS_PC-Y_IN[0..7]
+BUS_PC-D_IN[0..7]
 Wire Bus Line
 	750  3650 800  3650
 Entry Wire Line
@@ -356,37 +356,37 @@ Entry Wire Line
 Entry Wire Line
 	750  5350 850  5450
 Text Label 850  1150 0    60   ~ 0
-BUS_PC-X_IN0
+BUS_PC-C_IN0
 Text Label 850  1250 0    60   ~ 0
-BUS_PC-X_IN1
+BUS_PC-C_IN1
 Text Label 850  1350 0    60   ~ 0
-BUS_PC-X_IN2
+BUS_PC-C_IN2
 Text Label 850  1450 0    60   ~ 0
-BUS_PC-X_IN3
+BUS_PC-C_IN3
 Text Label 850  2450 0    60   ~ 0
-BUS_PC-X_IN4
+BUS_PC-C_IN4
 Text Label 850  2550 0    60   ~ 0
-BUS_PC-X_IN5
+BUS_PC-C_IN5
 Text Label 850  2650 0    60   ~ 0
-BUS_PC-X_IN6
+BUS_PC-C_IN6
 Text Label 850  2750 0    60   ~ 0
-BUS_PC-X_IN7
+BUS_PC-C_IN7
 Text Label 850  3800 0    60   ~ 0
-BUS_PC-Y_IN0
+BUS_PC-D_IN0
 Text Label 850  3900 0    60   ~ 0
-BUS_PC-Y_IN1
+BUS_PC-D_IN1
 Text Label 850  4000 0    60   ~ 0
-BUS_PC-Y_IN2
+BUS_PC-D_IN2
 Text Label 850  4100 0    60   ~ 0
-BUS_PC-Y_IN3
+BUS_PC-D_IN3
 Text Label 850  5150 0    60   ~ 0
-BUS_PC-Y_IN4
+BUS_PC-D_IN4
 Text Label 850  5250 0    60   ~ 0
-BUS_PC-Y_IN5
+BUS_PC-D_IN5
 Text Label 850  5350 0    60   ~ 0
-BUS_PC-Y_IN6
+BUS_PC-D_IN6
 Text Label 850  5450 0    60   ~ 0
-BUS_PC-Y_IN7
+BUS_PC-D_IN7
 Wire Bus Line
 	6500 950  6550 950 
 Wire Bus Line

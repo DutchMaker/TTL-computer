@@ -38,7 +38,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 10
-Title "Y Register"
+Title "D Register"
 Date ""
 Rev ""
 Comp "Ruud van Falier"
@@ -48,15 +48,15 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text HLabel 8800 1050 0    60   Output ~ 0
-BUS_PC-Y_IN[0..7]
+BUS_PC-D_IN[0..7]
 Text HLabel 1550 6100 0    60   Input ~ 0
-/Y_IN
+/D_IN
 Text HLabel 8150 4800 0    60   Input ~ 0
-/Y_OUT
+/D_OUT
 Text HLabel 1550 5900 0    60   Input ~ 0
-/Y_PC-IN
+/D_PC-IN
 Text HLabel 1100 1050 2    60   Input ~ 0
-BUS_PC-Y_OUT[0..7]
+BUS_PC-D_OUT[0..7]
 Entry Wire Line
 	1050 1150 1150 1250
 Entry Wire Line
@@ -74,21 +74,21 @@ Entry Wire Line
 Entry Wire Line
 	1050 2200 1150 2300
 Text Label 1200 1250 0    60   ~ 0
-BUS_PC-Y_OUT0
+BUS_PC-D_OUT0
 Text Label 1200 1400 0    60   ~ 0
-BUS_PC-Y_OUT1
+BUS_PC-D_OUT1
 Text Label 1200 1550 0    60   ~ 0
-BUS_PC-Y_OUT2
+BUS_PC-D_OUT2
 Text Label 1200 1700 0    60   ~ 0
-BUS_PC-Y_OUT3
+BUS_PC-D_OUT3
 Text Label 1200 1850 0    60   ~ 0
-BUS_PC-Y_OUT4
+BUS_PC-D_OUT4
 Text Label 1200 2000 0    60   ~ 0
-BUS_PC-Y_OUT5
+BUS_PC-D_OUT5
 Text Label 1200 2150 0    60   ~ 0
-BUS_PC-Y_OUT6
+BUS_PC-D_OUT6
 Text Label 1200 2300 0    60   ~ 0
-BUS_PC-Y_OUT7
+BUS_PC-D_OUT7
 Entry Wire Line
 	8850 1150 8750 1250
 Entry Wire Line
@@ -106,21 +106,21 @@ Entry Wire Line
 Entry Wire Line
 	8850 2200 8750 2300
 Text Label 8700 1250 2    60   ~ 0
-BUS_PC-Y_IN0
+BUS_PC-D_IN0
 Text Label 8700 1400 2    60   ~ 0
-BUS_PC-Y_IN1
+BUS_PC-D_IN1
 Text Label 8700 1550 2    60   ~ 0
-BUS_PC-Y_IN2
+BUS_PC-D_IN2
 Text Label 8700 1700 2    60   ~ 0
-BUS_PC-Y_IN3
+BUS_PC-D_IN3
 Text Label 8700 1850 2    60   ~ 0
-BUS_PC-Y_IN4
+BUS_PC-D_IN4
 Text Label 8700 2000 2    60   ~ 0
-BUS_PC-Y_IN5
+BUS_PC-D_IN5
 Text Label 8700 2150 2    60   ~ 0
-BUS_PC-Y_IN6
+BUS_PC-D_IN6
 Text Label 8700 2300 2    60   ~ 0
-BUS_PC-Y_IN7
+BUS_PC-D_IN7
 $Comp
 L 74LS377 U13
 U 1 1 5AE3B1A2
@@ -179,11 +179,11 @@ F 3 "" H 2450 2150 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Text GLabel 2950 6000 2    60   Input ~ 0
-/Y-INPUT_EN
+/D-INPUT_EN
 Text GLabel 1650 5000 0    60   Input ~ 0
-/Y-INPUT_EN
+/D-INPUT_EN
 Text HLabel 2350 2400 0    60   Input ~ 0
-/Y_PC-IN
+/D_PC-IN
 Text Notes 8000 900  0    60   ~ 12
 Output to PC
 Text HLabel 10800 3400 0    60   BiDi ~ 0
@@ -223,55 +223,55 @@ BUS_DATA7
 Text Notes 9950 3250 0    60   ~ 12
 Output to DATA bus
 Text GLabel 7900 1250 0    60   Input ~ 0
-Y_OUTPUT0
+D_OUTPUT0
 Text GLabel 7900 1400 0    60   Input ~ 0
-Y_OUTPUT1
+D_OUTPUT1
 Text GLabel 7900 1550 0    60   Input ~ 0
-Y_OUTPUT2
+D_OUTPUT2
 Text GLabel 7900 1700 0    60   Input ~ 0
-Y_OUTPUT3
+D_OUTPUT3
 Text GLabel 7900 1850 0    60   Input ~ 0
-Y_OUTPUT4
+D_OUTPUT4
 Text GLabel 7900 2000 0    60   Input ~ 0
-Y_OUTPUT5
+D_OUTPUT5
 Text GLabel 7900 2150 0    60   Input ~ 0
-Y_OUTPUT6
+D_OUTPUT6
 Text GLabel 7900 2300 0    60   Input ~ 0
-Y_OUTPUT7
+D_OUTPUT7
 Text GLabel 3950 3600 2    60   Input ~ 0
-Y_OUTPUT0
+D_OUTPUT0
 Text GLabel 3950 3750 2    60   Input ~ 0
-Y_OUTPUT1
+D_OUTPUT1
 Text GLabel 3950 3900 2    60   Input ~ 0
-Y_OUTPUT2
+D_OUTPUT2
 Text GLabel 3950 4050 2    60   Input ~ 0
-Y_OUTPUT3
+D_OUTPUT3
 Text GLabel 3950 4200 2    60   Input ~ 0
-Y_OUTPUT4
+D_OUTPUT4
 Text GLabel 3950 4350 2    60   Input ~ 0
-Y_OUTPUT5
+D_OUTPUT5
 Text GLabel 3950 4500 2    60   Input ~ 0
-Y_OUTPUT6
+D_OUTPUT6
 Text GLabel 3950 4650 2    60   Input ~ 0
-Y_OUTPUT7
+D_OUTPUT7
 Text GLabel 7650 3600 0    60   Input ~ 0
-Y_OUTPUT0
+D_OUTPUT0
 Text GLabel 7650 3750 0    60   Input ~ 0
-Y_OUTPUT1
+D_OUTPUT1
 Text GLabel 7650 3900 0    60   Input ~ 0
-Y_OUTPUT2
+D_OUTPUT2
 Text GLabel 7650 4050 0    60   Input ~ 0
-Y_OUTPUT3
+D_OUTPUT3
 Text GLabel 7650 4200 0    60   Input ~ 0
-Y_OUTPUT4
+D_OUTPUT4
 Text GLabel 7650 4350 0    60   Input ~ 0
-Y_OUTPUT5
+D_OUTPUT5
 Text GLabel 7650 4500 0    60   Input ~ 0
-Y_OUTPUT6
+D_OUTPUT6
 Text GLabel 7650 4650 0    60   Input ~ 0
-Y_OUTPUT7
+D_OUTPUT7
 Text HLabel 10800 1050 0    60   Output ~ 0
-BUS_Y-MAR[0..7]
+BUS_D-MAR[0..7]
 Entry Wire Line
 	10850 1150 10750 1250
 Entry Wire Line
@@ -289,55 +289,55 @@ Entry Wire Line
 Entry Wire Line
 	10850 2200 10750 2300
 Text Label 10700 1250 2    60   ~ 0
-BUS_Y-MAR0
+BUS_D-MAR0
 Text Label 10700 1400 2    60   ~ 0
-BUS_Y-MAR1
+BUS_D-MAR1
 Text Label 10700 1550 2    60   ~ 0
-BUS_Y-MAR2
+BUS_D-MAR2
 Text Label 10700 1700 2    60   ~ 0
-BUS_Y-MAR3
+BUS_D-MAR3
 Text Label 10700 1850 2    60   ~ 0
-BUS_Y-MAR4
+BUS_D-MAR4
 Text Label 10700 2000 2    60   ~ 0
-BUS_Y-MAR5
+BUS_D-MAR5
 Text Label 10700 2150 2    60   ~ 0
-BUS_Y-MAR6
+BUS_D-MAR6
 Text Label 10700 2300 2    60   ~ 0
-BUS_Y-MAR7
+BUS_D-MAR7
 Text Notes 10000 900  0    60   ~ 12
 Output to MAR
 Text GLabel 9900 1250 0    60   Input ~ 0
-Y_OUTPUT0
+D_OUTPUT0
 Text GLabel 9900 1400 0    60   Input ~ 0
-Y_OUTPUT1
+D_OUTPUT1
 Text GLabel 9900 1550 0    60   Input ~ 0
-Y_OUTPUT2
+D_OUTPUT2
 Text GLabel 9900 1700 0    60   Input ~ 0
-Y_OUTPUT3
+D_OUTPUT3
 Text GLabel 9900 1850 0    60   Input ~ 0
-Y_OUTPUT4
+D_OUTPUT4
 Text GLabel 9900 2000 0    60   Input ~ 0
-Y_OUTPUT5
+D_OUTPUT5
 Text GLabel 9900 2150 0    60   Input ~ 0
-Y_OUTPUT6
+D_OUTPUT6
 Text GLabel 9900 2300 0    60   Input ~ 0
-Y_OUTPUT7
+D_OUTPUT7
 Text GLabel 1650 3650 0    60   Input ~ 0
-Y_INPUT0
+D_INPUT0
 Text GLabel 1650 3800 0    60   Input ~ 0
-Y_INPUT1
+D_INPUT1
 Text GLabel 1650 3950 0    60   Input ~ 0
-Y_INPUT2
+D_INPUT2
 Text GLabel 1650 4100 0    60   Input ~ 0
-Y_INPUT3
+D_INPUT3
 Text GLabel 1650 4250 0    60   Input ~ 0
-Y_INPUT4
+D_INPUT4
 Text GLabel 1650 4400 0    60   Input ~ 0
-Y_INPUT5
+D_INPUT5
 Text GLabel 1650 4550 0    60   Input ~ 0
-Y_INPUT6
+D_INPUT6
 Text GLabel 1650 4700 0    60   Input ~ 0
-Y_INPUT7
+D_INPUT7
 Text HLabel 5500 1000 2    60   BiDi ~ 0
 BUS_DATA[0..7]
 Entry Wire Line
@@ -375,37 +375,37 @@ BUS_DATA7
 Text Notes 6400 850  2    60   ~ 12
 Input from DATA bus
 Text GLabel 6350 1200 2    60   Input ~ 0
-Y_INPUT0
+D_INPUT0
 Text GLabel 6350 1350 2    60   Input ~ 0
-Y_INPUT1
+D_INPUT1
 Text GLabel 6350 1500 2    60   Input ~ 0
-Y_INPUT2
+D_INPUT2
 Text GLabel 6350 1650 2    60   Input ~ 0
-Y_INPUT3
+D_INPUT3
 Text GLabel 6350 1800 2    60   Input ~ 0
-Y_INPUT4
+D_INPUT4
 Text GLabel 6350 1950 2    60   Input ~ 0
-Y_INPUT5
+D_INPUT5
 Text GLabel 6350 2100 2    60   Input ~ 0
-Y_INPUT6
+D_INPUT6
 Text GLabel 6350 2250 2    60   Input ~ 0
-Y_INPUT7
+D_INPUT7
 Text GLabel 4250 1250 2    60   Input ~ 0
-Y_INPUT0
+D_INPUT0
 Text GLabel 4250 1400 2    60   Input ~ 0
-Y_INPUT1
+D_INPUT1
 Text GLabel 4250 1550 2    60   Input ~ 0
-Y_INPUT2
+D_INPUT2
 Text GLabel 4250 1700 2    60   Input ~ 0
-Y_INPUT3
+D_INPUT3
 Text GLabel 4250 1850 2    60   Input ~ 0
-Y_INPUT4
+D_INPUT4
 Text GLabel 4250 2000 2    60   Input ~ 0
-Y_INPUT5
+D_INPUT5
 Text GLabel 4250 2150 2    60   Input ~ 0
-Y_INPUT6
+D_INPUT6
 Text GLabel 4250 2300 2    60   Input ~ 0
-Y_INPUT7
+D_INPUT7
 Text Notes 1900 900  2    60   ~ 12
 Input from PC
 $Comp
@@ -596,21 +596,21 @@ F 3 "" H 5150 6250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 6000 3600 2    60   Input ~ 0
-Y_OUTPUT0
+D_OUTPUT0
 Text GLabel 6000 3950 2    60   Input ~ 0
-Y_OUTPUT1
+D_OUTPUT1
 Text GLabel 6000 4300 2    60   Input ~ 0
-Y_OUTPUT2
+D_OUTPUT2
 Text GLabel 6000 4650 2    60   Input ~ 0
-Y_OUTPUT3
+D_OUTPUT3
 Text GLabel 6000 5000 2    60   Input ~ 0
-Y_OUTPUT4
+D_OUTPUT4
 Text GLabel 6000 5350 2    60   Input ~ 0
-Y_OUTPUT5
+D_OUTPUT5
 Text GLabel 6000 5700 2    60   Input ~ 0
-Y_OUTPUT6
+D_OUTPUT6
 Text GLabel 6000 6050 2    60   Input ~ 0
-Y_OUTPUT7
+D_OUTPUT7
 Wire Bus Line
 	8800 1050 8850 1050
 Wire Bus Line
