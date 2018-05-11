@@ -32,12 +32,13 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:TTL-Computer-Components
 LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 1 10
+Sheet 1 11
 Title "TTL Computer"
 Date ""
 Rev ""
@@ -557,4 +558,10 @@ Text GLabel 6600 9550 2    60   Input ~ 0
 CTRL_/ALU_IN
 Wire Wire Line
 	6600 9550 6250 9550
+$Sheet
+S 8850 2300 1200 1350
+U 5AF592F9
+F0 "Memory" 60
+F1 "./Memory/Memory.sch" 4
+$EndSheet
 $EndSCHEMATC

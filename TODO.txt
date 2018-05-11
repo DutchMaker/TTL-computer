@@ -1,5 +1,9 @@
 - Indicate active low lines on Architecture overview
 - Update mnemonic/opcode list
+- Post updates on Hackaday
+  - Additional instructions
+  - A&B register breadboard
+
 
 - Modules:
   - Memory
