@@ -38,8 +38,8 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 11
-Title "Flags Register"
+Sheet 11 11
+Title "Controller & Sequencer"
 Date ""
 Rev ""
 Comp "Ruud van Falier"
@@ -105,10 +105,10 @@ CTRL_/PC_DEC
 Text HLabel 2700 5200 0    60   Output ~ 0
 CTRL_CLK_HLT
 $Comp
-L GND #PWR30
+L GND #PWR043
 U 1 1 5AED67E0
 P 2850 5600
-F 0 "#PWR30" H 2850 5350 50  0001 C CNN
+F 0 "#PWR043" H 2850 5350 50  0001 C CNN
 F 1 "GND" H 2850 5450 50  0000 C CNN
 F 2 "" H 2850 5600 50  0001 C CNN
 F 3 "" H 2850 5600 50  0001 C CNN
@@ -199,10 +199,10 @@ Wire Wire Line
 	2700 1150 2850 1150
 Connection ~ 2850 1150
 $Comp
-L GND #PWR31
+L GND #PWR044
 U 1 1 5AED6B09
 P 3350 1600
-F 0 "#PWR31" H 3350 1350 50  0001 C CNN
+F 0 "#PWR044" H 3350 1350 50  0001 C CNN
 F 1 "GND" H 3350 1450 50  0000 C CNN
 F 2 "" H 3350 1600 50  0001 C CNN
 F 3 "" H 3350 1600 50  0001 C CNN
@@ -267,7 +267,7 @@ $EndComp
 Wire Wire Line
 	3350 1600 3250 1600
 Wire Wire Line
-	3350 1000 3350 1600
+	3350 800  3350 1600
 Wire Wire Line
 	3350 1450 3250 1450
 Wire Wire Line
@@ -281,4 +281,32 @@ Wire Wire Line
 Connection ~ 3350 1150
 Text HLabel 3000 2800 2    60   Output ~ 0
 CTRL_/ALU_IN
+Text HLabel 2700 5350 0    60   Output ~ 0
+CTRL_/RAM_IN
+Text HLabel 2700 5500 0    60   Output ~ 0
+CTRL_/MEM_OUT
+Wire Wire Line
+	2700 5350 2850 5350
+Connection ~ 2850 5350
+Wire Wire Line
+	2850 5500 2700 5500
+Connection ~ 2850 5500
+Text HLabel 2700 800  0    60   Input ~ 0
+CLOCK
+$Comp
+L SW_Push SW12
+U 1 1 5AFC5CCD
+P 3050 800
+F 0 "SW12" H 3100 900 50  0000 L CNN
+F 1 "SW_Push" H 3050 740 50  0000 C CNN
+F 2 "" H 3050 1000 50  0001 C CNN
+F 3 "" H 3050 1000 50  0001 C CNN
+	1    3050 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 800  2850 800 
+Wire Wire Line
+	3250 800  3350 800 
+Connection ~ 3350 1000
 $EndSCHEMATC
