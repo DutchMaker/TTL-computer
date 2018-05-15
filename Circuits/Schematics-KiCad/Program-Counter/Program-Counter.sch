@@ -38,7 +38,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 13
+Sheet 5 14
 Title "Program Counter"
 Date ""
 Rev ""
@@ -1095,13 +1095,13 @@ Wire Bus Line
 Wire Wire Line
 	2650 7350 2750 7350
 Text Notes 850  800  0    60   ~ 12
-Input from X register
+Input from C register
 Text Notes 750  3500 0    60   ~ 12
-Input from Y register
+Input from D register
 Text Notes 3950 800  0    60   ~ 12
-Output to X register
+Output to C register
 Text Notes 3900 3550 0    60   ~ 12
-Output to Y register
+Output to D register
 Text Notes 5600 800  0    60   ~ 12
 Output to MAR
 Wire Wire Line

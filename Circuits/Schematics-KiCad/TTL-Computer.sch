@@ -38,7 +38,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 1 13
+Sheet 1 14
 Title "TTL Computer"
 Date ""
 Rev ""
@@ -671,4 +671,10 @@ Wire Wire Line
 Wire Bus Line
 	6250 3550 6650 3550
 NoConn ~ 6650 3550
+$Sheet
+S 5050 4200 1200 3650
+U 5AF9FF2F
+F0 "Memory Access Register" 60
+F1 "./Memory-Access-Register/Memory-Access-Register.sch" 4
+$EndSheet
 $EndSCHEMATC
