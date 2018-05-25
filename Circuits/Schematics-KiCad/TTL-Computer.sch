@@ -189,15 +189,12 @@ Text GLabel 3200 4750 2    60   Input ~ 0
 CTRL_PC_INC
 Text GLabel 3200 4900 2    60   Input ~ 0
 CTRL_PC_DEC
-NoConn ~ 3200 3100
-NoConn ~ 3200 5250
 Text GLabel 3200 6750 2    60   Input ~ 0
 CTRL_/D_IN
 Text GLabel 3200 6900 2    60   Input ~ 0
 CTRL_/D_OUT
 Text GLabel 3200 7050 2    60   Input ~ 0
 CTRL_/D_PC-IN
-NoConn ~ 3200 7300
 Text GLabel 3200 8650 2    60   Input ~ 0
 CTRL_/A_IN
 Text GLabel 3200 8800 2    60   Input ~ 0
@@ -315,7 +312,6 @@ Text GLabel 8450 2550 0    60   Input ~ 0
 CTRL_/MEM_OUT
 Entry Bus Bus
 	10550 3550 10650 3450
-NoConn ~ 8450 3400
 $Sheet
 S 8850 4200 1200 900 
 U 5AF9B714
@@ -373,6 +369,10 @@ F34 "CTRL_/IO_IN" O L 8850 10650 60
 F35 "BUS_IO-CTRL[0..7]" I R 10050 12300 60 
 F36 "CTRL_STK_INC" O L 8850 10800 60 
 F37 "CTRL_STK_DEC" O L 8850 10950 60 
+F38 "CTRL_/MAR_C-IN" O L 8850 11100 60 
+F39 "CTRL_/MAR_D-IN" O L 8850 11250 60 
+F40 "CTRL_/MAR_PC-IN" O L 8850 11400 60 
+F41 "CTRL_/MAR_STK-IN" O L 8850 11550 60 
 $EndSheet
 Wire Bus Line
 	1650 3550 1450 3550
@@ -385,7 +385,7 @@ Wire Wire Line
 Wire Wire Line
 	2850 2400 5050 2400
 Wire Wire Line
-	3050 4300 2850 4300
+	2850 4300 5050 4300
 Connection ~ 3050 2400
 Wire Bus Line
 	1650 3400 1300 3400
@@ -488,7 +488,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 4900 2850 4900
 Wire Bus Line
-	2850 3100 3200 3100
+	2850 3100 4750 3100
 Wire Bus Line
 	2850 5250 3200 5250
 Wire Wire Line
@@ -498,7 +498,7 @@ Wire Wire Line
 Wire Wire Line
 	2850 7050 3200 7050
 Wire Bus Line
-	2850 7300 3200 7300
+	2850 7300 3300 7300
 Wire Wire Line
 	2850 8650 3200 8650
 Wire Wire Line
@@ -611,7 +611,7 @@ Wire Wire Line
 Wire Bus Line
 	10550 3550 10050 3550
 Wire Bus Line
-	8850 3400 8450 3400
+	7750 3400 8850 3400
 Wire Wire Line
 	3050 11400 5050 11400
 Connection ~ 3050 11400
@@ -669,12 +669,81 @@ Wire Wire Line
 Wire Wire Line
 	6600 2850 6250 2850
 Wire Bus Line
-	6250 3550 6650 3550
-NoConn ~ 6650 3550
+	6250 3550 7600 3550
 $Sheet
 S 5050 4200 1200 3650
 U 5AF9FF2F
 F0 "Memory Access Register" 60
 F1 "./Memory-Access-Register/Memory-Access-Register.sch" 4
+F2 "CLOCK" I L 5050 4300 60 
+F3 "BUS_C-MAR[0..7]" I L 5050 5250 60 
+F4 "/MAR_D-IN" I R 6250 4600 60 
+F5 "BUS_MAR-MEM[0..15]" O R 6250 5850 60 
+F6 "BUS_D-MAR[0..7]" I L 5050 5550 60 
+F7 "BUS_PC-MAR[0..15]" I L 5050 5400 60 
+F8 "BUS_STK-MAR[0..15]" I R 6250 5700 60 
+F9 "/MAR_C-IN" I R 6250 4450 60 
+F10 "/MAR_PC-IN" I R 6250 4750 60 
+F11 "/MAR_STK-IN" I R 6250 4900 60 
 $EndSheet
+Text Label 10650 10750 1    79   ~ 16
+DATA-BUS
+Text Label 10650 5400 3    79   ~ 16
+DATA-BUS
+Text Label 6250 13400 2    79   ~ 16
+DATA-BUS
+Wire Bus Line
+	7600 3550 7600 5700
+Wire Bus Line
+	7600 5700 6250 5700
+Wire Bus Line
+	7750 3400 7750 5850
+Wire Bus Line
+	7750 5850 6250 5850
+Wire Bus Line
+	4750 3100 4750 5250
+Wire Bus Line
+	4750 5250 5050 5250
+Wire Bus Line
+	3250 7300 4750 7300
+Wire Bus Line
+	4750 7300 4750 5550
+Wire Bus Line
+	4750 5550 5050 5550
+Wire Bus Line
+	5050 5400 3200 5400
+Wire Bus Line
+	3200 5400 3200 5250
+Text GLabel 6600 4450 2    60   Input ~ 0
+CTRL_/MAR_C-IN
+Text GLabel 6600 4600 2    60   Input ~ 0
+CTRL_/MAR_D-IN
+Text GLabel 6600 4750 2    60   Input ~ 0
+CTRL_/MAR_PC-IN
+Text GLabel 6600 4900 2    60   Input ~ 0
+CTRL_/MAR_STK-IN
+Wire Wire Line
+	6250 4450 6600 4450
+Wire Wire Line
+	6600 4600 6250 4600
+Wire Wire Line
+	6250 4750 6600 4750
+Wire Wire Line
+	6600 4900 6250 4900
+Text GLabel 8450 11100 0    60   Output ~ 0
+CTRL_/MAR_C-IN
+Text GLabel 8450 11250 0    60   Output ~ 0
+CTRL_/MAR_D-IN
+Text GLabel 8450 11400 0    60   Output ~ 0
+CTRL_/MAR_PC-IN
+Text GLabel 8450 11550 0    60   Output ~ 0
+CTRL_/MAR_STK-IN
+Wire Wire Line
+	8450 11100 8850 11100
+Wire Wire Line
+	8850 11250 8450 11250
+Wire Wire Line
+	8450 11400 8850 11400
+Wire Wire Line
+	8850 11550 8450 11550
 $EndSCHEMATC

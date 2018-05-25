@@ -333,4 +333,24 @@ Connection ~ 2850 5800
 Wire Wire Line
 	2700 5950 2850 5950
 Connection ~ 2850 5950
+Text HLabel 2700 6100 0    60   Output ~ 0
+CTRL_/MAR_C-IN
+Text HLabel 2700 6250 0    60   Output ~ 0
+CTRL_/MAR_D-IN
+Text HLabel 2700 6400 0    60   Output ~ 0
+CTRL_/MAR_PC-IN
+Text HLabel 2700 6550 0    60   Output ~ 0
+CTRL_/MAR_STK-IN
+Wire Wire Line
+	2700 6100 2850 6100
+Connection ~ 2850 6100
+Wire Wire Line
+	2700 6250 2850 6250
+Connection ~ 2850 6250
+Wire Wire Line
+	2700 6400 2850 6400
+Connection ~ 2850 6400
+Wire Wire Line
+	2700 6550 2850 6550
+Connection ~ 2850 6550
 $EndSCHEMATC
