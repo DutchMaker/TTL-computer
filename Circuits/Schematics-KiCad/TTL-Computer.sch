@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:TTL-Computer-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -33,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A3 11693 16535 portrait

@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:TTL-Computer-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -33,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -48,19 +46,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L 74LS377-RESCUE-TTL-Computer U30
-U 1 1 5AECCA03
-P 2600 1450
-AR Path="/5AECCA03" Ref="U30"  Part="1" 
-AR Path="/5AECAFE0/5AECCA03" Ref="U30"  Part="1" 
-F 0 "U30" H 2600 1450 50  0000 C CNN
-F 1 "74LS377" H 2700 1050 50  0000 C CNN
-F 2 "" H 2600 1450 50  0001 C CNN
-F 3 "" H 2600 1450 50  0001 C CNN
-	1    2600 1450
-	1    0    0    -1  
-$EndComp
 Text HLabel 1400 2150 0    60   Input ~ 0
 CLOCK
 $Comp
@@ -174,10 +159,10 @@ F 3 "" H 5200 2300 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR031
+L GND #PWR29
 U 1 1 5AECCA3C
 P 5000 2550
-F 0 "#PWR031" H 5000 2300 50  0001 C CNN
+F 0 "#PWR29" H 5000 2300 50  0001 C CNN
 F 1 "GND" H 5000 2400 50  0000 C CNN
 F 2 "" H 5000 2550 50  0001 C CNN
 F 3 "" H 5000 2550 50  0001 C CNN
@@ -358,4 +343,15 @@ Text HLabel 5850 1950 2    60   Output ~ 0
 Flt_OUT
 Text HLabel 5850 2300 2    60   Output ~ 0
 Fgt_OUT
+$Comp
+L 74LS377 U30
+U 1 1 5C884F6E
+P 2600 1450
+F 0 "U30" H 2600 1450 50  0000 C CNN
+F 1 "74LS377" H 2700 1050 50  0000 C CNN
+F 2 "" H 2600 1450 50  0001 C CNN
+F 3 "" H 2600 1450 50  0001 C CNN
+	1    2600 1450
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

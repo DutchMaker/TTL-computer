@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:TTL-Computer-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -33,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -1060,10 +1058,10 @@ Wire Wire Line
 	9200 6150 9250 6150
 Connection ~ 9200 5800
 $Comp
-L GND #PWR023
+L GND #PWR21
 U 1 1 5AD227AC
 P 9200 6250
-F 0 "#PWR023" H 9200 6000 50  0001 C CNN
+F 0 "#PWR21" H 9200 6000 50  0001 C CNN
 F 1 "GND" H 9200 6100 50  0000 C CNN
 F 2 "" H 9200 6250 50  0001 C CNN
 F 3 "" H 9200 6250 50  0001 C CNN

@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:TTL-Computer-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -33,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -48,19 +46,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L 74LS377-RESCUE-TTL-Computer U38
-U 1 1 5AF9F700
-P 4150 3850
-AR Path="/5AF9F700" Ref="U38"  Part="1" 
-AR Path="/5AF9B714/5AF9F700" Ref="U38"  Part="1" 
-F 0 "U38" H 4150 3850 50  0000 C CNN
-F 1 "74LS377" H 4250 3450 50  0000 C CNN
-F 2 "" H 4150 3850 50  0001 C CNN
-F 3 "" H 4150 3850 50  0001 C CNN
-	1    4150 3850
-	1    0    0    -1  
-$EndComp
 Text HLabel 2950 4550 0    60   Input ~ 0
 CLOCK
 Text HLabel 9300 3150 0    60   Output ~ 0
@@ -314,10 +299,10 @@ F 3 "" H 5500 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR043
+L GND #PWR41
 U 1 1 5AF9DB40
 P 5300 1800
-F 0 "#PWR043" H 5300 1550 50  0001 C CNN
+F 0 "#PWR41" H 5300 1550 50  0001 C CNN
 F 1 "GND" H 5300 1650 50  0000 C CNN
 F 2 "" H 5300 1800 50  0001 C CNN
 F 3 "" H 5300 1800 50  0001 C CNN
@@ -497,4 +482,15 @@ Connection ~ 7600 3500
 Wire Wire Line
 	7950 2550 7950 3350
 Connection ~ 7950 3350
+$Comp
+L 74LS377 U38
+U 1 1 5C88534F
+P 4150 3850
+F 0 "U38" H 4150 3850 50  0000 C CNN
+F 1 "74LS377" H 4250 3450 50  0000 C CNN
+F 2 "" H 4150 3850 50  0001 C CNN
+F 3 "" H 4150 3850 50  0001 C CNN
+	1    4150 3850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
