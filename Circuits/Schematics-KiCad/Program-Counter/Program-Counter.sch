@@ -154,54 +154,38 @@ NoConn ~ 3950 5850
 Wire Wire Line
 	1750 1950 2550 1950
 Wire Wire Line
-	1750 1950 1750 5950
-Wire Wire Line
-	1750 3250 2550 3250
-Wire Wire Line
-	1750 4600 2550 4600
-Connection ~ 1750 3250
-Wire Wire Line
-	1750 5950 2550 5950
-Connection ~ 1750 4600
-Wire Wire Line
 	3950 1650 4350 1650
 Wire Wire Line
 	4350 1650 4350 2200
 Wire Wire Line
-	4350 2200 1950 2200
+	4350 2200 2350 2200
 Wire Wire Line
-	1950 2200 1950 3150
+	2350 2200 2350 3250
 Wire Wire Line
-	1950 3150 2550 3150
-Wire Wire Line
-	3950 2950 4050 2950
+	3950 2950 4350 2950
 Wire Wire Line
 	3950 4300 4350 4300
 Wire Wire Line
 	4350 4300 4350 4900
 Wire Wire Line
-	4350 4900 1950 4900
+	4350 4900 2350 4900
 Wire Wire Line
-	1950 4900 1950 5850
-Wire Wire Line
-	1950 5850 2550 5850
+	2350 4900 2350 5950
 Wire Wire Line
 	1750 1700 2550 1700
 Wire Wire Line
-	1850 1700 1850 5700
+	1900 1700 1900 5700
 Wire Wire Line
-	1850 3000 2550 3000
+	1900 3000 2550 3000
 Wire Wire Line
-	1850 4350 2550 4350
-Connection ~ 1850 3000
+	1900 4350 2550 4350
+Connection ~ 1900 3000
 Wire Wire Line
-	1950 4500 2550 4500
+	2350 3500 2350 4600
 Wire Wire Line
-	1950 3500 1950 4500
-Wire Wire Line
-	1850 5700 2550 5700
-Connection ~ 1850 4350
-Connection ~ 1850 1700
+	1900 5700 2550 5700
+Connection ~ 1900 4350
+Connection ~ 1900 1700
 Wire Bus Line
 	4950 950  4950 2750
 Wire Bus Line
@@ -480,7 +464,6 @@ Wire Wire Line
 	1750 1800 1600 1800
 Wire Wire Line
 	1500 2000 1750 2000
-Connection ~ 1750 2000
 Wire Wire Line
 	2050 2900 2050 1600
 Connection ~ 2050 1600
@@ -490,9 +473,9 @@ Wire Wire Line
 	2050 5600 2050 4250
 Connection ~ 2050 4250
 Wire Wire Line
-	2550 1850 2400 1850
+	2550 1850 2200 1850
 Wire Wire Line
-	2400 1850 2400 900 
+	2200 900  2200 5850
 $Comp
 L 7402 U9
 U 3 1 5AFD0505
@@ -545,7 +528,7 @@ Wire Wire Line
 Text GLabel 2450 900  2    60   Input ~ 0
 /PC-CLK_EN
 Wire Wire Line
-	2400 900  2450 900 
+	2200 900  2450 900 
 Wire Bus Line
 	10800 650  10800 6150
 Entry Wire Line
@@ -1105,13 +1088,13 @@ Output to D register
 Text Notes 5600 800  0    60   ~ 12
 Output to MAR
 Wire Wire Line
-	4050 2950 4050 3350
+	4350 2950 4350 3350
 Wire Wire Line
-	4050 3350 3750 3350
+	4350 3350 3750 3350
 Wire Wire Line
 	3750 3350 3750 3500
 Wire Wire Line
-	3750 3500 1950 3500
+	3750 3500 2350 3500
 Wire Wire Line
 	5350 7350 5450 7350
 $Comp
@@ -1135,4 +1118,21 @@ Text HLabel 4050 7450 0    60   Input ~ 0
 PC_DEC
 Text HLabel 4050 7250 0    60   Input ~ 0
 PC_INC
+Wire Wire Line
+	1750 2000 1750 1950
+Wire Wire Line
+	2200 3150 2550 3150
+Connection ~ 2200 1850
+Wire Wire Line
+	2200 4500 2550 4500
+Connection ~ 2200 3150
+Wire Wire Line
+	2200 5850 2550 5850
+Connection ~ 2200 4500
+Wire Wire Line
+	2350 3250 2550 3250
+Wire Wire Line
+	2350 4600 2550 4600
+Wire Wire Line
+	2350 5950 2550 5950
 $EndSCHEMATC

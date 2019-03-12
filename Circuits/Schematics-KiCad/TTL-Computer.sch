@@ -374,6 +374,64 @@ F39 "CTRL_/MAR_D-IN" O L 8850 11250 60
 F40 "CTRL_/MAR_PC-IN" O L 8850 11400 60 
 F41 "CTRL_/MAR_STK-IN" O L 8850 11550 60 
 $EndSheet
+$Sheet
+S 5050 2300 1200 1350
+U 5AFCA082
+F0 "Stack Pointer" 60
+F1 "./Stack-Pointer/Stack-Pointer.sch" 4
+F2 "CLOCK" I L 5050 2400 60 
+F3 "/STK_RESET" I L 5050 2550 60 
+F4 "STK_INC" I R 6250 2700 60 
+F5 "STK_DEC" I R 6250 2850 60 
+F6 "BUS_STK-MAR[0..15]" O R 6250 3550 60 
+$EndSheet
+NoConn ~ 4700 2550
+Text GLabel 8450 10950 0    60   Output ~ 0
+CTRL_STK_DEC
+Text GLabel 8450 10800 0    60   Output ~ 0
+CTRL_STK_INC
+Text GLabel 6600 2850 2    60   Input ~ 0
+CTRL_STK_DEC
+Text GLabel 6600 2700 2    60   Input ~ 0
+CTRL_STK_INC
+$Sheet
+S 5050 4200 1200 3650
+U 5AF9FF2F
+F0 "Memory Access Register" 60
+F1 "./Memory-Access-Register/Memory-Access-Register.sch" 4
+F2 "CLOCK" I L 5050 4300 60 
+F3 "BUS_C-MAR[0..7]" I L 5050 5250 60 
+F4 "/MAR_D-IN" I R 6250 4600 60 
+F5 "BUS_MAR-MEM[0..15]" O R 6250 5850 60 
+F6 "BUS_D-MAR[0..7]" I L 5050 5550 60 
+F7 "BUS_PC-MAR[0..15]" I L 5050 5400 60 
+F8 "BUS_STK-MAR[0..15]" I R 6250 5700 60 
+F9 "/MAR_C-IN" I R 6250 4450 60 
+F10 "/MAR_PC-IN" I R 6250 4750 60 
+F11 "/MAR_STK-IN" I R 6250 4900 60 
+$EndSheet
+Text Label 10650 10750 1    79   ~ 16
+DATA-BUS
+Text Label 10650 5400 3    79   ~ 16
+DATA-BUS
+Text Label 6250 13400 2    79   ~ 16
+DATA-BUS
+Text GLabel 6600 4450 2    60   Input ~ 0
+CTRL_/MAR_C-IN
+Text GLabel 6600 4600 2    60   Input ~ 0
+CTRL_/MAR_D-IN
+Text GLabel 6600 4750 2    60   Input ~ 0
+CTRL_/MAR_PC-IN
+Text GLabel 6600 4900 2    60   Input ~ 0
+CTRL_/MAR_STK-IN
+Text GLabel 8450 11100 0    60   Output ~ 0
+CTRL_/MAR_C-IN
+Text GLabel 8450 11250 0    60   Output ~ 0
+CTRL_/MAR_D-IN
+Text GLabel 8450 11400 0    60   Output ~ 0
+CTRL_/MAR_PC-IN
+Text GLabel 8450 11550 0    60   Output ~ 0
+CTRL_/MAR_STK-IN
 Wire Bus Line
 	1650 3550 1450 3550
 Wire Bus Line
@@ -418,8 +476,6 @@ Wire Bus Line
 	1100 3250 1650 3250
 Wire Bus Line
 	1000 13400 10650 13400
-Wire Bus Line
-	10650 13400 10650 3000
 Wire Bus Line
 	1100 9200 1650 9200
 Wire Bus Line
@@ -638,60 +694,18 @@ Wire Wire Line
 	8650 12900 3050 12900
 Wire Wire Line
 	3050 12900 3050 1550
-$Sheet
-S 5050 2300 1200 1350
-U 5AFCA082
-F0 "Stack Pointer" 60
-F1 "./Stack-Pointer/Stack-Pointer.sch" 4
-F2 "CLOCK" I L 5050 2400 60 
-F3 "/STK_RESET" I L 5050 2550 60 
-F4 "STK_INC" I R 6250 2700 60 
-F5 "STK_DEC" I R 6250 2850 60 
-F6 "BUS_STK-MAR[0..15]" O R 6250 3550 60 
-$EndSheet
 Wire Wire Line
 	5050 2550 4700 2550
-NoConn ~ 4700 2550
-Text GLabel 8450 10950 0    60   Output ~ 0
-CTRL_STK_DEC
-Text GLabel 8450 10800 0    60   Output ~ 0
-CTRL_STK_INC
 Wire Wire Line
 	8850 10800 8450 10800
 Wire Wire Line
 	8850 10950 8450 10950
-Text GLabel 6600 2850 2    60   Input ~ 0
-CTRL_STK_DEC
-Text GLabel 6600 2700 2    60   Input ~ 0
-CTRL_STK_INC
 Wire Wire Line
 	6250 2700 6600 2700
 Wire Wire Line
 	6600 2850 6250 2850
 Wire Bus Line
 	6250 3550 7600 3550
-$Sheet
-S 5050 4200 1200 3650
-U 5AF9FF2F
-F0 "Memory Access Register" 60
-F1 "./Memory-Access-Register/Memory-Access-Register.sch" 4
-F2 "CLOCK" I L 5050 4300 60 
-F3 "BUS_C-MAR[0..7]" I L 5050 5250 60 
-F4 "/MAR_D-IN" I R 6250 4600 60 
-F5 "BUS_MAR-MEM[0..15]" O R 6250 5850 60 
-F6 "BUS_D-MAR[0..7]" I L 5050 5550 60 
-F7 "BUS_PC-MAR[0..15]" I L 5050 5400 60 
-F8 "BUS_STK-MAR[0..15]" I R 6250 5700 60 
-F9 "/MAR_C-IN" I R 6250 4450 60 
-F10 "/MAR_PC-IN" I R 6250 4750 60 
-F11 "/MAR_STK-IN" I R 6250 4900 60 
-$EndSheet
-Text Label 10650 10750 1    79   ~ 16
-DATA-BUS
-Text Label 10650 5400 3    79   ~ 16
-DATA-BUS
-Text Label 6250 13400 2    79   ~ 16
-DATA-BUS
 Wire Bus Line
 	7600 3550 7600 5700
 Wire Bus Line
@@ -714,14 +728,6 @@ Wire Bus Line
 	5050 5400 3200 5400
 Wire Bus Line
 	3200 5400 3200 5250
-Text GLabel 6600 4450 2    60   Input ~ 0
-CTRL_/MAR_C-IN
-Text GLabel 6600 4600 2    60   Input ~ 0
-CTRL_/MAR_D-IN
-Text GLabel 6600 4750 2    60   Input ~ 0
-CTRL_/MAR_PC-IN
-Text GLabel 6600 4900 2    60   Input ~ 0
-CTRL_/MAR_STK-IN
 Wire Wire Line
 	6250 4450 6600 4450
 Wire Wire Line
@@ -730,14 +736,6 @@ Wire Wire Line
 	6250 4750 6600 4750
 Wire Wire Line
 	6600 4900 6250 4900
-Text GLabel 8450 11100 0    60   Output ~ 0
-CTRL_/MAR_C-IN
-Text GLabel 8450 11250 0    60   Output ~ 0
-CTRL_/MAR_D-IN
-Text GLabel 8450 11400 0    60   Output ~ 0
-CTRL_/MAR_PC-IN
-Text GLabel 8450 11550 0    60   Output ~ 0
-CTRL_/MAR_STK-IN
 Wire Wire Line
 	8450 11100 8850 11100
 Wire Wire Line
@@ -746,4 +744,6 @@ Wire Wire Line
 	8450 11400 8850 11400
 Wire Wire Line
 	8850 11550 8450 11550
+Wire Bus Line
+	10650 13400 10650 3000
 $EndSCHEMATC

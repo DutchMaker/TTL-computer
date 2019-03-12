@@ -15,3 +15,8 @@
   - Output 2
   - Input
   - Controller / Sequencer
+
+
+- Controller/Sequencer
+-- Decoding ROM has 8 bits per address
+-- 

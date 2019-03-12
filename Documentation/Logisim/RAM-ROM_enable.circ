@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="2.7.1" version="1.0">
-This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+<project source="2.15.0" version="1.0">
+This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 <lib desc="#Wiring" name="0"/>
   <lib desc="#Gates" name="1"/>
-  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Plexers" name="2">
+    <tool name="Multiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+    <tool name="Demultiplexer">
+      <a name="enable" val="false"/>
+    </tool>
+  </lib>
   <lib desc="#Arithmetic" name="3"/>
-  <lib desc="#Memory" name="4"/>
+  <lib desc="#Memory" name="4">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
@@ -20,6 +33,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
     <a name="simrand" val="0"/>
+    <a name="tickmain" val="half_period"/>
   </options>
   <mappings>
     <tool lib="6" map="Button2" name="Menu Tool"/>
@@ -36,13 +50,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="valign" val="base"/>
     </tool>
     <sep/>
-    <tool lib="0" name="Pin">
-      <a name="tristate" val="false"/>
-    </tool>
+    <tool lib="0" name="Pin"/>
     <tool lib="0" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
     </tool>
     <tool lib="1" name="NOT Gate"/>
     <tool lib="1" name="AND Gate"/>
@@ -53,6 +64,9 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <a name="circuitnamedbox" val="false"/>
+    <a name="circuitnamedboxfixedsize" val="false"/>
+    <a name="circuitvhdlpath" val=""/>
     <wire from="(180,240)" to="(300,240)"/>
     <wire from="(180,350)" to="(300,350)"/>
     <wire from="(170,210)" to="(220,210)"/>
@@ -82,66 +96,37 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(150,320)" to="(220,320)"/>
     <comp lib="0" loc="(150,280)" name="Pin">
       <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
+      <a name="label" val="RAM_ENABLE"/>
     </comp>
     <comp lib="6" loc="(164,241)" name="Text"/>
     <comp lib="6" loc="(106,258)" name="Text"/>
     <comp lib="0" loc="(150,60)" name="Pin">
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="6" loc="(111,107)" name="Text">
-      <a name="text" val="A15"/>
-    </comp>
-    <comp lib="6" loc="(80,285)" name="Text">
-      <a name="text" val="RAM_ENABLE"/>
-    </comp>
-    <comp lib="6" loc="(374,405)" name="Text">
-      <a name="text" val="~RAM_CE"/>
+      <a name="label" val="A14"/>
     </comp>
     <comp lib="0" loc="(150,320)" name="Pin">
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="6" loc="(373,305)" name="Text">
-      <a name="text" val="RAM_CE"/>
+      <a name="label" val="ROM_BOOT"/>
     </comp>
     <comp lib="0" loc="(320,300)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
+      <a name="label" val="RAM_CE"/>
     </comp>
-    <comp lib="1" loc="(280,190)" name="NAND Gate">
-      <a name="inputs" val="2"/>
+    <comp lib="1" loc="(280,190)" name="NAND Gate"/>
+    <comp lib="1" loc="(270,80)" name="OR Gate"/>
+    <comp lib="0" loc="(150,100)" name="Pin">
+      <a name="label" val="A15"/>
     </comp>
-    <comp lib="1" loc="(270,80)" name="OR Gate">
-      <a name="inputs" val="2"/>
+    <comp lib="1" loc="(280,300)" name="NAND Gate"/>
+    <comp lib="1" loc="(280,400)" name="NAND Gate"/>
+    <comp lib="0" loc="(320,400)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="L_RAM_CE"/>
     </comp>
     <comp lib="0" loc="(320,350)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(150,100)" name="Pin">
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="1" loc="(280,300)" name="NAND Gate">
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="6" loc="(375,355)" name="Text">
-      <a name="text" val="~ROM_CE"/>
-    </comp>
-    <comp lib="1" loc="(280,400)" name="NAND Gate">
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="6" loc="(88,325)" name="Text">
-      <a name="text" val="ROM_BOOT"/>
-    </comp>
-    <comp lib="0" loc="(320,400)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(111,65)" name="Text">
-      <a name="text" val="A14"/>
+      <a name="label" val="L_ROM_CE"/>
     </comp>
   </circuit>
 </project>
