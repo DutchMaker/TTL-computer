@@ -39,7 +39,7 @@ LabSize=60
 version=1
 LibDir=
 [eeschema/libraries]
-LibName1=TTL-Computer-rescue
+LibName1=TTL-Computer-Components
 LibName2=power
 LibName3=device
 LibName4=switches
@@ -72,4 +72,3 @@ LibName30=opto
 LibName31=atmel
 LibName32=contrib
 LibName33=valves
-LibName34=TTL-Computer-Components

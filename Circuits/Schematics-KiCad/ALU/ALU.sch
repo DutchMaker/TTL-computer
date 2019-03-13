@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:TTL-Computer-Components
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,8 +32,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
@@ -1155,10 +1154,10 @@ Wire Wire Line
 Wire Wire Line
 	2750 3850 2850 3850
 $Comp
-L 74LS377f U?
+L 74LS377f U23
 U 1 1 5C88FF5B
 P 3550 7050
-F 0 "U?" H 3550 7050 50  0000 C CNN
+F 0 "U23" H 3550 7050 50  0000 C CNN
 F 1 "74LS377f" H 3550 6650 50  0000 C CNN
 F 2 "" H 3550 7050 50  0001 C CNN
 F 3 "" H 3550 7050 50  0001 C CNN

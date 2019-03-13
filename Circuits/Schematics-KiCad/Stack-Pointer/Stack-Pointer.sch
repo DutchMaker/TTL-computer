@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:TTL-Computer-Components
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,8 +32,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -626,7 +625,9 @@ $Comp
 L 74LS191 U?
 U 1 1 5C89042D
 P 3900 1550
-F 0 "U?" H 3900 1550 50  0000 C CNN
+AR Path="/5C89042D" Ref="U?"  Part="1" 
+AR Path="/5AFCA082/5C89042D" Ref="U40"  Part="1" 
+F 0 "U40" H 3900 1550 50  0000 C CNN
 F 1 "74LS191" H 3950 1350 50  0000 C CNN
 F 2 "" H 3900 1550 50  0001 C CNN
 F 3 "" H 3900 1550 50  0001 C CNN
@@ -638,7 +639,9 @@ $Comp
 L 74LS191 U?
 U 1 1 5C890478
 P 3900 2850
-F 0 "U?" H 3900 2850 50  0000 C CNN
+AR Path="/5C890478" Ref="U?"  Part="1" 
+AR Path="/5AFCA082/5C890478" Ref="U41"  Part="1" 
+F 0 "U41" H 3900 2850 50  0000 C CNN
 F 1 "74LS191" H 3950 2650 50  0000 C CNN
 F 2 "" H 3900 2850 50  0001 C CNN
 F 3 "" H 3900 2850 50  0001 C CNN

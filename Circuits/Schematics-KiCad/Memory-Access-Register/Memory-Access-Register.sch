@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:TTL-Computer-Components
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,8 +32,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
@@ -2006,10 +2005,10 @@ Output to Memory
 Text Notes 8900 4850 2    60   ~ 12
 Toggle input on registers
 $Comp
-L 74LS377f U?
+L 74LS377f U42
 U 1 1 5C8908FF
 P 10000 1800
-F 0 "U?" H 10000 1800 50  0000 C CNN
+F 0 "U42" H 10000 1800 50  0000 C CNN
 F 1 "74LS377f" H 10000 1400 50  0000 C CNN
 F 2 "" H 10000 1800 50  0001 C CNN
 F 3 "" H 10000 1800 50  0001 C CNN
@@ -2017,10 +2016,10 @@ F 3 "" H 10000 1800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74LS377f U?
+L 74LS377f U43
 U 1 1 5C890986
 P 10000 3550
-F 0 "U?" H 10000 3550 50  0000 C CNN
+F 0 "U43" H 10000 3550 50  0000 C CNN
 F 1 "74LS377f" H 10000 3150 50  0000 C CNN
 F 2 "" H 10000 3550 50  0001 C CNN
 F 3 "" H 10000 3550 50  0001 C CNN

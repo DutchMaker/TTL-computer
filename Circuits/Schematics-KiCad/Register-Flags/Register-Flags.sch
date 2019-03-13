@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:TTL-Computer-Components
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,8 +32,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:TTL-Computer-Components
-LIBS:TTL-Computer-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -345,10 +344,10 @@ Flt_OUT
 Text HLabel 5850 2300 2    60   Output ~ 0
 Fgt_OUT
 $Comp
-L 74LS377f U?
+L 74LS377f U30
 U 1 1 5C8901B1
 P 2600 1450
-F 0 "U?" H 2600 1450 50  0000 C CNN
+F 0 "U30" H 2600 1450 50  0000 C CNN
 F 1 "74LS377f" H 2600 1050 50  0000 C CNN
 F 2 "" H 2600 1450 50  0001 C CNN
 F 3 "" H 2600 1450 50  0001 C CNN
