@@ -18,9 +18,13 @@ The 48 bit control word is stored in serial-in/parallel-out (SIPO) 6 shift regis
 
 When transfer is complete, we have all the control bits ready to be used and visualized.
 
+### Load state counter
+
+In order to load bits from ROM into the PISO/SIPO shift registers we need to keep track of a load state; after 8 bits are loaded, the ROM bank counter needs to advance and the next 8 bits must be loaded.
+
 ### Internal clock
 
-The module has an internal clock running at relatively high speed (something like 8 MHz)  used for the ROM bank and the shift registers.
+The module has an internal clock running at relatively high speed (something like 8 MHz)  used for the ROM bank counter, SR loading state and the shift registers.
 
 ## Module inner workings
 
@@ -54,8 +58,8 @@ This leads to an 18 bit address. The ROM we are using (29C040) supports 19 bit a
 
 The final memory address is laid out as such:
 
-`[unused][bank][flags][instruction][t-state]`
-`[0][000][00000][000000][0000]`
+`[unused][flags][instruction][t-state][bank]`
+`[0][00000][000000][0000][000]`
 
 ### Data layout
 
