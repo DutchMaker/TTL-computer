@@ -1,4 +1,4 @@
-# Controller / Sequencer
+# Sequencer / Instruction Decoder
 
 This module is responsible for translating the current instruction to the control lines.
 It's the most complicated part of this computer as it requires several states to be tracked in order to perform its tasks.
