@@ -8,9 +8,9 @@ It's the most complicated part of this computer as it requires several states to
 ### T-state counter
 State machine that keeps track of instruction T-states. Instructions can have a maximum of 16 T-states so we use a 4 bit binary counter (74161).
 
-### ROM bank counter
-Instructions are translated to a maximum of 48 control lines and the state of these lines are stored in the control ROM. Because the ROM stores 8 bits per address, we need to read from 6 sequential addresses to come up with the 48 bit word for the control lines.
-The _ROM bank counter_ (74161 binary counter) result is used during composition of the current ROM memory address. We are using only 3 of the counter bits for this purpose.
+### _Data byte_ counter
+Instructions are translated to a maximum of 48 control lines and the state of these lines are stored in the control ROM. Because the ROM stores one byte (8 bits) per address, we need to read a byte from 6 sequential addresses to come up with the 48 bit word for the control lines.
+The _data byte counter_ (74161 binary counter) result is used during composition of the current ROM memory address. We are using only 3 bits of this counter for this purpose.
 
 ### Shift registers
 
@@ -18,13 +18,13 @@ The 48 bit control word is stored in serial-in/parallel-out (SIPO) 6 shift regis
 
 When transfer is complete, we have all the control bits ready to be used and visualized.
 
-### Load state counter
+### _Data bit_ counter
 
-In order to load bits from ROM into the PISO/SIPO shift registers we need to keep track of a load state; after 8 bits are loaded, the ROM bank counter needs to advance and the next 8 bits must be loaded.
+In order to load bits from ROM into the PISO/SIPO shift registers we need to keep track of a load state (i.e. which data bit is being loaded); after 8 bits are loaded, the ROM bank counter needs to advance and the next 8 bits must be loaded.
 
 ### Internal clock
 
-The module has an internal clock running at relatively high speed (something like 8 MHz)  used for the ROM bank counter, SR loading state and the shift registers.
+The module has an internal clock running at relatively high speed (something like 8 MHz)  used for the ROM bank and Load state counter and the shift registers.
 
 ## Module inner workings
 
@@ -34,7 +34,7 @@ Let's take a look at the tasks that this module is performing:
 2. Construct ROM memory address for bank 1 (see _Memory layout_).
 3. Load ROM byte into PISO shift register.
 4. Load PISO data into SIPO shift register.
-5. Increase bank counter.
+5. Increase data byte counter.
 6. Repeat from step 2 until bank 6 has been processed (6x8 control word bytes).
 7. Resume CPU execution.
 
