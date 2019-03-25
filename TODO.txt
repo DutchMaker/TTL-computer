@@ -1,3 +1,7 @@
+- Rename to 74xx Computer
+- Update architecture according to Logisim circuits
+
+
 - Indicate active low lines on Architecture overview
 - Update mnemonic/opcode list
 - Post updates on Hackaday
@@ -16,7 +20,3 @@
   - Input
   - Controller / Sequencer
 
-
-- Controller/Sequencer
--- Decoding ROM has 8 bits per address
--- 
