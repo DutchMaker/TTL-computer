@@ -61,6 +61,14 @@ The final memory address is laid out as such:
 `[unused][flags][instruction][t-state][bank]`
 `[0][00000][000000][0000][000]`
 
+Flags are ordered as such:
+
+| Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
+| ----- | ----- | ----- | ----- | ----- |
+| `Fgt` | `Feq` | `Flt` | `Fz`  | `Fc`  |
+
+
+
 ### Data layout
 
 |            | **Bit 7**    | **Bit 6** | **Bit 5** | **Bit 4** | **Bit 3** | **Bit 2**  | **Bit 1**  | **Bit 0**   |
