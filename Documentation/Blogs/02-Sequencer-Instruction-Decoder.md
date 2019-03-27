@@ -24,7 +24,7 @@ In order to load bits from ROM into the PISO/SIPO shift registers we need to kee
 
 ### Internal clock
 
-The module has an internal clock running at relatively high speed (something like 8 MHz)  used for the ROM bank and Load state counter and the shift registers.
+The module has an internal clock running at relatively high speed used for the ROM bank and Load state counter and the shift registers. The Logisim circuit uses an internal clock at 64x the speed of the regular clock.
 
 ## Module inner workings
 
@@ -50,16 +50,16 @@ The memory address at which this is stored is constructed using the following va
 - CPU flags state.
   *5 bits*
 - Instruction OP-code.
-  *6 bits*
+  *7 bits*
 - Instruction T-state.
   *4 bits*
 
-This leads to an 18 bit address. The ROM we are using (29C040) supports 19 bit addresses, so the last bit remains unused. 
+This leads to an 19 bit address which is exactly what is supported by the 29C040 ROM we are using. 
 
 The final memory address is laid out as such:
 
-`[unused][flags][instruction][t-state][bank]`
-`[0][00000][000000][0000][000]`
+`[flags][instruction][t-state][bank]`
+`[00000][0000000][0000][000]`
 
 Flags are ordered as such:
 
