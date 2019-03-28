@@ -8,6 +8,8 @@
 # - The second part (code) of the file defines the microcode.
 #
 # Header syntax:
+# ---------------
+#
 # INSTRUCTIONS
 # {
 # (tab)<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>
@@ -24,6 +26,8 @@
 # - T-states 0 & 1 (instruction fetch) are hard-wired and do not need to be defined in microcode
 #
 # Code syntax:
+#----------------
+#
 # MICROCODE
 # {
 # 	<MNEMONIC>
@@ -45,7 +49,7 @@
 # - Flags state is binary and order as such: Fgt, Feq, Flt, Fz, Fc.
 # - Use 'x' in flag state to act on any state of that bit.
 # - If flags state is irrelevant (xxxxx) it may be ommited.
-#   So "0 { TSTATE_reset }" would be a valid definition.
+#   So "0 { TSTATE_reset }" would be a valid t-state definition.
 # - (r1) and (r2) may be used to indicate registers.
 #   The compiler will automatically try to compile the instruction against all registers, 
 #   as long as the instruction (e.g. MOV B,D) exists in the instructions list
@@ -133,9 +137,7 @@ INSTRUCTIONS
 	OUT 2 A:1010001;
 	OUT 2 B:1010010;
 	OUT 2 C:1010011;
-	OUT 2 D:1010100		
-	
-	# Compiler note: list should never end with ; 
+	OUT 2 D:1010100;
 }
 
 CONTROLLINES
@@ -145,9 +147,7 @@ CONTROLLINES
 	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;		ALU_s3;
 	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_in;	ALU_A_in;		STK_reset;		STK_dec;	STK_inc;
 	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;	FLAGS_load;
-	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;		A_out
-
-	# Compiler note: list should never end with ; 
+	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;		A_out;
 }
 
 MICROCODE

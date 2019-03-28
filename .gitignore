@@ -2,3 +2,8 @@
 *.bak
 ~*
 TTL-Computer-cache.*
+
+.vs/
+bin/
+obj/
+*.user
