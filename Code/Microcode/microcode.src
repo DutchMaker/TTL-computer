@@ -1,0 +1,204 @@
+# This source file defines the microcode for the 74xx Computer.
+# The file is to be compiled with mcc.exe which results in a binary that is then uploaded to the microcode ROM.
+#
+# 2019-03-28: mcc.exe is not available yet
+#
+# File layout:
+# - The first part (header) of the file defines all the mnemonics, opcodes and control lines.
+# - The second part (code) of the file defines the microcode.
+#
+# Header syntax:
+# INSTRUCTIONS
+# {
+# (tab)<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>
+# }
+#
+# CONTROLLINES
+# {
+# (tab)<CONTROLLINE_NAME>;<CONTROLLINE_NAME> (for all 48 control lines)
+# }
+#
+# - Opcode is a binary value (LSBF)
+# - Newlines and additional spaces around the ; are ignored
+# - Control line name is "NC" for unused lines
+# - T-states 0 & 1 (instruction fetch) are hard-wired and do not need to be defined in microcode
+#
+# Code syntax:
+# MICROCODE
+# {
+# 	<MNEMONIC>
+# 	{
+# 		<T-STATE>
+#		{
+#			[flags_state]: CONTROLLINE_NAME;CONTROLLINE_NAME
+#		}
+# 	}
+# 	<MNEMONIC> (r1),(r2)
+# 	{
+# 		<T-STATE>
+#		{
+#			[flags_state]: CONTROLLINE_NAME_(r1);CONTROLLINE_NAME_(r2)
+#		}
+# 	}
+# }
+#
+# - Flags state is binary and order as such: Fgt, Feq, Flt, Fz, Fc.
+# - Use 'x' in flag state to act on any state of that bit.
+# - If flags state is irrelevant (xxxxx) it may be ommited.
+#   So "0 { TSTATE_reset }" would be a valid definition.
+# - (r1) and (r2) may be used to indicate registers.
+#   The compiler will automatically try to compile the instruction against all registers, 
+#   as long as the instruction (e.g. MOV B,D) exists in the instructions list
+#
+
+INSTRUCTIONS
+{
+	NOP:0000000;
+	HLT:0000001;
+	MOV A,B:0000010;
+	MOV A,C:0000011;
+	MOV A,D:0000100;
+	MOV B,A:0000101;
+	MOV B,C:0000110;
+	MOV B,D:0000111;
+	MOV C,A:0001000;
+	MOV C,B:0001001;
+	MOV C,D:0001010;
+	MOV D,A:0001011;
+	MOV D,B:0001100;
+	MOV D,C:0001101;
+	MVI A:0001110;
+	MVI B:0001111;
+	MVI C:0010000;
+	MVI D:0010001;
+	LD A:0010010;
+	LD B:0010011;
+	ST A:0010110;
+	ST B:0010111;
+	ADD A:0011010;
+	ADD C:0011011;
+	ADD D:0011100;
+	ADC A:0011101;
+	ADC C:0011110;
+	ADC D:0011111;
+	SUB A:0100000;
+	SUB C:0100001;
+	SUB D:0100010;
+	SBC A:0100011;
+	SBC C:0100100;
+	SBC D:0100101;
+	AND A:0100110;
+	AND C:0100111;
+	AND D:0101000;
+	OR A:0101001;
+	OR C:0101010;
+	OR D:0101011;
+	XOR A:0101100;
+	XOR B:0101101;
+	XOR C:0101110;
+	XOR D:0101111;
+	NOT A:0110000;
+	NOT B:0110001;
+	NOT C:0110010;
+	NOT D:0110011;
+	INC A:0110100;
+	INC B:0110101;
+	INC C:0110110;
+	INC D:0110111;
+	DEC A:0111000;
+	DEC B:0111001;
+	DEC C:0111010;
+	DEC D:0111011;
+	CMP A:0111100;
+	CMP C:0111101;
+	CMP D:0111110;
+	JMP:0111111;
+	JZ:1000000;
+	JNZ:1000001;
+	JC:1000010;
+	JNC:1000011;
+	JEQ:1000100;
+	JLT:1000101;
+	JGT:1000110;
+	CALL:1000111;
+	RET:1001000;
+	IN A:1001001;
+	IN B:1001010;
+	IN C:1001011;
+	IN D:1001100;
+	OUT 1 A:1001101;
+	OUT 1 B:1001110;
+	OUT 1 C:1001111;
+	OUT 1 D:1010000;
+	OUT 2 A:1010001;
+	OUT 2 B:1010010;
+	OUT 2 C:1010011;
+	OUT 2 D:1010100		
+	
+	# Compiler note: list should never end with ; 
+}
+
+CONTROLLINES
+{
+	NC;				NC;			NC;			NC;			NC;				NC;				NC;			NC;
+	NC;				OUT2_in;	OUT1_in;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;	MEM_RAM_load;
+	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;		ALU_s3;
+	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_in;	ALU_A_in;		STK_reset;		STK_dec;	STK_inc;
+	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;	FLAGS_load;
+	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;		A_out
+
+	# Compiler note: list should never end with ; 
+}
+
+MICROCODE
+{
+	NOP {
+		0 { TSTATE_reset }
+	}
+
+	HALT {
+		0 { CLOCK_halt }
+	}
+
+	MOV (r1),(r2) {
+		0 { (r1)_out;(r2)_load;TSTATE_reset }
+	}
+
+	MVI (r1) {
+		0 { MAR_PC_load	}
+		1 { MEM_out;(r1)_load;PC_inc;TSTATE_reset }
+	}
+
+	LD (r1) {
+		0 { MAR_PC_load }
+		1 { MEM_out;D_load;PC_inc }
+		2 { MAR_PC_load	}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;MAR_LB_load }
+		5 { D_out;MAR_HB_load }
+		6 { MEM_out;(r1)_load;TSTATE_reset }
+	}
+
+	ST (r1) {
+		0 { MAR_PC_load }
+		1 { MEM_out;D_load;PC_inc }
+		2 { MAR_PC_load }
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;MAR_LB_load }
+		5 { D_out;MAR_HB_load }
+		6 { (r1)_out;MEM_RAM_load;TSTATE_reset }
+	}
+
+	JZ {
+		0 {
+			[xxx0x]: TSTATE_reset
+			[xxx1x]: MAR_PC_load
+		}
+		1 { MEM_out;D_load;PC_inc }
+		2 { MAR_PC_load	}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_out }
+		6 { TSTATE_reset }
+	}
+}
