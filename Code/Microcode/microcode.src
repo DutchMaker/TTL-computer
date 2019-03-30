@@ -34,14 +34,14 @@
 # 	{
 # 		<T-STATE>
 #		{
-#			[flags_state]: CONTROLLINE_NAME;CONTROLLINE_NAME
+#			[flags_state] CONTROLLINE_NAME;CONTROLLINE_NAME
 #		}
 # 	}
 # 	<MNEMONIC> (r1),(r2)
 # 	{
 # 		<T-STATE>
 #		{
-#			[flags_state]: CONTROLLINE_NAME_(r1);CONTROLLINE_NAME_(r2)
+#			[flags_state] CONTROLLINE_NAME_(r1);CONTROLLINE_NAME_(r2)
 #		}
 # 	}
 # }
@@ -58,7 +58,7 @@
 INSTRUCTIONS
 {
 	NOP:0000000;
-	HLT:0000001;
+	HALT:0000001;
 	MOV A,B:0000010;
 	MOV A,C:0000011;
 	MOV A,D:0000100;
@@ -191,8 +191,8 @@ MICROCODE
 
 	JZ {
 		0 {
-			[xxx0x]: TSTATE_reset
-			[xxx1x]: MAR_PC_load
+			[xxx0x] TSTATE_reset
+			[xxx1x] MAR_PC_load
 		}
 		1 { MEM_out;D_load;PC_inc }
 		2 { MAR_PC_load	}
