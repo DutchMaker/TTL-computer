@@ -161,12 +161,14 @@ MICROCODE
 	}
 
 	MOV (r1),(r2) {
-		0 { (r1)_out;(r2)_load;TSTATE_reset }
+		0 { (r1)_out;(r2)_load }
+		1 { TSTATE_reset }
 	}
 
 	MVI (r1) {
 		0 { MAR_PC_load	}
-		1 { MEM_out;(r1)_load;PC_inc;TSTATE_reset }
+		1 { MEM_out;(r1)_load;PC_inc }
+		2 { TSTATE_reset }
 	}
 
 	LD (r1) {
@@ -176,7 +178,8 @@ MICROCODE
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;MAR_LB_load }
 		5 { D_out;MAR_HB_load }
-		6 { MEM_out;(r1)_load;TSTATE_reset }
+		6 { MEM_out;(r1)_load }
+		7 { TSTATE_reset }
 	}
 
 	ST (r1) {
@@ -186,7 +189,8 @@ MICROCODE
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;MAR_LB_load }
 		5 { D_out;MAR_HB_load }
-		6 { (r1)_out;MEM_RAM_load;TSTATE_reset }
+		6 { (r1)_out;MEM_RAM_load }
+		7 { TSTATE_reset }
 	}
 
 	JZ {
