@@ -271,7 +271,9 @@ namespace Mcc
 
                     for (byte tstate = 0; tstate < microSourceCode[mnemonic].Count; tstate++)
                     {
-                        string tstateBits = Convert.ToString(tstate, 2).PadLeft(4, '0');
+                        // Remember that tstate 0 and 1 are hardwired in the CPU.
+                        // We need to increase our tstate by 2 before converting to binary.
+                        string tstateBits = Convert.ToString(tstate + 2, 2).PadLeft(4, '0');
 
                         foreach (string flagsStateBits in microSourceCode[mnemonic][tstate].Keys)
                         {
