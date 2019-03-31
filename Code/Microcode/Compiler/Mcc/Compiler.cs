@@ -275,16 +275,19 @@ namespace Mcc
 
                         foreach (string flagsStateBits in microSourceCode[mnemonic][tstate].Keys)
                         {
-                            // Construct ROM memory address:
-                            // 
-                            // [flags][instruction][t-state][bank]
-                            // [00000][0000000][0000][000]
-                            string addressString = flagsStateBits + instructionBits + tstateBits + flagsStateBits;
                             string controlWord = microSourceCode[mnemonic][tstate][flagsStateBits];
 
                             // Split the control word into 6 bytes.
                             for (int bank = 0; bank < 6; bank++)
                             {
+                                string bankBits = Convert.ToString(bank, 2).PadLeft(3, '0');
+
+                                // Construct ROM memory address:
+                                // 
+                                // [flags][instruction][t-state][bank]
+                                // [00000][0000000][0000][000]
+                                string addressString = flagsStateBits + instructionBits + tstateBits + bankBits;
+
                                 string dataString = controlWord.Substring(bank * 8, 8);
                                 Console.WriteLine($"{addressString}: {dataString}");
 
