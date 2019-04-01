@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -253,6 +254,7 @@ namespace Mcc
 
         private void CompileMicrocode()
         {
+            var sw = Stopwatch.StartNew();
             Console.WriteLine("Compiling microcode...");
 
             if (File.Exists(targetFileName))
@@ -266,8 +268,7 @@ namespace Mcc
                 {
                     string instructionBits = instructions[mnemonic];
 
-                    Console.WriteLine("---");
-                    Console.WriteLine(mnemonic);
+                    Console.Write(".");
 
                     for (byte tstate = 0; tstate < microSourceCode[mnemonic].Count; tstate++)
                     {
@@ -289,13 +290,11 @@ namespace Mcc
                                 // [flags][instruction][t-state][bank]
                                 // [00000][0000000][0000][000]
                                 string addressString = flagsStateBits + instructionBits + tstateBits + bankBits;
-
                                 string dataString = controlWord.Substring(bank * 8, 8);
-                                Console.WriteLine($"{addressString}: {dataString}");
 
-                                byte data = Convert.ToByte(dataString, 2);
                                 int address = Convert.ToInt32(addressString, 2);
-
+                                byte data = Convert.ToByte(dataString, 2);
+                                
                                 writer.Seek(address, SeekOrigin.Begin);
                                 writer.Write(data);
                             }
@@ -303,6 +302,8 @@ namespace Mcc
                     }
                 }
             }
+
+            Console.WriteLine($"Compiled in {sw.ElapsedMilliseconds} ms!");
         }
 
         private void GenerateFlagsStates(string flagsStateKey, string flagsStateValue, Dictionary<string, string> store)
