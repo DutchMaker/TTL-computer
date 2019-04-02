@@ -1,7 +1,9 @@
-# Sequencer / Instruction Decoder
+# Controller
 
-This module is responsible for translating the current instruction to the control lines.
+This module is responsible for counting T-states and decoding instructions to the control lines.
 It's the most complicated part of this computer as it requires several states to be tracked in order to perform its tasks.
+
+The controller logic is based on microcode that is stored in a ROM.
 
 ## Module subsystems:
 
@@ -12,15 +14,9 @@ State machine that keeps track of instruction T-states. Instructions can have a 
 Instructions are translated to a maximum of 48 control lines and the state of these lines are stored in the control ROM. Because the ROM stores one byte (8 bits) per address, we need to read a byte from 6 sequential addresses to come up with the 48 bit word for the control lines.
 The _data byte counter_ (74161 binary counter) result is used during composition of the current ROM memory address. We are using only 3 bits of this counter for this purpose.
 
-### Shift registers
+### Registers
 
-The 48 bit control word is stored in serial-in/parallel-out (SIPO) 6 shift registers (74595). To transfer the bits from the ROM to the SIPO shift registers, we use one parallel-in/serial-out (PISO) shift register (74165).
-
-When transfer is complete, we have all the control bits ready to be used and visualized.
-
-### _Data bit_ counter
-
-In order to load bits from ROM into the PISO/SIPO shift registers we need to keep track of a load state (i.e. which data bit is being loaded); after 8 bits are loaded, the ROM bank counter needs to advance and the next 8 bits must be loaded.
+The 48 bit control word is stored in 8-bit registers (74377). The data byte counter determines which of the registers is used to store the current data byte. Register selection is done using a  3-to-1 multiplexer (74138). When transfer is complete, we have all the control bits ready to be used.
 
 ### Internal clock
 
@@ -32,11 +28,10 @@ Let's take a look at the tasks that this module is performing:
 
 1. Halt CPU execution.
 2. Construct ROM memory address for bank 1 (see _Memory layout_).
-3. Load ROM byte into PISO shift register.
-4. Load PISO data into SIPO shift register.
-5. Increase data byte counter.
-6. Repeat from step 2 until bank 6 has been processed (6x8 control word bytes).
-7. Resume CPU execution.
+3. Load ROM byte into current register.
+4. Increase data byte counter.
+5. Repeat from step 2 until bank 6 has been processed (6x8 control word bytes).
+6. Resume CPU execution.
 
 ## Memory layout
 
@@ -67,16 +62,18 @@ Flags are ordered as such:
 | ----- | ----- | ----- | ----- | ----- |
 | `Fgt` | `Feq` | `Flt` | `Fz`  | `Fc`  |
 
-
-
 ### Data layout
 
-|            | **Bit 7**    | **Bit 6** | **Bit 5** | **Bit 4** | **Bit 3** | **Bit 2**  | **Bit 1**  | **Bit 0**   |
-| ---------- | ------------ | --------- | --------- | --------- | --------- | ---------- | ---------- | ----------- |
-| **Bank 0** | `CLK_hlt`    | `C_in`    | `C_out`   | `C_PC-in` | `D_in`    | `D_out`    | `D_PC-in`  | `A_in`      |
-| **Bank 1** | `A_out`      | `B_in`    | `B_out`   | `IO_in`   | `RAM_in`  | `MEM_out`  | `IN_out`   | `OUT1_in`   |
-| **Bank 2** | `OUT2_in`    | `PC_dec`  | `PC_inc`  | `PC_C-in` | `PC_D-in` | `MAR_C-in` | `MAR_D-in` | `MAR_PC-in` |
-| **Bank 3** | `MAR_STK-in` | `ALU_in`  | `ALU_out` | `ALU_S0`  | `ALU_S1`  | `ALU_S2`   | `ALU_S3`   | `ALU_M`     |
-| **Bank 4** | `ALU_Cn`     | `F_in`    | `F_z`     | `F_c`     | `F_eq`    | `F_lt`     | `F_gt`     | `SEQ_res`   |
-| **Bank 5** |              |           |           |           |           |            | `STK_dec`  | `STK_inc`   |
+|            | Bit 7          | Bit 6         | Bit 5         | Bit 4         | Bit 3          | Bit 2        | Bit 1     | Bit 0          |
+| ---------- | -------------- | ------------- | ------------- | ------------- | -------------- | ------------ | --------- | -------------- |
+| **Bank 0** |                |               |               |               |                |              |           |                |
+| **Bank 1** |                | `OUT2_in`     | `OUT1_in`     | `IN_out`      | `TSTATE_reset` | `CLOCK_halt` | `MEM_out` | `MEM_RAM_load` |
+| **Bank 2** | `MAR_STK_load` | `MAR_PC_load` | `MAR_HB_load` | `MAR_LB_load` | `ALU_out`      | `ALU_cn`     | `ALU_m`   | `ALU_s3`       |
+| **Bank 3** | `ALU_s2`       | `ALU_s1`      | `ALU_s0`      | `ALU_B_in`    | `ALU_A_in`     | `STK_reset`  | `STK_dec` | `STK_inc`      |
+| **Bank 4** | `PC_HB_out`    | `PC_LB_out`   | `PC_HB_load`  | `PC_LB_load`  | `PC_dec`       | `PC_inc`     | `IR_load` | `FLAGS_load`   |
+| **Bank 5** | `D_load`       | `D_out`       | `C_load`      | `C_out`       | `B_load`       | `B_out`      | `A_load`  | `A_out`        |
 
+## Microcode
+
+The microcode compiler is used to define the contents of the microcode ROM.
+*More documentation on this will follow...*

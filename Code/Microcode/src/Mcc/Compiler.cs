@@ -255,7 +255,7 @@ namespace Mcc
         private void CompileMicrocode()
         {
             var sw = Stopwatch.StartNew();
-            Console.WriteLine("Compiling microcode...");
+            Console.Write("Compiling microcode");
 
             if (File.Exists(targetFileName))
             {
@@ -303,7 +303,7 @@ namespace Mcc
                 }
             }
 
-            Console.WriteLine($"Compiled in {sw.ElapsedMilliseconds} ms!");
+            Console.WriteLine($"\r\nCompiled in {sw.ElapsedMilliseconds} ms!");
         }
 
         private void GenerateFlagsStates(string flagsStateKey, string flagsStateValue, Dictionary<string, string> store)

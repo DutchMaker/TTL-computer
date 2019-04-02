@@ -7,13 +7,13 @@ namespace Mcc
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            Console.WriteLine();
             Console.WriteLine("--------------------------------");
             Console.WriteLine("74xx Computer Microcode Compiler");
             Console.WriteLine("--------------------------------");
             Console.WriteLine();
 
-            args = new [] { @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src" };
+            // args = new [] { @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src" };
 
             if (args.Length == 0)
             {
@@ -43,7 +43,6 @@ namespace Mcc
             }
 
             Console.WriteLine();
-            Console.ReadLine();
         }
     }
 }

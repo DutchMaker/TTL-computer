@@ -7,3 +7,6 @@ TTL-Computer-cache.*
 bin/
 obj/
 *.user
+
+Code/Microcode/app/*
+!Code/Microcode/app/README.md
