@@ -10,3 +10,6 @@ obj/
 
 Code/Microcode/app/*
 !Code/Microcode/app/README.md
+
+Code/Assembler/app/*
+!Code/Assembler/app/README.md

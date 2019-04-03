@@ -1,1 +1,1 @@
-.\app\Mcc.exe microcode.src
+.\app\mcc.exe "microcode.src"
