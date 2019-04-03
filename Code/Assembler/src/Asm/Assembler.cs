@@ -35,6 +35,23 @@ namespace Asm
         private void Assemble()
         {
             RemoveComments();
+
+            // Extract code blocks (labels)
+            // Count number of bytes for each code block
+            // Determine start address for each block (main = 0)
+            // Start at address 0
+            //  Translate instruction to binary
+            //  Write binary to address
+            //  If instruction length == 2
+            //      Increase address
+            //      Write operand to address
+            //  If instruction length == 3
+            //      Increase address
+            //      Write operand 2 to address
+            //  Increase address
+            //  Repeat for all instructions in block
+            // Repeat for all blocks
+            // Done
         }
 
         private void RemoveComments()

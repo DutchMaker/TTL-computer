@@ -13,7 +13,7 @@ namespace Mcc
             Console.WriteLine("--------------------------------");
             Console.WriteLine();
 
-            // args = new [] { @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src" };
+            //args = new [] { @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src" };
 
             if (args.Length == 0)
             {

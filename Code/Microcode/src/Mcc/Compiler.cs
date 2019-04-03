@@ -19,6 +19,7 @@ namespace Mcc
         private string targetFileName;
         private string source;
         private Dictionary<string, string> instructions;
+        private Dictionary<string, int> instructionLengths;
         private List<string> controlLines;
         private Dictionary<string, List<Dictionary<string, string>>> microSourceCode;
         private Dictionary<int, byte> microcode;
@@ -75,8 +76,15 @@ namespace Mcc
             string sectionCode = ExtractSection(SECTION_INSTRUCTIONS);
 
             instructions = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
-                .ToDictionary(i => i.Split(':').First(), i => i.Split(':').Last());
+                .ToDictionary(
+                    i => i.Split(':').First().Split('(').First(), 
+                    i => i.Split(':').Last());
             
+            instructionLengths = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .ToDictionary(
+                    i => i.Split(':').First().Split('(').First(),
+                    i => Convert.ToInt32(i.Split(':').First().Split('(').Last().Split(')').First()));
+
             Console.WriteLine($"Loaded {instructions.Count} instructions.");
         }
 
