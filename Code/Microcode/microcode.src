@@ -1,8 +1,6 @@
 # This source file defines the microcode for the 74xx Computer.
 # The file is to be compiled with mcc.exe which results in a binary that is then uploaded to the microcode ROM.
 #
-# 2019-03-28: mcc.exe is not available yet
-#
 # File layout:
 # - The first part (header) of the file defines all the mnemonics, opcodes and control lines.
 # - The second part (code) of the file defines the microcode.
@@ -12,12 +10,13 @@
 #
 # INSTRUCTIONS
 # {
-# (tab)<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>
+# 	<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>;<MNEMONIC>:<OPCODE>
 # }
 #
 # CONTROLLINES
 # {
-# (tab)<CONTROLLINE_NAME>;<CONTROLLINE_NAME> (for all 48 control lines)
+# 	<CONTROLLINE_NAME>;<CONTROLLINE_NAME> 
+#	(repeat for all 48 control lines in correct bit order)
 # }
 #
 # - Opcode is a binary value (LSBF)
@@ -143,9 +142,9 @@ INSTRUCTIONS
 CONTROLLINES
 {
 	NC;				NC;			NC;			NC;			NC;				NC;				NC;			NC;
-	NC;				OUT2_in;	OUT1_in;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;	MEM_RAM_load;
+	NC;				OUT2_load;	OUT1_load;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;	MEM_RAM_load;
 	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;		ALU_s3;
-	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_in;	ALU_A_in;		STK_reset;		STK_dec;	STK_inc;
+	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_load;	ALU_A_load;		STK_reset;		STK_dec;	STK_inc;
 	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;	FLAGS_load;
 	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;		A_out;
 }
@@ -178,7 +177,8 @@ MICROCODE
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;MAR_LB_load }
 		5 { D_out;MAR_HB_load }
-		6 { MEM_out;(r1)_load;TSTATE_reset }
+		6 { MEM_out;(r1)_load }
+		7 { TSTATE_reset }
 	}
 
 	ST (r1) {
@@ -188,7 +188,45 @@ MICROCODE
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;MAR_LB_load }
 		5 { D_out;MAR_HB_load }
-		6 { (r1)_out;MEM_RAM_load;TSTATE_reset }
+		6 { (r1)_out;MEM_RAM_load }
+		7 { TSTATE_reset }
+	}
+
+	CALL {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { PC_LB_out;C_load }
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	RET {
+		0 { STK_dec }
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	JMP {
+		0 { MAR_PC_load }
+		1 { MEM_out;D_load;PC_inc }
+		2 { MAR_PC_load }
+		3 { MEM_out;C_load }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
 	}
 
 	JZ {
@@ -200,6 +238,7 @@ MICROCODE
 		2 { MAR_PC_load	}
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;PC_LB_load }
-		5 { D_out;PC_HB_out; }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
 	}
 }

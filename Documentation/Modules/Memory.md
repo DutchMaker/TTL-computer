@@ -5,7 +5,7 @@ _Work in progress..._
 ROM/RAM	
 Toggle switch to boot from ROM	
 	$0000-$3FFF = ROM (16 kB)
-	$3FFF-$FFFF = RAM (48 kB)
+	$4000-$FFFF = RAM (48 kB)
 	
 Switch ROM off	
 	$0000-$FFFF = RAM (64 kB)
