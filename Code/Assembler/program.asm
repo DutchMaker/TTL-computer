@@ -26,27 +26,31 @@
 #	Function:	
 #	Example:	
 #
-# ADD r(A,C,D)
+# MVA r(A,B,C,D) alu(A,B)
+#	Function: 	Copy value from register r to ALU internal register alu.
+#	Example: 	MVA D A
+#
+# ADD r(A,B,C,D)
+#	Function: 
+#	Example:	
+#
+# ADC r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# ADC r(A,C,D)
+# SUB r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# SUB r(A,C,D)
+# SBC r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# SBC r(A,C,D)
+# AND r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# AND r(A,C,D)
-#	Function:	
-#	Example:	
-#
-# OR r(A,C,D)
+# OR r(A,B,C,D)
 #	Function:	
 #	Example:	
 #

@@ -1,11 +1,19 @@
 :main
 
-	MVI A 0xAA
-	MVA A A
+	MVI A 0x02
+	MVI B 0x01
 
-	MVI B 0xBB
+	MVA A A
 	MVA B B
 
-	CMP
+	SUB A
 
+	JZ test
+
+	MVI B 0x11
+
+	HALT
+
+:test
+	MVI B 0x99
 	HALT

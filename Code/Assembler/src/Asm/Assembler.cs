@@ -19,6 +19,7 @@ namespace Asm
         private byte[] machineCode = new byte[0x4000];
         private Dictionary<string, int> labels = new Dictionary<string, int>() { { "main", 0 } };
         private Dictionary<int, string> labelsToTranslate = new Dictionary<int, string>();
+        bool dataDefined = false;
 
         public static void Assemble(string microcodeSourceFile, string programSourceFile)
         {
@@ -62,6 +63,8 @@ namespace Asm
             {
                 throw new AssemblerException("Label ':main' is not defined!");
             }
+
+            dataDefined = true;
 
             int start = source.IndexOf(":data") + 5;
             int end = source.IndexOf(":main");
@@ -184,12 +187,16 @@ namespace Asm
             }
 
             // Output other data stored in machinecode (predefined data).
-            Console.WriteLine($":data");
-            for (int i = address; i < machineCode.Length; i++)
+            if (dataDefined)
             {
-                if (machineCode[i] != 0)
+                Console.WriteLine($":data");
+
+                for (int i = address; i < machineCode.Length; i++)
                 {
-                    Console.WriteLine($"0x{i:X4}: 0x{machineCode[i]:X2}");
+                    if (machineCode[i] != 0)
+                    {
+                        Console.WriteLine($"0x{i:X4}: 0x{machineCode[i]:X2}");
+                    }
                 }
             }
 

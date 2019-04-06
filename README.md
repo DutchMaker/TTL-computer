@@ -32,6 +32,11 @@ While working on the Logisim design, I made several changes to the architecture 
 - CALL
 - RET
 - JMP
+- JZ
+- MVA
+- ADD
+- SUB
+- CMP
 
 
 
