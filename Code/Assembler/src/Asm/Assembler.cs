@@ -108,7 +108,7 @@ namespace Asm
             source = source.Substring(source.IndexOf(":main"));
 
             var lines = source.Replace("\r", string.Empty)
-                .Split('\n')
+                .Split('\n', StringSplitOptions.RemoveEmptyEntries)
                 .Skip(1);
 
             foreach (string line in lines)
@@ -249,15 +249,28 @@ namespace Asm
 
         private void RemoveComments()
         {
+            int i = 0;
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
                 int commentEnd = source.IndexOf("\n", commentStart);
 
+                if (commentEnd == -1)
+                {
+                    commentEnd = source.Length - 1;
+                }
+
                 string beforeComment = source.Substring(0, commentStart);
                 string afterComment = source.Substring(commentEnd + 1);
 
                 source = beforeComment + afterComment;
+
+                i++;
+
+                if (i > 150)
+                {
+
+                }
             }
         }
     }

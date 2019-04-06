@@ -37,7 +37,7 @@
 #			[flags_state] CONTROLLINE_NAME;CONTROLLINE_NAME
 #		}
 # 	}
-# 	<MNEMONIC> (r1),(r2)
+# 	<MNEMONIC> (r1) (r2)
 # 	{
 # 		<T-STATE>
 #		{
@@ -160,7 +160,7 @@ MICROCODE
 		0 { CLOCK_halt }
 	}
 
-	MOV (r1),(r2) {
+	MOV (r1) (r2) {
 		0 { (r1)_out;(r2)_load }
 		1 { TSTATE_reset }
 	}
