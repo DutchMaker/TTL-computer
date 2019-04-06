@@ -18,12 +18,12 @@ namespace Asm
 
         private string targetFileName;
         private string source;
-        private Dictionary<string, string> instructions;
-        private Dictionary<string, int> instructionLengths;
         private List<string> controlLines;
         private Dictionary<string, List<Dictionary<string, string>>> microSourceCode;
-        private Dictionary<int, byte> microcode;
 
+        public Dictionary<string, string> Instructions { get; set; }
+        public Dictionary<string, int> InstructionLengths { get; set; }
+        
         public static MicrocodeCompiler Compile(string fileName)
         {
             string targetFileName = fileName.Split('.', StringSplitOptions.RemoveEmptyEntries).First() + ".bin";
@@ -55,8 +55,6 @@ namespace Asm
             ProcessFlagsStates();       // Determine and add all possible flagg state for each t-state.
 
             ProcessControlWords();      // Generate control word for all of the t-states.
-
-            //CompileMicrocode();
         }
 
         private void RemoveComments()
@@ -77,15 +75,17 @@ namespace Asm
         {
             string sectionCode = ExtractSection(SECTION_INSTRUCTIONS);
 
-            instructions = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
-                .ToDictionary(i => i.Split(':').First(), i => i.Split(':').Last());
+            Instructions = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .ToDictionary(
+                    i => i.Split(':').First().Split('(').First(),
+                    i => i.Split(':').Last());
 
-            instructionLengths = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
+            InstructionLengths = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
                 .ToDictionary(
                     i => i.Split(':').First().Split('(').First(),
                     i => Convert.ToInt32(i.Split(':').First().Split('(').Last().Split(')').First()));
 
-            Console.WriteLine($"Loaded {instructions.Count} instructions.");
+            Console.WriteLine($"Loaded {Instructions.Count} instructions.");
         }
 
         private void LoadControlLines()
@@ -178,7 +178,7 @@ namespace Asm
                             .Replace("(r1)", r1)
                             .Replace("(r2)", r2);
                         
-                        if (instructions.ContainsKey(targetMnemonic) && !microSourceCode.ContainsKey(targetMnemonic))
+                        if (Instructions.ContainsKey(targetMnemonic) && !microSourceCode.ContainsKey(targetMnemonic))
                         {
                             // Replace register names in tstates.
                             var targetTStates = microSourceCode[mnemonic]
@@ -258,60 +258,6 @@ namespace Asm
             }
 
             microSourceCode = updatedMicrocode;
-        }
-
-        private void CompileMicrocode()
-        {
-            var sw = Stopwatch.StartNew();
-            Console.Write("Compiling microcode");
-
-            if (File.Exists(targetFileName))
-            {
-                File.Delete(targetFileName);
-            }
-
-            using (var writer = new BinaryWriter(File.Open(targetFileName, FileMode.CreateNew)))
-            {
-                foreach (string mnemonic in microSourceCode.Keys)
-                {
-                    string instructionBits = instructions[mnemonic];
-
-                    Console.Write(".");
-
-                    for (byte tstate = 0; tstate < microSourceCode[mnemonic].Count; tstate++)
-                    {
-                        // Remember that tstate 0 and 1 are hardwired in the CPU.
-                        // We need to increase our tstate by 2 before converting to binary.
-                        string tstateBits = Convert.ToString(tstate + 2, 2).PadLeft(4, '0');
-
-                        foreach (string flagsStateBits in microSourceCode[mnemonic][tstate].Keys)
-                        {
-                            string controlWord = microSourceCode[mnemonic][tstate][flagsStateBits];
-
-                            // Split the control word into 6 bytes.
-                            for (int bank = 0; bank < 6; bank++)
-                            {
-                                string bankBits = Convert.ToString(bank, 2).PadLeft(3, '0');
-
-                                // Construct ROM memory address:
-                                // 
-                                // [flags][instruction][t-state][bank]
-                                // [00000][0000000][0000][000]
-                                string addressString = flagsStateBits + instructionBits + tstateBits + bankBits;
-                                string dataString = controlWord.Substring(bank * 8, 8);
-
-                                int address = Convert.ToInt32(addressString, 2);
-                                byte data = Convert.ToByte(dataString, 2);
-                                
-                                writer.Seek(address, SeekOrigin.Begin);
-                                writer.Write(data);
-                            }
-                        }
-                    }
-                }
-            }
-
-            Console.WriteLine($"\r\nCompiled in {sw.ElapsedMilliseconds} ms!");
         }
 
         private void GenerateFlagsStates(string flagsStateKey, string flagsStateValue, Dictionary<string, string> store)

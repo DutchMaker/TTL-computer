@@ -10,63 +10,63 @@
 #	Function:	Halt execution (halts CPU clock).
 #	Example:	HALT;
 #
-# MOV (A,B,C,D) (A,B,C,D)
-#	Function:	Copy value from register 1 to register 2.
-#	Example:	MOV A,B;
+# MOV r1(A,B,C,D) r2(A,B,C,D)
+#	Function:	Copy value from register r1 to register r2.
+#	Example:	MOV A B;
 #
-# MVI (A,B,C,D) byte
-#	Function: 	Store immediate value (hex) into register.
-#	Example:	MVI A,0xff;
+# MVI r(A,B,C,D) byte
+#	Function: 	Store immediate value (hex) into register r.
+#	Example:	MVI A 0xff;
 #
-# LD (A,B) h-address l-address
+# LD r(A,B) h-address l-address
 #	Function:	
 #	Example:	
 #
-# ST (A,B) h-address l-address
+# ST r(A,B) h-address l-address
 #	Function:	
 #	Example:	
 #
-# ADD (A,C,D)
+# ADD r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# ADC (A,C,D)
+# ADC r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# SUB (A,C,D)
+# SUB r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# SBC (A,C,D)
+# SBC r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# AND (A,C,D)
+# AND r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# OR (A,C,D)
+# OR r(A,C,D)
 #	Function:	
 #	Example:	
 #
-# XOR (A,B,C,D)
+# XOR r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# NOT (A,B,C,D)
+# NOT r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# INC (A,B,C,D)
+# INC r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# DEC (A,B,C,D)
+# DEC r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# CMP (A,C,D)
+# CMP r(A,C,D)
 #	Function:	
 #	Example:	
 #
@@ -110,11 +110,11 @@
 #	Function:	
 #	Example:	
 #
-# IN (A,B,C,D)
+# IN r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
-# OUT (1,2) (A,B,C,D)
+# OUT o(1,2) r(A,B,C,D)
 #	Function:	
 #	Example:	
 #
@@ -125,43 +125,64 @@
 # - Variables
 #
 
+:data
+
+	# :data label starts definition of ROM data.
+	# If defined, the :data label MUST be defined before :main.
+
+	0x3000: 0xA0 0xB1 0xC2 0xD3;
+	0x3010: 0x01 0x02 0x03 0x04
+			0x05 0x06 0x07 0x08;
+
+
 :main
+
+	# Program execution starts at the :main label.
+	# This must be either the first label in the program,
+	# or the first one after the :data label.
 	
-	MVI A 0xB1;
-	MOV A B;
+	MVI A 0xB1
+	MOV A B
 
-	MVI C 0xA2;
-	MOV C A;
+	MVI C 0xA2
+	MOV C A
 
-	MVI D 0xC3;
-	MOV D C;
+	MVI D 0xC3
+	MOV D C
 
-	MVI D 0xD4;
+	MVI D 0xD4
 
-	CALL label1;
+	CALL label1
 
-	HALT;
+	JMP label3
 
-:end:main
+	:testlabel
+	MOV A B
+
+	HALT
 
 
 :label1
 
-	ST A 0x40 0x00;
-	ST B 0x40 0x01;
+	# Additional labels may be defined to use for JMP (and similar) instructions.
 
-	CALL label2;
+	ST A 0x4000
+	ST B 0x4001
 
-	RET;
+	CALL label2
 
-:end:label1
+	RET
 
 
 :label2
 
-	LD B 0x40 0x00;
-	LD A 0x40 0x01;
+	LD B 0x4000
+	LD A 0x4001
 
-	RET;
+	RET
 
-:end:label2
+
+:label3
+
+	LD A 0x3000
+	JMP testlabel
