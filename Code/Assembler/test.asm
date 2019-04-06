@@ -1,0 +1,6 @@
+:main
+
+	MVI A 0xAA
+	MVI B 0xAA
+	CMP A
+	HALT

@@ -142,12 +142,12 @@ INSTRUCTIONS
 
 CONTROLLINES
 {
-	NC;				NC;			NC;			NC;			NC;				NC;				NC;			NC;
-	NC;				OUT2_load;	OUT1_load;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;	MEM_RAM_load;
-	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;		ALU_s3;
-	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_load;	ALU_A_load;		STK_reset;		STK_dec;	STK_inc;
-	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;	FLAGS_load;
-	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;		A_out;
+	NC;				NC;			NC;			NC;			NC;				FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
+	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
+	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;			ALU_s3;
+	ALU_s2;			ALU_s1;		ALU_s0;		ALU_B_load;	ALU_A_load;		STK_reset;		STK_dec;		STK_inc;
+	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
+	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;			A_out;
 }
 
 MICROCODE
@@ -242,4 +242,18 @@ MICROCODE
 		5 { D_out;PC_HB_load }
 		6 { TSTATE_reset }
 	}
+
+	CMP A {
+		0 { A_out;ALU_A_load }
+		1 { B_out;ALU_B_load }
+		2 { ALU_s1;ALU_s2;ALU_cn;FLAGS_Feq_load;FLAGS_Fgt_load }
+		3 { ALU_s1;ALU_s2;FLAGS_Flt_load }
+		4 { TSTATE_reset }
+	}
+
+#S0	S1	S2	S3	M	Cn	Output
+#0	1	1	0	0	1	A = B
+#0	1	1	0	0	1	A > B
+#0	1	1	0	0	0	A < B
+
 }

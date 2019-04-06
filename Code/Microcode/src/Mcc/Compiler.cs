@@ -245,6 +245,12 @@ namespace Mcc
                             .ForEach(c =>
                             {
                                 int index = controlLines.FindIndex(cl => cl == c);
+
+                                if (index == -1)
+                                {
+                                    throw new CompilerException($"Undefined control line used in t-state: '{c}'");
+                                }
+
                                 controlWord = ReplaceCharAtIndex(controlWord, index, "1");
                             });
 
