@@ -113,9 +113,7 @@ INSTRUCTIONS
 	DEC B(1):0111001;
 	DEC C(1):0111010;
 	DEC D(1):0111011;
-	CMP A(1):0111100;
-	CMP C(1):0111101;
-	CMP D(1):0111110;
+	CMP(1):0111100;
 	JMP(3):0111111;
 	JZ(3):1000000;
 	JN(3):1000001;
@@ -138,6 +136,14 @@ INSTRUCTIONS
 	OUT 2 B(1):1010010;
 	OUT 2 C(1):1010011;
 	OUT 2 D(1):1010100;
+	MVA A A(1):1010101;
+	MVA A B(1):1010110;
+	MVA A C(1):1010111;
+	MVA A D(1):1011000;
+	MVA B A(1):1011001;
+	MVA B B(1):1011010;
+	MVA B C(1):1011011;
+	MVA B D(1):1011100;
 }
 
 CONTROLLINES
@@ -169,6 +175,16 @@ MICROCODE
 		0 { MAR_PC_load	}
 		1 { MEM_out;(r1)_load;PC_inc }
 		2 { TSTATE_reset }
+	}
+
+	MVA (r1) A {
+		0 { (r1)_out;ALU_A_load }
+		1 { TSTATE_reset }
+	}
+
+	MVA (r1) B {
+		0 { (r1)_out;ALU_B_load }
+		1 { TSTATE_reset }
 	}
 
 	LD (r1) {
@@ -243,17 +259,9 @@ MICROCODE
 		6 { TSTATE_reset }
 	}
 
-	CMP A {
-		0 { A_out;ALU_A_load }
-		1 { B_out;ALU_B_load }
-		2 { ALU_s1;ALU_s2;ALU_cn;FLAGS_Feq_load;FLAGS_Fgt_load }
-		3 { ALU_s1;ALU_s2;FLAGS_Flt_load }
-		4 { TSTATE_reset }
+	CMP {
+		0 { ALU_s1;ALU_s2;ALU_cn;FLAGS_Feq_load;FLAGS_Fgt_load }
+		1 { ALU_s1;ALU_s2;FLAGS_Flt_load }
+		2 { TSTATE_reset }
 	}
-
-#S0	S1	S2	S3	M	Cn	Output
-#0	1	1	0	0	1	A = B
-#0	1	1	0	0	1	A > B
-#0	1	1	0	0	0	A < B
-
 }
