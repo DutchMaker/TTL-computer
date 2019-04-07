@@ -1,16 +1,9 @@
 :main
 
-	MVI A 0x02
-	MVI B 0x01
-
-	MOV A AX
-	MOV B AY
-
-	ADD A
+	MVI AX 0x01
+	INC A
 
 	MVI AX 0x05
-	MVI AY 0x06
-
-	ADD B
+	DEC B
 
 	HALT

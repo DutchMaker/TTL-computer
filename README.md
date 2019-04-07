@@ -33,10 +33,29 @@ While working on the Logisim design, I made several changes to the architecture 
 - RET
 - JMP
 - JZ
-- MVA
 - ADD
 - SUB
 - CMP
+- AND
+- OR
+- XOR
+- INC
+- DEC
+
+#### Instructions todo:
+
+- NOT
+- ADC
+- SUBC
+- SBC
+- JN
+- JC
+- JNC
+- JEQ
+- JLT
+- JGT
+- IN
+- OUT
 
 
 

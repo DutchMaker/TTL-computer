@@ -52,7 +52,7 @@
 #   So "0 { TSTATE_reset }" would be a valid t-state definition.
 # - (r1) and (r2) may be used to indicate registers.
 #   The compiler will automatically try to compile the instruction against all registers, 
-#   as long as the instruction (e.g. MOV B,D) exists in the instructions list
+#   as long as the instruction (e.g. MOV B D) exists in the instructions list
 #
 
 INSTRUCTIONS
@@ -185,16 +185,6 @@ MICROCODE
 		2 { TSTATE_reset }
 	}
 
-	ADD (r1) {
-		0 { ALU_s0;ALU_s3;ALU_cn;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
-	}
-
-	SUB (r1) {
-		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
-	}
-
 	LD (r1) {
 		0 { MAR_PC_load }
 		1 { MEM_out;D_load;PC_inc }
@@ -215,6 +205,41 @@ MICROCODE
 		5 { D_out;MAR_HB_load }
 		6 { (r1)_out;MEM_RAM_load }
 		7 { TSTATE_reset }
+	}
+
+	ADD (r1) {
+		0 { ALU_s0;ALU_s3;ALU_cn;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { TSTATE_reset }
+	}
+
+	SUB (r1) {
+		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { TSTATE_reset }
+	}
+
+	AND (r1) {
+		0 { ALU_s0;ALU_s1;ALU_s3;ALU_m;ALU_out;(r1)_load }
+		1 { TSTATE_reset }
+	}
+
+	OR (r1) {
+		0 { ALU_s0;ALU_cn;ALU_out;(r1)_load }
+		1 { TSTATE_reset }
+	}
+
+	XOR (r1) {
+		0 { ALU_s1;ALU_s2;ALU_m;ALU_cn;ALU_out;(r1)_load }
+		1 { TSTATE_reset }
+	}
+
+	INC (r1) {
+		0 { ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { TSTATE_reset }
+	}
+
+	DEC (r1) {
+		0 { ALU_s0;ALU_s1;ALU_s2;ALU_s3;ALU_cn;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { TSTATE_reset }
 	}
 
 	CALL {
