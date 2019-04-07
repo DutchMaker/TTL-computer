@@ -41,13 +41,14 @@ While working on the Logisim design, I made several changes to the architecture 
 - XOR
 - INC
 - DEC
+- NOT
+- SHL
 
 #### Instructions todo:
 
-- NOT
 - ADC
-- SUBC
 - SBC
+- SHR
 - JN
 - JC
 - JNC

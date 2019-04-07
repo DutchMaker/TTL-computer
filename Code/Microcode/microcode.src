@@ -152,16 +152,26 @@ INSTRUCTIONS
 	MOV D AY(1):1011100;
 	MVI AX(2):0111101;
 	MVI AY(2):0111110;
+	SHL A(1):0010100;
+	SHL B(1):0010101;
+	SHL C(1):0011000;
+	SHL D(1):0011001;
+	SHR A(1):1011101;
+	SHR B(1):1011110;
+	SHR C(1):1011111;
+	SHR D(1):1100111;
+	SC 0(1):1101000;
+	SC 1(1):1101001;
 }
 
 CONTROLLINES
 {
-	NC;				NC;			NC;			NC;			NC;				FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
-	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
-	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;			ALU_s3;
-	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;	AX_load;		STK_reset;		STK_dec;		STK_inc;
-	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
-	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;			A_out;
+	NC;				NC;			NC;			FLAGS_Fc_set;	FLAGS_Fc_clear;	FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
+	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;			TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
+	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		NC;				ALU_m;			ALU_s3;
+	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;		AX_load;		STK_reset;		STK_dec;		STK_inc;
+	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;		PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
+	D_load;			D_out;		C_load;		C_out;			B_load;			B_out;			A_load;			A_out;
 }
 
 MICROCODE
@@ -208,11 +218,27 @@ MICROCODE
 	}
 
 	ADD (r1) {
-		0 { ALU_s0;ALU_s3;ALU_cn;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
+		0 { FLAGS_Fc_clear }
+		1 { ALU_s0;ALU_s3;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
+	}
+
+	ADC (r1) {
+		0 { ALU_s0;ALU_s3;ALU_out;(r1)_load }
+		1 { ALU_s0;ALU_s3;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
 	}
 
 	SUB (r1) {
+		0 { FLAGS_Fc_set }
+		1 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
+	}
+
+# SBC doesn't work as expected... (Cn=0 results in A-B-1)
+# ...and why does 2-1 results in carry=1 ?
+
+	SBC (r1) {
 		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
 		1 { TSTATE_reset }
 	}
@@ -223,22 +249,62 @@ MICROCODE
 	}
 
 	OR (r1) {
-		0 { ALU_s0;ALU_cn;ALU_out;(r1)_load }
+		0 { FLAGS_Fc_clear;ALU_s0;ALU_out;(r1)_load }
 		1 { TSTATE_reset }
 	}
 
 	XOR (r1) {
-		0 { ALU_s1;ALU_s2;ALU_m;ALU_cn;ALU_out;(r1)_load }
+		0 { FLAGS_Fc_clear;ALU_s1;ALU_s2;ALU_m;ALU_out;(r1)_load }
 		1 { TSTATE_reset }
 	}
 
 	INC (r1) {
-		0 { ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
+		0 { FLAGS_Fc_set }
+		1 { ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
 	}
 
 	DEC (r1) {
-		0 { ALU_s0;ALU_s1;ALU_s2;ALU_s3;ALU_cn;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		0 { FLAGS_Fc_clear;ALU_s0;ALU_s1;ALU_s2;ALU_s3;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { TSTATE_reset }
+	}
+
+	SHL (r1) {
+		0 { FLAGS_Fc_clear;ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		1 { TSTATE_reset }
+	}
+
+# SHR is not giving the result we need...
+
+	SHR (r1) {
+		0 { FLAGS_Fc_clear }
+		1 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		2 { FLAGS_Fc_load;(r1)_out;AX_load }
+		3 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		4 { FLAGS_Fc_load;(r1)_out;AX_load }
+		5 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		6 { FLAGS_Fc_load;(r1)_out;AX_load }
+		7 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		8 { FLAGS_Fc_load;(r1)_out;AX_load }
+		9 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		10 { FLAGS_Fc_load;(r1)_out;AX_load }
+		11 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		12 { FLAGS_Fc_load;(r1)_out;AX_load }
+		13 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+	}
+
+	NOT (r1) {
+		0 { ALU_m;ALU_out;(r1)_load }
+		1 { TSTATE_reset }
+	}
+
+	SC 0 {
+		0 { FLAGS_Fc_clear }
+		1 { TSTATE_reset }
+	}
+
+	SC 1 {
+		0 { FLAGS_Fc_set }
 		1 { TSTATE_reset }
 	}
 
@@ -293,8 +359,9 @@ MICROCODE
 	}
 
 	CMP {
-		0 { ALU_s1;ALU_s2;ALU_cn;FLAGS_Feq_load;FLAGS_Fgt_load }
-		1 { ALU_s1;ALU_s2;FLAGS_Flt_load }
-		2 { TSTATE_reset }
+		1 { FLAGS_Fc_clear;ALU_s1;ALU_s2;FLAGS_Feq_load;FLAGS_Fgt_load }
+		2 { FLAGS_Fc_set }
+		3 { ALU_s1;ALU_s2;FLAGS_Flt_load }
+		4 { TSTATE_reset }
 	}
 }
