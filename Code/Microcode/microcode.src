@@ -159,7 +159,7 @@ CONTROLLINES
 	NC;				NC;			NC;			NC;			NC;				FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
 	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;		TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
 	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;ALU_out;		ALU_cn;			ALU_m;			ALU_s3;
-	ALU_s2;			ALU_s1;		ALU_s0;		ALU_AY_load;ALU_AX_load;	STK_reset;		STK_dec;		STK_inc;
+	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;	AX_load;		STK_reset;		STK_dec;		STK_inc;
 	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;	PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
 	D_load;			D_out;		C_load;		C_out;		B_load;			B_out;			A_load;			A_out;
 }
@@ -174,36 +174,14 @@ MICROCODE
 		0 { CLOCK_halt }
 	}
 
-	MOV (r1) (r2) {						# TODO: Make (r) variable, like: (r1:A,B,C)
+	MOV (r1) (r2) {
 		0 { (r1)_out;(r2)_load }
-		1 { TSTATE_reset }
-	}
-
-	MOV (r1) AX {
-		0 { (r1)_out;ALU_AX_load }
-		1 { TSTATE_reset }
-	}
-
-	MOV (r1) AY {
-		0 { (r1)_out;ALU_AY_load }
 		1 { TSTATE_reset }
 	}
 
 	MVI (r1) {
 		0 { MAR_PC_load	}
 		1 { MEM_out;(r1)_load;PC_inc }
-		2 { TSTATE_reset }
-	}
-
-	MVI AX {
-		0 { MAR_PC_load	}
-		1 { MEM_out;ALU_AX_load;PC_inc }
-		2 { TSTATE_reset }
-	}
-
-	MVI AY {
-		0 { MAR_PC_load	}
-		1 { MEM_out;ALU_AY_load;PC_inc }
 		2 { TSTATE_reset }
 	}
 

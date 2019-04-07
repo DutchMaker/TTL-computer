@@ -12,7 +12,7 @@ namespace Asm
         private const string SECTION_INSTRUCTIONS = "INSTRUCTIONS";
         private const string SECTION_CONTROLLINES = "CONTROLLINES";
         private const string SECTION_MICROCODE = "MICROCODE";
-        private readonly string[] REGISTERS = { "A", "B", "C", "D" };
+        private readonly string[] REGISTERS = { "A", "B", "C", "D", "AX", "AY" };
 
         private static MicrocodeCompiler _compiler;
 
