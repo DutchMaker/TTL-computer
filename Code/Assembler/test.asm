@@ -3,17 +3,14 @@
 	MVI A 0x02
 	MVI B 0x01
 
-	MVA A A
-	MVA B B
+	MOV A AX
+	MOV B AY
 
-	SUB A
+	ADD A
 
-	JZ test
+	MVI AX 0x05
+	MVI AY 0x06
 
-	MVI B 0x11
+	ADD B
 
-	HALT
-
-:test
-	MVI B 0x99
 	HALT
