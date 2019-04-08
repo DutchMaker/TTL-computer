@@ -122,7 +122,7 @@ INSTRUCTIONS
 	CMP(1):0111100;
 	JMP(3):0111111;
 	JZ(3):1000000;
-	JN(3):1000001;
+	JNZ(3):1000001;
 	JC(3):1000010;
 	JNC(3):1000011;
 	JEQ(3):1000100;
@@ -164,6 +164,7 @@ INSTRUCTIONS
 	SC 1(1):1101001;
 	LD AX(3):1101010;
 	LD AY(3):1101011;
+	JNE(3):1101100;
 }
 
 CONTROLLINES
@@ -269,13 +270,15 @@ MICROCODE
 		1 { TSTATE_reset }
 	}
 
+# Set zero flag
 	SHL (r1) {
 		0 { FLAGS_Fc_clear;ALU_s2;ALU_s3;ALU_out;(r1)_load }
 		1 { TSTATE_reset }
 	}
 
+# Set zero flag
 	SHR (r1) {
-		0 { ALU_shr;(r1)_load }
+		0 { ALU_shr;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
 		1 { TSTATE_reset }
 	}
 
@@ -333,11 +336,74 @@ MICROCODE
 
 	JZ {
 		0 {
-			[xxx0x] TSTATE_reset
+			[xxx0x] PC_inc
 			[xxx1x] MAR_PC_load
 		}
-		1 { MEM_out;D_load;PC_inc }
-		2 { MAR_PC_load	}
+		1 { 
+			[xxx0x] PC_inc
+			[xxx1x] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[x0x0x] TSTATE_reset
+			[xxx1x] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JNZ {
+		0 {
+			[xxx1x] PC_inc
+			[xxx0x] MAR_PC_load
+		}
+		1 { 
+			[xxx1x] PC_inc
+			[xxx0x] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[x0x1x] TSTATE_reset
+			[xxx0x] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JEQ {
+		0 {
+			[x0xxx] PC_inc
+			[x1xxx] MAR_PC_load
+		}
+		1 { 
+			[x0xxx] PC_inc
+			[x1xxx] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[x0xxx] TSTATE_reset
+			[x1xxx] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JNE {
+		0 {
+			[x1xxx] PC_inc
+			[x0xxx] MAR_PC_load
+		}
+		1 { 
+			[x1xxx] PC_inc
+			[x0xxx] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[x1xxx] TSTATE_reset
+			[x0xxx] MAR_PC_load	
+		}
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;PC_LB_load }
 		5 { D_out;PC_HB_load }

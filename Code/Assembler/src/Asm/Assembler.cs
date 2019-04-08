@@ -9,7 +9,7 @@ namespace Asm
 {
     public class Assembler
     {
-        private readonly string[] LABEL_INSTRUCTIONS = { "JMP", "JZ", "JNZ", "JC", "JNC", "JEQ", "JLT", "JGT", "CALL" };
+        private readonly string[] LABEL_INSTRUCTIONS = { "JMP", "JZ", "JNZ", "JC", "JNC", "JEQ", "JNE", "JLT", "JGT", "CALL" };
 
         private static Assembler _assembler;
         private MicrocodeCompiler microcodeCompiler;
