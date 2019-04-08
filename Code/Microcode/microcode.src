@@ -162,6 +162,8 @@ INSTRUCTIONS
 	SHR D(1):1100111;
 	SC 0(1):1101000;
 	SC 1(1):1101001;
+	LD AX(3):1101010;
+	LD AY(3):1101011;
 }
 
 CONTROLLINES
@@ -235,12 +237,10 @@ MICROCODE
 		2 { TSTATE_reset }
 	}
 
-# SBC doesn't work as expected... (Cn=0 results in A-B-1)
-# ...and why does 2-1 results in carry=1 ?
-
 	SBC (r1) {
-		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
+		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load }
+		1 { ALU_s1;ALU_s2;ALU_out;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
 	}
 
 	AND (r1) {

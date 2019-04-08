@@ -36,6 +36,7 @@ While working on the Logisim design, I made several changes to the architecture 
 - ADD
 - ADC
 - SUB
+- SBC
 - CMP
 - AND
 - OR
@@ -49,7 +50,6 @@ While working on the Logisim design, I made several changes to the architecture 
 
 #### Instructions todo:
 
-- SBC
 - JN
 - JC
 - JNC

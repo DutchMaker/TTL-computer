@@ -19,6 +19,7 @@ namespace Asm
         private byte[] machineCode = new byte[0x4000];
         private Dictionary<string, int> labels = new Dictionary<string, int>() { { "main", 0 } };
         private Dictionary<int, string> labelsToTranslate = new Dictionary<int, string>();
+        private Dictionary<string, int> addressVariables = new Dictionary<string, int>();
         bool dataDefined = false;
 
         public static void Assemble(string microcodeSourceFile, string programSourceFile)
@@ -112,18 +113,27 @@ namespace Asm
 
             var lines = source.Replace("\r", string.Empty)
                 .Split('\n', StringSplitOptions.RemoveEmptyEntries)
-                .Skip(1);
+                .Skip(1)
+                .ToArray();
 
-            foreach (string line in lines)
+            for (int l = 0; l < lines.Length; l++)
             {
-                if (line.StartsWith(":"))
+                string line = lines[l];
+
+                if (ProcessLabelDefinition(line, address))
                 {
                     // Current line defines a label.
-                    string label = RemoveNewLine(line.Split(':').Last());
-                    labels.Add(label, address);
-
                     continue;
                 }
+
+                if (ProcessVariableDefinition(line))
+                {
+                    // Current line defines an address variable.
+                    continue;
+                }
+
+                // Replace address variables in current line.
+                line = ReplaceVariablesInLine(line);
 
                 // Find instruction definition for current line.
                 var instruction = microcodeCompiler.Instructions.OrderByDescending(x => x.Key.Length)
@@ -203,6 +213,79 @@ namespace Asm
             SaveMachineCode();
         }
         
+        private bool ProcessLabelDefinition(string line, int address)
+        {
+            if (line.StartsWith(":"))
+            {
+                // Current line defines a label.
+                string label = RemoveNewLine(line.Split(':').Last());
+
+                if (labels.ContainsKey(label))
+                {
+                    throw new AssemblerException($"Label '{label}' is already defined");
+                }
+
+                labels.Add(label, address);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ProcessVariableDefinition(string line)
+        {
+            if (line.StartsWith("*"))
+            {
+                // Current line defines an address variable.
+                string varName = RemoveNewLine(line.Split('*').Last()).Split('=').First().Trim();
+                int varAddress = Convert.ToInt16(RemoveNewLine(line.Split('*').Last()).Split('=').Last().Trim(), 16);
+
+                if (addressVariables.ContainsKey(varName))
+                {
+                    addressVariables[varName] = varAddress;
+                }
+                else
+                {
+                    addressVariables.Add(varName, varAddress);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private string ReplaceVariablesInLine(string line)
+        {
+            if (line.Contains("*"))
+            {
+                // Extract variable name.
+                int varStart = line.IndexOf("*") + 1;
+                int varEnd = line.IndexOf(" ", varStart);
+
+                if (varEnd == -1)
+                {
+                    varEnd = line.Length;
+                }
+
+                string varName = line.Substring(varStart, varEnd - varStart);
+                string lineBeforeVar = line.Substring(0, varStart - 1);
+                string lineAfterVar = line.Length > varEnd
+                    ? line.Substring(varEnd)
+                    : string.Empty;
+
+                if (!addressVariables.ContainsKey(varName))
+                {
+                    throw new AssemblerException($"Variable '{varName}' is not defined.");
+                }
+
+                return ReplaceVariablesInLine(lineBeforeVar + $"0x{addressVariables[varName]:X4}" + lineAfterVar);
+            }
+
+            return line;
+        }
+
         private void SaveMachineCode()
         {
             if (File.Exists(targetFileName))

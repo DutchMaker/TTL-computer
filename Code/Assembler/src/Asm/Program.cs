@@ -16,7 +16,7 @@ namespace Asm
             /*args = new [] 
             {
                 @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src",
-                @"e:\Personal\Projects\Active\TTL-Computer\Code\Assembler\program.asm"
+                @"e:\Personal\Projects\Active\TTL-Computer\Code\Assembler\test.asm"
             };*/
 
             if (args.Length == 0)
@@ -63,6 +63,7 @@ namespace Asm
             }
 
             Console.WriteLine();
+            // Console.ReadLine();
         }
     }
 }

@@ -122,12 +122,6 @@
 #	Function:	
 #	Example:	
 #
-#
-# TODO:
-# - Labels
-# - Data blocks
-# - Variables
-#
 
 :data
 
@@ -156,11 +150,14 @@
 
 	MVI D 0xD4
 
+	*i = 0x4000		# Variable pointing to an address.
+	ST D *i 		# May be used in instructions that refer to an address.
+
 	CALL label1
 
 	JMP label3
 
-	:testlabel
+:testlabel
 	MOV A B
 
 	HALT
