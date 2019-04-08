@@ -270,13 +270,11 @@ MICROCODE
 		1 { TSTATE_reset }
 	}
 
-# Set zero flag
 	SHL (r1) {
 		0 { FLAGS_Fc_clear;ALU_s2;ALU_s3;ALU_out;(r1)_load }
 		1 { TSTATE_reset }
 	}
 
-# Set zero flag
 	SHR (r1) {
 		0 { ALU_shr;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
 		1 { TSTATE_reset }
@@ -344,7 +342,7 @@ MICROCODE
 			[xxx1x] MEM_out;D_load;PC_inc 
 		}
 		2 { 
-			[x0x0x] TSTATE_reset
+			[xxx0x] TSTATE_reset
 			[xxx1x] MAR_PC_load	
 		}
 		3 { MEM_out;C_load;PC_inc }
@@ -363,8 +361,46 @@ MICROCODE
 			[xxx0x] MEM_out;D_load;PC_inc 
 		}
 		2 { 
-			[x0x1x] TSTATE_reset
+			[xxx1x] TSTATE_reset
 			[xxx0x] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JC {
+		0 {
+			[xxxx0] PC_inc
+			[xxxx1] MAR_PC_load
+		}
+		1 { 
+			[xxxx0] PC_inc
+			[xxxx1] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[xxxx0] TSTATE_reset
+			[xxxx1] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JNC {
+		0 {
+			[xxxx1] PC_inc
+			[xxxx0] MAR_PC_load
+		}
+		1 { 
+			[xxxx1] PC_inc
+			[xxxx0] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[xxxx1] TSTATE_reset
+			[xxxx0] MAR_PC_load	
 		}
 		3 { MEM_out;C_load;PC_inc }
 		4 { C_out;PC_LB_load }
@@ -410,10 +446,49 @@ MICROCODE
 		6 { TSTATE_reset }
 	}
 
+	JLT {
+		0 {
+			[xx0xx] PC_inc
+			[xx1xx] MAR_PC_load
+		}
+		1 { 
+			[xx0xx] PC_inc
+			[xx1xx] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[xx0xx] TSTATE_reset
+			[xx1xx] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
+	JGT {
+		0 {
+			[0xxxx] PC_inc
+			[1xxxx] MAR_PC_load
+		}
+		1 { 
+			[0xxxx] PC_inc
+			[1xxxx] MEM_out;D_load;PC_inc 
+		}
+		2 { 
+			[0xxxx] TSTATE_reset
+			[1xxxx] MAR_PC_load	
+		}
+		3 { MEM_out;C_load;PC_inc }
+		4 { C_out;PC_LB_load }
+		5 { D_out;PC_HB_load }
+		6 { TSTATE_reset }
+	}
+
 	CMP {
 		1 { FLAGS_Fc_clear;ALU_s1;ALU_s2;FLAGS_Feq_load;FLAGS_Fgt_load }
 		2 { FLAGS_Fc_set }
 		3 { ALU_s1;ALU_s2;FLAGS_Flt_load }
+		4 { FLAGS_Fc_clear;FLAGS_Fz_load }
 		4 { TSTATE_reset }
 	}
 }
