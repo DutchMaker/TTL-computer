@@ -34,6 +34,7 @@ While working on the Logisim design, I made several changes to the architecture 
 - JMP
 - JZ
 - ADD
+- ADC
 - SUB
 - CMP
 - AND
@@ -43,12 +44,12 @@ While working on the Logisim design, I made several changes to the architecture 
 - DEC
 - NOT
 - SHL
+- SHR
+- SC
 
 #### Instructions todo:
 
-- ADC
 - SBC
-- SHR
 - JN
 - JC
 - JNC

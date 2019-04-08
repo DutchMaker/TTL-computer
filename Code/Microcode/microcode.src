@@ -168,7 +168,7 @@ CONTROLLINES
 {
 	NC;				NC;			NC;			FLAGS_Fc_set;	FLAGS_Fc_clear;	FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
 	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;			TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
-	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		NC;				ALU_m;			ALU_s3;
+	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		ALU_shr;		ALU_m;			ALU_s3;
 	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;		AX_load;		STK_reset;		STK_dec;		STK_inc;
 	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;		PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
 	D_load;			D_out;		C_load;		C_out;			B_load;			B_out;			A_load;			A_out;
@@ -274,23 +274,9 @@ MICROCODE
 		1 { TSTATE_reset }
 	}
 
-# SHR is not giving the result we need...
-
 	SHR (r1) {
-		0 { FLAGS_Fc_clear }
-		1 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		2 { FLAGS_Fc_load;(r1)_out;AX_load }
-		3 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		4 { FLAGS_Fc_load;(r1)_out;AX_load }
-		5 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		6 { FLAGS_Fc_load;(r1)_out;AX_load }
-		7 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		8 { FLAGS_Fc_load;(r1)_out;AX_load }
-		9 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		10 { FLAGS_Fc_load;(r1)_out;AX_load }
-		11 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
-		12 { FLAGS_Fc_load;(r1)_out;AX_load }
-		13 { ALU_s2;ALU_s3;ALU_out;(r1)_load }
+		0 { ALU_shr;(r1)_load }
+		1 { TSTATE_reset }
 	}
 
 	NOT (r1) {

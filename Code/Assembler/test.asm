@@ -2,21 +2,7 @@
 
 # test CMP
 
-	SC 1
-	SC 0
-
-	MVI AX 0x01
-	MVI AY 0x02
-	CMP
-
-	MVI AX 0x02
-	MVI AY 0x01
-	CMP
-
-	MVI AX 0x01
-	MVI AY 0x01
-	CMP
-
-	SC 0
-
+	MVI AX 0x9D
+	SHR A
+	
 	HALT
