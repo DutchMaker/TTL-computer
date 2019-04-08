@@ -3,7 +3,7 @@
 My attempt at building a computer from scratch with 74xxx logic chips.  
 Work in progress!
 
-## Status as of April 6th, 2019:
+## Status as of April 8th, 2019:
 
 [**General architecture**](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/Architecture.pdf) has been worked out as high level schematic.  
 
@@ -18,52 +18,16 @@ I've built a [**microcode compiler**](https://github.com/DutchMaker/TTL-computer
 I've built an [**assembler**](https://github.com/DutchMaker/TTL-computer/tree/master/Code/Assembler) to convert 74xx assembly to machine code. The example `program.asm` file describes the entire definition of the assembly language.
 
 The entire computer has been built in [**Logisim**](https://github.com/DutchMaker/TTL-computer/tree/master/Documentation/Logisim) to verify that the way I had everything in mind is actually going to work.
-*The design is done, but still working my way through implementing/testing all instructions.* 
+
+The 74xx Computer's **instruction set** has been implemented.
 
 While working on the Logisim design, I made several changes to the architecture and some to circuits. These changes still need to be applied to all previous work (architecture design, circuit diagrams, etc.)
-
-### Currently implemented (and tested) instructions
-
-- HALT
-- MOV
-- MVI
-- LD
-- ST
-- CALL
-- RET
-- JMP
-- JZ
-- ADD
-- ADC
-- SUB
-- SBC
-- CMP
-- AND
-- OR
-- XOR
-- INC
-- DEC
-- NOT
-- SHL
-- SHR
-- SC
-
-#### Instructions todo:
-
-- JN
-- JC
-- JNC
-- JEQ
-- JLT
-- JGT
-- IN
-- OUT
 
 
 
 ## TODO's / Plans:
 
-- Get the entire instruction set to work in Logisim.
+- Write proper documentation on the instruction set and assembly code.
 - Updated previously made circuit diagrams according to latest Logisim design.
 - Write additional/updated documentation on all modules.
 - Build the computer in real life.

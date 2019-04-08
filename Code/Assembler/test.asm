@@ -1,34 +1,45 @@
 :main
 
-	MVI AX 0xFE
-	MVI AY 0xF1
-	CMP
+	MVI A 0x48
+	OUT 1 A
 
-	JGT equal
-	JLT notequal
+	MVI A 0x65
+	OUT 1 A
 
-:resume
-	MVI AX 0x03
-	MVI AY 0x05
-	CMP
+	MVI A 0x6c
+	OUT 1 A
 
-	JLT equal2
-	JGT notequal2
+	MVI A 0x6c
+	OUT 1 A
 
-	HALT
+	MVI A 0x6f 
+	OUT 1 A
 
-:equal
-	MVI A 0x11
-	JMP resume
+	MVI A 0x20 
+	OUT 1 A
 
-:notequal
-	MVI A 0x22
-	JMP resume
+	MVI A 0x57
+	OUT 1 A
 
-:equal2
-	MVI B 0x11
-	HALT
+	MVI A 0x6f
+	OUT 1 A
 
-:notequal2
-	MVI B 0x22
+	MVI A 0x72
+	OUT 1 A
+	
+	MVI A 0x6c
+	OUT 1 A
+
+	MVI A 0x64
+	OUT 1 A
+
+	MVI A 0x21
+	OUT 1 A
+	
+	NOP
+
+	NOP
+
+	NOP
+
 	HALT

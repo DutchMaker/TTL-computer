@@ -46,7 +46,7 @@
 # 	}
 # }
 #
-# - Flags state is binary and order as such: Fgt, Feq, Flt, Fz, Fc.
+# - Flags state is a binary value and ordered as such: Fgt, Feq, Flt, Fz, Fc.
 # - Use 'x' in flag state to act on any state of that bit.
 # - If flags state is irrelevant (xxxxx) it may be ommited.
 #   So "0 { TSTATE_reset }" would be a valid t-state definition.
@@ -490,5 +490,15 @@ MICROCODE
 		3 { ALU_s1;ALU_s2;FLAGS_Flt_load }
 		4 { FLAGS_Fc_clear;FLAGS_Fz_load }
 		4 { TSTATE_reset }
+	}
+
+	OUT 1 (r1) {
+		0 { (r1)_out;OUT1_load }
+		1 { TSTATE_reset }
+	}
+
+	OUT 2 (r1) {
+		0 { (r1)_out;OUT2_load }
+		1 { TSTATE_reset }
 	}
 }
