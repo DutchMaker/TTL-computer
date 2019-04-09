@@ -27,7 +27,7 @@ While working on the Logisim design, I made several changes to the architecture 
 
 ## TODO's / Plans:
 
-- Write proper documentation on the instruction set and assembly code.
+- Write proper documentation on the instruction set and assembly code (mention what flags are set per instruction)
 - Updated previously made circuit diagrams according to latest Logisim design.
 - Write additional/updated documentation on all modules.
 - Build the computer in real life.

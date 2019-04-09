@@ -1,5 +1,15 @@
 :main
 
+	MVI A 0x03
+
+:loop1
+	MOV A AX
+	
+	# Count down from 3
+
+	DEC A
+	JNZ loop1
+
 	MVI A 0x48
 	OUT 1 A
 
