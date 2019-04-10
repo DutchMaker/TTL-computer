@@ -86,6 +86,19 @@ namespace Asm
                     i => Convert.ToInt32(i.Split(':').First().Split('(').Last().Split(')').First()));
 
             Console.WriteLine($"Loaded {Instructions.Count} instructions.");
+
+            // Check if there are multiple instructions using the same opcode.
+            string[] opcodes = Instructions.Values.ToArray();
+            for (int i = 0; i < opcodes.Length; i++)
+            {
+                for (int j = 0; j < opcodes.Length; j++)
+                {
+                    if (opcodes[i] == opcodes[j] && i != j)
+                    {
+                        throw new MicrocodeCompilerException($"Opcode '{opcodes[i]}' is assigned to more than one instruction.");
+                    }
+                }
+            }
         }
 
         private void LoadControlLines()

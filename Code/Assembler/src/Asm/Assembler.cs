@@ -20,6 +20,7 @@ namespace Asm
         private Dictionary<string, int> labels = new Dictionary<string, int>() { { "main", 0 } };
         private Dictionary<int, string> labelsToTranslate = new Dictionary<int, string>();
         private Dictionary<string, int> addressVariables = new Dictionary<string, int>();
+
         bool dataDefined = false;
 
         public static void Assemble(string microcodeSourceFile, string programSourceFile)
@@ -114,7 +115,11 @@ namespace Asm
             var lines = source.Replace("\r", string.Empty)
                 .Split('\n', StringSplitOptions.RemoveEmptyEntries)
                 .Skip(1)
+                .Select(x => x.Trim())
                 .ToArray();
+
+            // Replace complex instructions such as LDX and STX.
+            lines = PreprocessComplexInstructions(lines);
 
             for (int l = 0; l < lines.Length; l++)
             {
@@ -284,6 +289,51 @@ namespace Asm
             }
 
             return line;
+        }
+
+        private string[] PreprocessComplexInstructions(string[] source)
+        {
+            var result = new List<string>(source);
+
+            for (int l = 0; l < source.Length; l++)
+            {
+                if ((source[l].StartsWith("LDX") || source[l].StartsWith("STX")) && !source[l].EndsWith("#DONE"))
+                {
+                    string[] parts = source[l].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                    string instruction = parts[0];
+                    string register = parts[1];
+                    string address = parts[2];
+                    string addressPlusOne = $"0x{(Convert.ToInt16(address, 16) + 1):X4}";
+
+                    string instructionCode = $@"
+                        LD D {address}
+
+                        MOV D AX
+                        MVI AY 0x00
+
+                        LD C {addressPlusOne}
+
+                        ADD D
+
+                        {instruction} {register} #DONE";
+
+                    var instructionCodeLines = RemoveWhitespace(instructionCode)
+                        .Replace("\r", string.Empty)
+                        .Split('\n', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(x => x.Trim());
+
+                    result = new List<string>();
+                    result.AddRange(source.Take(l));
+                    result.AddRange(instructionCodeLines);
+                    result.AddRange(source.Skip(l + 1));
+
+                    return PreprocessComplexInstructions(result.ToArray());
+                }
+            }
+
+            // Remove #DONE markers.
+            return result.Select(x => x.Replace(" #DONE", string.Empty)).ToArray();
         }
 
         private void SaveMachineCode()

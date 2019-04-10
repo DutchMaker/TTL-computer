@@ -1,55 +1,28 @@
 :main
 
-	MVI A 0x03
+	MVI A 0xA3
+	MVI B 0xF0
 
-:loop1
-	MOV A AX
+	ST A 0x4050
+	ST B 0x4051
+
+	MVI A 0x10
+
+	ST A 0xA3F0
+
+	MVI A 0x00
+	MVI B 0x00
+	MVI C 0x00
+	MVI D 0x00
+
+	LDX C 0x4050
 	
-	# Count down from 3
+	MVI B 0xF5
 
-	DEC A
-	JNZ loop1
+	STX B 0x4050
 
-	MVI A 0x48
-	OUT 1 A
+	MVI B 0x00
 
-	MVI A 0x65
-	OUT 1 A
-
-	MVI A 0x6c
-	OUT 1 A
-
-	MVI A 0x6c
-	OUT 1 A
-
-	MVI A 0x6f 
-	OUT 1 A
-
-	MVI A 0x20 
-	OUT 1 A
-
-	MVI A 0x57
-	OUT 1 A
-
-	MVI A 0x6f
-	OUT 1 A
-
-	MVI A 0x72
-	OUT 1 A
-	
-	MVI A 0x6c
-	OUT 1 A
-
-	MVI A 0x64
-	OUT 1 A
-
-	MVI A 0x21
-	OUT 1 A
-	
-	NOP
-
-	NOP
-
-	NOP
+	LDX C 0x4050
 
 	HALT
