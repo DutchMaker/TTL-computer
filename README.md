@@ -3,7 +3,7 @@
 My attempt at building a computer from scratch with 74xxx logic chips.  
 Work in progress!
 
-## Status as of April 8th, 2019:
+## Status as of April 10th, 2019:
 
 [**General architecture**](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/Architecture.pdf) has been worked out as high level schematic.  
 
@@ -19,7 +19,7 @@ I've built an [**assembler**](https://github.com/DutchMaker/TTL-computer/tree/ma
 
 The entire computer has been built in [**Logisim**](https://github.com/DutchMaker/TTL-computer/tree/master/Documentation/Logisim) to verify that the way I had everything in mind is actually going to work.
 
-The 74xx Computer's **instruction set** has been implemented.
+The 74xx Computer's **instruction set** has been implemented and its **assembly language** is fully documented.
 
 While working on the Logisim design, I made several changes to the architecture and some to circuits. These changes still need to be applied to all previous work (architecture design, circuit diagrams, etc.)
 
@@ -27,7 +27,6 @@ While working on the Logisim design, I made several changes to the architecture 
 
 ## TODO's / Plans:
 
-- Write proper documentation on the instruction set and assembly code (mention what flags are set per instruction)
 - Updated previously made circuit diagrams according to latest Logisim design.
 - Write additional/updated documentation on all modules.
 - Build the computer in real life.
