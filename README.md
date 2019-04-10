@@ -19,7 +19,7 @@ I've built an [**assembler**](https://github.com/DutchMaker/TTL-computer/tree/ma
 
 The entire computer has been built in [**Logisim**](https://github.com/DutchMaker/TTL-computer/tree/master/Documentation/Logisim) to verify that the way I had everything in mind is actually going to work.
 
-The 74xx Computer's **instruction set** has been implemented and its **assembly language** is fully documented.
+The 74xx Computer's **instruction set** has been implemented and its **[assembly language](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/74xx-Assembly-Language.md)** is fully documented.
 
 While working on the Logisim design, I made several changes to the architecture and some to circuits. These changes still need to be applied to all previous work (architecture design, circuit diagrams, etc.)
 

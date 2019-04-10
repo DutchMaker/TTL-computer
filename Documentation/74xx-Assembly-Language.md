@@ -65,6 +65,7 @@ The following code example demonstrates how to define **labels**, define and use
 | AX       | Write-only register for the ALU (*accumulator*).             |
 | AY       | Write-only register for the ALU (*operand*).                 |
 | OUT1     | Write-only register used for output control. Can only be written to using the *OUT 1* instruction. |
+
 <a name="flags"></a>
 ## Flags
 
@@ -129,7 +130,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### NOP
 
 |                   | Do nothing                                                                                                          _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | NOP                                                          |
 | Example:          | `NOP`                                                        |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -150,7 +151,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### HALT
 
 |                   | Halt CPU execution                                                                                           _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | HALT                                                         |
 | Example:          | `HALT`                                                       |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -171,7 +172,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### SC
 
 |                   | Set carry flag to *0* or *1*                                                                                    _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SC `(0,1)`                                                   |
 | Example:          | `SC 0`                                                       |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -196,7 +197,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### MOV
 
 |                   | Copy data from register *R1* to register *R2*                                                   _ |
-| :---------------- | --------------------------------------------- |
+| :---------------- | -:-------------------------------------------- |
 | Syntax:           | MOV *R1*`(A,B,C,D)` *R2*`(A,B,C,D,AX,AY)`     |
 | Example:          | `MOV B AX`                                    |
 | Instruction data: | `opcode` (1 byte)                             |
@@ -236,7 +237,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### MVI
 
 |                   | Load immediate *data* value into register *R*                                               _ |
-| :---------------- | --------------------------------------------- |
+| :---------------- | :-------------------------------------------- |
 | Syntax:           | MVI *R*`(A,B,C,D,AX,AY)` *data*`(8-bit hex)`     |
 | Example:          | `MVI A 0xF3`                                    |
 | Instruction data: | `opcode` `data` (2 bytes)                             |
@@ -262,7 +263,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### LD
 
 |                   | Load data from memory *address* into register *R*                                     _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | LD *R*`(A,B,AX,AY)` *address*`(16-bit hex)`                  |
 | Example:          | `LD A 0x40F3`                                                |
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
@@ -286,7 +287,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### ST
 
 |                   | Store data from register *R* at memory *address*                                         _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                        |
 | Example:          | `ST A 0x40F3`                                                |
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
@@ -308,7 +309,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### OUT
 
 |                   | Send data from register *R* to output *O*                                                      _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :------------------------------------------------------------ |
 | Syntax:           | OUT *O*`(1,2)` *R*`(A,B,C,D)`                                |
 | Example:          | `OUT 1 A`                                                    |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -338,7 +339,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### ADD
 
 |                   | Perform ALU operation `AX + AY` and store result in *R*      |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | ADD *R*`(A,B,C,D)`                                           |
 | Example:          | `ADD A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -362,7 +363,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### ADC
 
 |                   | Perform ALU operation `AX + AY + Fc` and store result in *R*               _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | ADC *R*`(A,B,C,D)`                                           |
 | Example:          | `ADC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -386,7 +387,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### SUB
 
 |                   | Perform ALU operation `AX - AY` and store result in *R*      |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SUB *R*`(A,B,C,D)`                                           |
 | Example:          | `SUB A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -410,7 +411,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### SBC
 
 |                   | Perform ALU operation `AX - AY - Fc` and store result in *R*                _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SBC *R*`(A,B,C,D)`                                           |
 | Example:          | `SBC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -434,7 +435,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### INC
 
 |                   | Perform ALU operation `AX + 1` and store result in *R*       |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | INC *R*`(A,B,C,D)`                                           |
 | Example:          | `INC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -458,7 +459,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### DEC
 
 |                   | Perform ALU operation `AX - 1` and store result in *R*       |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | DEC *R*`(A,B,C,D)`                                           |
 | Example:          | `DEC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -483,7 +484,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### AND
 
 |                   | Perform ALU operation `AX & AY` and store result in *R*                          _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | AND *R*`(A,B,C,D)`                                           |
 | Example:          | `AND A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -506,8 +507,8 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="OR"></a>
 #### OR
 
-|                   | Perform ALU operation `AX | AY` and store result in *R*                         _ |
-| :---------------- | ------------------------------------------------------------ |
+|                   | Perform ALU operation `AX or AY` and store result in *R*                         _ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | OR *R*`(A,B,C,D)`                                            |
 | Example:          | `OR A`                                                       |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -531,7 +532,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### XOR
 
 |                   | Perform ALU operation `AX xor AY` (exclusive OR) and store result in *R* |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | XOR *R*`(A,B,C,D)`                                           |
 | Example:          | `XOR A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -555,7 +556,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### NOT
 
 |                   | Perform ALU operation `!AX` (inverse) and store result in *R*               _ |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | NOT *R*`(A,B,C,D)`                                           |
 | Example:          | `NOT A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -579,7 +580,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### SHL
 
 |                   | Perform ALU operation `AX * 2` (shift bits to the left) and store result in *R* |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SHL *R*`(A,B,C,D)`                                           |
 | Example:          | `SHL A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -603,7 +604,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### SHR
 
 |                   | Perform ALU operation `AX / 2` (shift bits to the right) and store result in *R* |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SHR *R*`(A,B,C,D)`                                           |
 | Example:          | `SHR A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -627,7 +628,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### CMP
 
 |                   | Perform different comparisons on `AX` and `AY`               |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | CMP                                                          |
 | Example:          | `CMP`                                                        |
 | Instruction data: | `opcode` (1 byte)                                            |
@@ -649,7 +650,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JMP
 
 |                   | Perform an unconditional jump                                |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JMP *label*                                                  |
 | Example:          | `JMP target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -670,7 +671,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JZ
 
 |                   | Perform a jump when the `Fz` flag is set                     |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JZ *label*                                                   |
 | Example:          | `JZ target`                                                  |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -691,7 +692,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JNZ
 
 |                   | Perform a jump when the `Fz` flag is *not* set               |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JNZ *label*                                                  |
 | Example:          | `JNZ target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -712,7 +713,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JC
 
 |                   | Perform a jump when the `Fc` flag is set                     |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JC *label*                                                   |
 | Example:          | `JC target`                                                  |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -733,7 +734,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JNC
 
 |                   | Perform a jump when the `Fz` flag is *not* set               |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JNC *label*                                                  |
 | Example:          | `JNC target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -754,7 +755,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JEQ
 
 |                   | Perform a jump when the `Feq` flag is set                    |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JEQ *label*                                                  |
 | Example:          | `JEQ target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -775,7 +776,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JNE
 
 |                   | Perform a jump when the `Feq` flag is *not* set              |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JNE *label*                                                  |
 | Example:          | `JNE target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -796,7 +797,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JLT
 
 |                   | Perform a jump when the `Flt` flag is set                    |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JLT *label*                                                  |
 | Example:          | `JLT target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -817,7 +818,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### JGT
 
 |                   | Perform a jump when the `Fgt` flag is set                    |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | JGT *label*                                                  |
 | Example:          | `JGT target`                                                 |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -838,7 +839,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### CALL
 
 |                   | Perform an unconditional jump with the ability to return     |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | CALL *label*                                                 |
 | Example:          | `CALL target`                                                |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
@@ -859,7 +860,7 @@ The following code example demonstrates how to define **labels**, define and use
 #### RET
 
 |                   | Jump back to the program location of the last CALL instruction |
-| :---------------- | ------------------------------------------------------------ |
+| :---------------- | :----------------------------------------------------------- |
 | Syntax:           | RET                                                          |
 | Example:          | `RET`                                                        |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
