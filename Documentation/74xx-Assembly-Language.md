@@ -129,20 +129,20 @@ The following code example demonstrates how to define **labels**, define and use
 
 #### NOP
 
-|                   | Do nothing                                                                                                          _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | NOP                                                          |
-| Example:          | `NOP`                                                        |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 3                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | *none*                                                       |
+|                   | Do nothing        |
+| :---------------- | :---------------- |
+| Syntax:           | NOP               |
+| Example:          | `NOP`             |
+| Instruction data: | `opcode` (1 byte) |
+| T-states:         | 3                 |
+| Sets flags:       | *none*            |
+| Notes:            | *none*            |
 
 **Opcodes for NOP**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :--------- | --------------------- | ------------ |
-| `NOP`  | `0000000`             | `0x00`       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `NOP`    | `0000000`             | `0x00`       |
 
   
 
@@ -150,20 +150,20 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="HALT"></a>
 #### HALT
 
-|                   | Halt CPU execution                                                                                           _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | HALT                                                         |
-| Example:          | `HALT`                                                       |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 3                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | *none*                                                       |
+|                   | Halt CPU execution |
+| :---------------- | :----------------- |
+| Syntax:           | HALT               |
+| Example:          | `HALT`             |
+| Instruction data: | `opcode` (1 byte)  |
+| T-states:         | 3                  |
+| Sets flags:       | *none*             |
+| Notes:            | *none*             |
 
 **Opcodes for HALT**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :--------- | --------------------- | ------------ |
-| `HALT`  | `0000001`             | `0x01`       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `HALT`   | `0000001`             | `0x01`       |
 
   
 
@@ -171,21 +171,21 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="SC"></a>
 #### SC
 
-|                   | Set carry flag to *0* or *1*                                                                                    _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | SC `(0,1)`                                                   |
-| Example:          | `SC 0`                                                       |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4                                                            |
-| Sets flags:       | `Fc`                                                         |
-| Notes:            | *none*                                                       |
+|                   | Set carry flag to *0* or *1* |
+| :---------------- | :--------------------------- |
+| Syntax:           | SC `(0,1)`                   |
+| Example:          | `SC 0`                       |
+| Instruction data: | `opcode` (1 byte)            |
+| T-states:         | 4                            |
+| Sets flags:       | `Fc`                         |
+| Notes:            | *none*                       |
 
 **Opcodes for SC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `SC 0`             | `1101000`             | `0x68`                                                       |
-| `SC 1`             | `1101001`             | `0x69`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `SC 0`   | `1101000`             | `0x68`       |
+| `SC 1`   | `1101001`             | `0x69`       |
 
   
 
@@ -196,39 +196,39 @@ The following code example demonstrates how to define **labels**, define and use
 
 #### MOV
 
-|                   | Copy data from register *R1* to register *R2*                                                   _ |
-| :---------------- | -:-------------------------------------------- |
+|                   | Copy data from register *R1* to register *R2* |
+| :---------------- | --------------------------------------------- |
 | Syntax:           | MOV *R1*`(A,B,C,D)` *R2*`(A,B,C,D,AX,AY)`     |
 | Example:          | `MOV B AX`                                    |
 | Instruction data: | `opcode` (1 byte)                             |
-| T-states:			| 4                                             |
-| Sets flags:       | *none*                                       |
-| Notes:            | *none*                                       |
+| T-states:         | 4                                             |
+| Sets flags:       | *none*                                        |
+| Notes:            | *none*                                        |
 
 **Opcodes for MOV**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `MOV A B`          | `0000010`             | `0x02`                                                       |
-| `MOV A C`          | `0000011`             | `0x03`                                                       |
-| `MOV A D`          | `0000100`             | `0x04`                                                       |
-| `MOV B A`          | `0000101`             | `0x05`                                                       |
-| `MOV B C`          | `0000110`             | `0x06`                                                       |
-| `MOV B D`          | `0000111`             | `0x07`                                                       |
-| `MOV C A`          | `0001000`             | `0x08`                                                       |
-| `MOV C B`          | `0001001`             | `0x09`                                                       |
-| `MOV C D`          | `0001010`             | `0x0A`                                                       |
-| `MOV D A`          | `0001011`             | `0x0B`                                                       |
-| `MOV D B`          | `0001100`             | `0x0C`                                                       |
-| `MOV D C`          | `0001101`             | `0x0D`                                                       |
-| `MOV A AX`         | `1010101`             | `0x55`                                                       |
-| `MOV B AX`         | `1010110`             | `0x56`                                                       |
-| `MOV C AX`         | `1010111`             | `0x57`                                                       |
-| `MOV D AX`         | `1011000`             | `0x58`                                                       |
-| `MOV A AY`         | `1011001`             | `0x59`                                                       |
-| `MOV B AY`         | `1011010`             | `0x5A`                                                       |
-| `MOV C AY`         | `1011011`             | `0x5B`                                                       |
-| `MOV D AY`         | `1011100`             | `0x5C`                                                       |
+| Mnemonic   | Opcode (7-bit binary) | Opcode (hex) |
+| :--------- | --------------------- | ------------ |
+| `MOV A B`  | `0000010`             | `0x02`       |
+| `MOV A C`  | `0000011`             | `0x03`       |
+| `MOV A D`  | `0000100`             | `0x04`       |
+| `MOV B A`  | `0000101`             | `0x05`       |
+| `MOV B C`  | `0000110`             | `0x06`       |
+| `MOV B D`  | `0000111`             | `0x07`       |
+| `MOV C A`  | `0001000`             | `0x08`       |
+| `MOV C B`  | `0001001`             | `0x09`       |
+| `MOV C D`  | `0001010`             | `0x0A`       |
+| `MOV D A`  | `0001011`             | `0x0B`       |
+| `MOV D B`  | `0001100`             | `0x0C`       |
+| `MOV D C`  | `0001101`             | `0x0D`       |
+| `MOV A AX` | `1010101`             | `0x55`       |
+| `MOV B AX` | `1010110`             | `0x56`       |
+| `MOV C AX` | `1010111`             | `0x57`       |
+| `MOV D AX` | `1011000`             | `0x58`       |
+| `MOV A AY` | `1011001`             | `0x59`       |
+| `MOV B AY` | `1011010`             | `0x5A`       |
+| `MOV C AY` | `1011011`             | `0x5B`       |
+| `MOV D AY` | `1011100`             | `0x5C`       |
 
   
 
@@ -236,25 +236,25 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="MVI"></a>
 #### MVI
 
-|                   | Load immediate *data* value into register *R*                                               _ |
+|                   | Load immediate *data* value into register *R* |
 | :---------------- | :-------------------------------------------- |
-| Syntax:           | MVI *R*`(A,B,C,D,AX,AY)` *data*`(8-bit hex)`     |
-| Example:          | `MVI A 0xF3`                                    |
-| Instruction data: | `opcode` `data` (2 bytes)                             |
-| T-states:			| 5                                             |
-| Sets flags:       | *none*                                       |
-| Notes:            | *none*                                       |
+| Syntax:           | MVI *R*`(A,B,C,D,AX,AY)` *data*`(8-bit hex)`  |
+| Example:          | `MVI A 0xF3`                                  |
+| Instruction data: | `opcode` `data` (2 bytes)                     |
+| T-states:         | 5                                             |
+| Sets flags:       | *none*                                        |
+| Notes:            | *none*                                        |
 
 **Opcodes for MVI**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `MVI A`          | `0001110`             | `0x0E`                                                       |
-| `MVI B`          | `0001111`             | `0x0F`                                                       |
-| `MVI C`          | `0010000`             | `0x10`                                                       |
-| `MVI D`          | `0010001`             | `0x11`                                                       |
-| `MVI AX`          | `0111101`             | `0x3D`                                                       |
-| `MVI AY`          | `0111110`             | `0x3E`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `MVI A`  | `0001110`             | `0x0E`       |
+| `MVI B`  | `0001111`             | `0x0F`       |
+| `MVI C`  | `0010000`             | `0x10`       |
+| `MVI D`  | `0010001`             | `0x11`       |
+| `MVI AX` | `0111101`             | `0x3D`       |
+| `MVI AY` | `0111110`             | `0x3E`       |
 
   
 
@@ -262,23 +262,23 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="LD"></a>
 #### LD
 
-|                   | Load data from memory *address* into register *R*                                     _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | LD *R*`(A,B,AX,AY)` *address*`(16-bit hex)`                  |
-| Example:          | `LD A 0x40F3`                                                |
-| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
-| T-states:         | 10                                                           |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
+|                   | Load data from memory *address* into register *R*         |
+| :---------------- | :-------------------------------------------------------- |
+| Syntax:           | LD *R*`(A,B,AX,AY)` *address*`(16-bit hex)`               |
+| Example:          | `LD A 0x40F3`                                             |
+| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes) |
+| T-states:         | 10                                                        |
+| Sets flags:       | *none*                                                    |
+| Notes:            | Overrides data in registers `C` and `D`                   |
 
 **Opcodes for LD**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `LD A`          | `0010010`             | `0x12`                                                       |
-| `LD B`          | `0010011`             | `0x13`                                                       |
-| `LD AX`          | `1101010`             | `0x6A`                                                       |
-| `LD AY`          | `1101011`             | `0x6B`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `LD A`   | `0010010`             | `0x12`       |
+| `LD B`   | `0010011`             | `0x13`       |
+| `LD AX`  | `1101010`             | `0x6A`       |
+| `LD AY`  | `1101011`             | `0x6B`       |
 
   
 
@@ -286,21 +286,21 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="ST"></a>
 #### ST
 
-|                   | Store data from register *R* at memory *address*                                         _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                        |
-| Example:          | `ST A 0x40F3`                                                |
-| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
-| T-states:         | 10                                                           |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
+|                   | Store data from register *R* at memory *address*          |
+| :---------------- | :-------------------------------------------------------- |
+| Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                     |
+| Example:          | `ST A 0x40F3`                                             |
+| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes) |
+| T-states:         | 10                                                        |
+| Sets flags:       | *none*                                                    |
+| Notes:            | Overrides data in registers `C` and `D`                   |
 
 **Opcodes for ST**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `ST A`             | `0010110`             | `0x16`                                                       |
-| `ST B`             | `0010111`             | `0x17`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `ST A`   | `0010110`             | `0x16`       |
+| `ST B`   | `0010111`             | `0x17`       |
 
   
 
@@ -308,27 +308,27 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="OUT"></a>
 #### OUT
 
-|                   | Send data from register *R* to output *O*                                                      _ |
-| :---------------- | :------------------------------------------------------------ |
-| Syntax:           | OUT *O*`(1,2)` *R*`(A,B,C,D)`                                |
-| Example:          | `OUT 1 A`                                                    |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Currently only output 1 is implemented (TTY)                 |
+|                   | Send data from register *R* to output *O*    |
+| :---------------- | :------------------------------------------- |
+| Syntax:           | OUT *O*`(1,2)` *R*`(A,B,C,D)`                |
+| Example:          | `OUT 1 A`                                    |
+| Instruction data: | `opcode` (1 byte)                            |
+| T-states:         | 4                                            |
+| Sets flags:       | *none*                                       |
+| Notes:            | Currently only output 1 is implemented (TTY) |
 
 **Opcodes for OUT**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `OUT 1 A`          | `1001101`             | `0x4D`                                                       |
-| `OUT 1 B`          | `1001110`             | `0x4E`                                                       |
-| `OUT 1 C`          | `1001111`             | `0x4F`                                                       |
-| `OUT 1 D`          | `1010000`             | `0x50`                                                       |
-| `OUT 2 A`          | `1010001`             | `0x51`                                                       |
-| `OUT 2 B`          | `1010010`             | `0x52`                                                       |
-| `OUT 2 C`          | `1010011`             | `0x53`                                                       |
-| `OUT 2 D`          | `1010100`             | `0x54`                                                       |
+| Mnemonic  | Opcode (7-bit binary) | Opcode (hex) |
+| :-------- | --------------------- | ------------ |
+| `OUT 1 A` | `1001101`             | `0x4D`       |
+| `OUT 1 B` | `1001110`             | `0x4E`       |
+| `OUT 1 C` | `1001111`             | `0x4F`       |
+| `OUT 1 D` | `1010000`             | `0x50`       |
+| `OUT 2 A` | `1010001`             | `0x51`       |
+| `OUT 2 B` | `1010010`             | `0x52`       |
+| `OUT 2 C` | `1010011`             | `0x53`       |
+| `OUT 2 D` | `1010100`             | `0x54`       |
 
 
 
@@ -349,12 +349,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for ADD**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `ADD A`            | `0011010`             | `0x1A`                                                       |
-| `ADD B`            | `1100001`             | `0x61`                                                       |
-| `ADD C`            | `0011011`             | `0x1B`                                                       |
-| `ADD D`            | `0011100`             | `0x1C`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `ADD A`  | `0011010`             | `0x1A`       |
+| `ADD B`  | `1100001`             | `0x61`       |
+| `ADD C`  | `0011011`             | `0x1B`       |
+| `ADD D`  | `0011100`             | `0x1C`       |
 
 
 
@@ -362,7 +362,7 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="ADC"></a>
 #### ADC
 
-|                   | Perform ALU operation `AX + AY + Fc` and store result in *R*               _ |
+|                   | Perform ALU operation `AX + AY + Fc` and store result in *R* |
 | :---------------- | :----------------------------------------------------------- |
 | Syntax:           | ADC *R*`(A,B,C,D)`                                           |
 | Example:          | `ADC A`                                                      |
@@ -373,12 +373,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for ADC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `ADC A`            | `0011101`             | `0x1D`                                                       |
-| `ADC B`            | `1100010`             | `0x62`                                                       |
-| `ADC C`            | `0011110`             | `0x1E`                                                       |
-| `ADC D`            | `0011111`             | `0x1F`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `ADC A`  | `0011101`             | `0x1D`       |
+| `ADC B`  | `1100010`             | `0x62`       |
+| `ADC C`  | `0011110`             | `0x1E`       |
+| `ADC D`  | `0011111`             | `0x1F`       |
 
 
 
@@ -397,12 +397,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for SUB**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `SUB A`            | `0100000`             | `0x20`                                                       |
-| `SUB B`            | `1100011`             | `0x63`                                                       |
-| `SUB C`            | `0100001`             | `0x21`                                                       |
-| `SUB D`            | `0100010`             | `0x22`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `SUB A`  | `0100000`             | `0x20`       |
+| `SUB B`  | `1100011`             | `0x63`       |
+| `SUB C`  | `0100001`             | `0x21`       |
+| `SUB D`  | `0100010`             | `0x22`       |
 
 
 
@@ -410,7 +410,7 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="SBC"></a>
 #### SBC
 
-|                   | Perform ALU operation `AX - AY - Fc` and store result in *R*                _ |
+|                   | Perform ALU operation `AX - AY - Fc` and store result in *R* |
 | :---------------- | :----------------------------------------------------------- |
 | Syntax:           | SBC *R*`(A,B,C,D)`                                           |
 | Example:          | `SBC A`                                                      |
@@ -421,12 +421,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for SBC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `SBC A`            | `0100011`             | `0x23`                                                       |
-| `SBC B`            | `1100100`             | `0x64`                                                       |
-| `SBC C`            | `0100100`             | `0x24`                                                       |
-| `SBC D`            | `0100101`             | `0x25`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `SBC A`  | `0100011`             | `0x23`       |
+| `SBC B`  | `1100100`             | `0x64`       |
+| `SBC C`  | `0100100`             | `0x24`       |
+| `SBC D`  | `0100101`             | `0x25`       |
 
 
 
@@ -445,12 +445,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for INC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `INC A`            | `0110100`             | `0x34`                                                       |
-| `INC B`            | `0110101`             | `0x35`                                                       |
-| `INC C`            | `0110110`             | `0x36`                                                       |
-| `INC D`            | `0110111`             | `0x37`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `INC A`  | `0110100`             | `0x34`       |
+| `INC B`  | `0110101`             | `0x35`       |
+| `INC C`  | `0110110`             | `0x36`       |
+| `INC D`  | `0110111`             | `0x37`       |
 
 
 
@@ -469,12 +469,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for DEC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `DEC A`            | `0111000`             | `0x38`                                                       |
-| `DEC B`            | `0111001`             | `0x39`                                                       |
-| `DEC C`            | `0111010`             | `0x3A`                                                       |
-| `DEC D`            | `0111011`             | `0x3B`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `DEC A`  | `0111000`             | `0x38`       |
+| `DEC B`  | `0111001`             | `0x39`       |
+| `DEC C`  | `0111010`             | `0x3A`       |
+| `DEC D`  | `0111011`             | `0x3B`       |
 
 
 
@@ -483,23 +483,23 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="AND"></a>
 #### AND
 
-|                   | Perform ALU operation `AX & AY` and store result in *R*                          _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | AND *R*`(A,B,C,D)`                                           |
-| Example:          | `AND A`                                                      |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | *none*                                                       |
+|                   | Perform ALU operation `AX & AY` and store result in *R* |
+| :---------------- | :------------------------------------------------------ |
+| Syntax:           | AND *R*`(A,B,C,D)`                                      |
+| Example:          | `AND A`                                                 |
+| Instruction data: | `opcode` (1 byte)                                       |
+| T-states:         | 4                                                       |
+| Sets flags:       | *none*                                                  |
+| Notes:            | *none*                                                  |
 
 **Opcodes for AND**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `AND A`            | `0100110`             | `0x26`                                                       |
-| `AND B`            | `1100101`             | `0x65`                                                       |
-| `AND C`            | `0100111`             | `0x27`                                                       |
-| `AND D`            | `0101000`             | `0x28`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `AND A`  | `0100110`             | `0x26`       |
+| `AND B`  | `1100101`             | `0x65`       |
+| `AND C`  | `0100111`             | `0x27`       |
+| `AND D`  | `0101000`             | `0x28`       |
 
 
 
@@ -507,23 +507,23 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="OR"></a>
 #### OR
 
-|                   | Perform ALU operation `AX or AY` and store result in *R*                         _ |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | OR *R*`(A,B,C,D)`                                            |
-| Example:          | `OR A`                                                       |
-| Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4                                                            |
-| Sets flags:       | Clears the `Fc` flag before the operation.                   |
-| Notes:            | *none*                                                       |
+|                   | Perform ALU operation `AX or AY` and store result in *R* |
+| :---------------- | :------------------------------------------------------- |
+| Syntax:           | OR *R*`(A,B,C,D)`                                        |
+| Example:          | `OR A`                                                   |
+| Instruction data: | `opcode` (1 byte)                                        |
+| T-states:         | 4                                                        |
+| Sets flags:       | Clears the `Fc` flag before the operation.               |
+| Notes:            | *none*                                                   |
 
 **Opcodes for OR**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `OR A`            | `0101001`             | `0x29`                                                       |
-| `OR B`            | `1100110`             | `0x66`                                                       |
-| `OR C`            | `0101010`             | `0x2A`                                                       |
-| `OR D`            | `0101011`             | `0x2B`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `OR A`   | `0101001`             | `0x29`       |
+| `OR B`   | `1100110`             | `0x66`       |
+| `OR C`   | `0101010`             | `0x2A`       |
+| `OR D`   | `0101011`             | `0x2B`       |
 
 
 
@@ -542,12 +542,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for XOR**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `XOR A`            | `0101100`             | `0x2C`                                                       |
-| `XOR B`            | `0101101`             | `0x2D`                                                       |
-| `XOR C`            | `0101110`             | `0x2E`                                                       |
-| `XOR D`            | `0101111`             | `0x2F`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `XOR A`  | `0101100`             | `0x2C`       |
+| `XOR B`  | `0101101`             | `0x2D`       |
+| `XOR C`  | `0101110`             | `0x2E`       |
+| `XOR D`  | `0101111`             | `0x2F`       |
 
 
 
@@ -555,7 +555,7 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="NOT"></a>
 #### NOT
 
-|                   | Perform ALU operation `!AX` (inverse) and store result in *R*               _ |
+|                   | Perform ALU operation `!AX` (inverse) and store result in *R* |
 | :---------------- | :----------------------------------------------------------- |
 | Syntax:           | NOT *R*`(A,B,C,D)`                                           |
 | Example:          | `NOT A`                                                      |
@@ -566,12 +566,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for NOT**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `NOT A`            | `0110000`             | `0x30`                                                       |
-| `NOT B`            | `0110001`             | `0x31`                                                       |
-| `NOT C`            | `0110010`             | `0x32`                                                       |
-| `NOT D`            | `0110011`             | `0x33`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `NOT A`  | `0110000`             | `0x30`       |
+| `NOT B`  | `0110001`             | `0x31`       |
+| `NOT C`  | `0110010`             | `0x32`       |
+| `NOT D`  | `0110011`             | `0x33`       |
 
 
 
@@ -590,12 +590,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for SHL**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `SHL A`            | `0010100`             | `0x14`                                                       |
-| `SHL B`            | `0010101`             | `0x15`                                                       |
-| `SHL C`            | `0011000`             | `0x18`                                                       |
-| `SHL D`            | `0011001`             | `0x19`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `SHL A`  | `0010100`             | `0x14`       |
+| `SHL B`  | `0010101`             | `0x15`       |
+| `SHL C`  | `0011000`             | `0x18`       |
+| `SHL D`  | `0011001`             | `0x19`       |
 
 
 
@@ -614,12 +614,12 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for SHR**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `SHR A`            | `1011101`             | `0x5D`                                                       |
-| `SHR B`            | `1011110`             | `0x5E`                                                       |
-| `SHR C`            | `1011111`             | `0x5F`                                                       |
-| `SHR D`            | `1100111`             | `0x67`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `SHR A`  | `1011101`             | `0x5D`       |
+| `SHR B`  | `1011110`             | `0x5E`       |
+| `SHR C`  | `1011111`             | `0x5F`       |
+| `SHR D`  | `1100111`             | `0x67`       |
 
 
 
@@ -638,9 +638,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for CMP**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `CMP`              | `0111100`             | `0x3C`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `CMP`    | `0111100`             | `0x3C`       |
 
 
 
@@ -660,9 +660,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JMP**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JMP`              | `0111111`             | `0x3F`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JMP`    | `0111111`             | `0x3F`       |
 
 
 
@@ -681,9 +681,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JZ**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JZ`               | `1000000`             | `0x40`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JZ`     | `1000000`             | `0x40`       |
 
 
 
@@ -702,9 +702,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JNZ**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JNZ`              | `1000001`             | `0x41`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JNZ`    | `1000001`             | `0x41`       |
 
 
 
@@ -723,9 +723,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JC`               | `1000010`             | `0x42`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JC`     | `1000010`             | `0x42`       |
 
 
 
@@ -744,9 +744,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JNC**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JNC`              | `1000011`             | `0x43`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JNC`    | `1000011`             | `0x43`       |
 
 
 
@@ -765,9 +765,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JEQ**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JEQ`              | `1000100`             | `0x44`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JEQ`    | `1000100`             | `0x44`       |
 
 
 
@@ -786,9 +786,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JNE**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JNE`              | `1101100`             | `0x6C`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JNE`    | `1101100`             | `0x6C`       |
 
 
 
@@ -807,9 +807,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JLT**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JLT`              | `1000101`             | `0x45`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JLT`    | `1000101`             | `0x45`       |
 
 
 
@@ -828,9 +828,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for JGT**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `JGT`              | `1000110`             | `0x46`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `JGT`    | `1000110`             | `0x46`       |
 
 
 
@@ -849,9 +849,9 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for CALL**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `CALL`             | `1000111`             | `0x47`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `CALL`   | `1000111`             | `0x47`       |
 
 
 
@@ -870,6 +870,6 @@ The following code example demonstrates how to define **labels**, define and use
 
 **Opcodes for RET**
 
-| Mnemonic         _ | Opcode (7-bit binary) | Opcode (hex)                                                            _ |
-| :----------------- | --------------------- | ------------------------------------------------------------ |
-| `RET`              | `1001000`             | `0x48`                                                       |
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `RET`    | `1001000`             | `0x48`       |
