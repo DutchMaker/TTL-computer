@@ -92,11 +92,24 @@ namespace Asm
                 }
 
                 int address = Convert.ToInt32(block.Split(':').First().Trim(), 16);
-                string[] bytes = block.Split(':').Last().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string blockdata = string.Join(":", block.Split(':').Skip(1)).Trim();
+                byte[] bytes = null;
 
-                foreach (string b in bytes)
+                if (blockdata.StartsWith("\""))
                 {
-                    machineCode[address++] = Convert.ToByte(b.Trim(), 16);
+                    blockdata = blockdata.Trim('"');
+                    bytes = Encoding.ASCII.GetBytes(blockdata);
+                }
+                else
+                {
+                    bytes = blockdata.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(b => Convert.ToByte(b.Trim(), 16))
+                        .ToArray();
+                }
+
+                foreach (byte b in bytes)
+                {
+                    machineCode[address++] = b;
                     byteCount++;
                 }
             }
@@ -390,12 +403,13 @@ namespace Asm
         private void RemoveComments()
         {
             int i = 0;
+
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
-                int commentEnd = source.IndexOf("\n", commentStart);
+                int commentEnd = source.IndexOf("\n", commentStart) - 1;
 
-                if (commentEnd == -1)
+                if (commentEnd < 0)
                 {
                     commentEnd = source.Length - 1;
                 }
@@ -404,13 +418,6 @@ namespace Asm
                 string afterComment = source.Substring(commentEnd + 1);
 
                 source = beforeComment + afterComment;
-
-                i++;
-
-                if (i > 150)
-                {
-
-                }
             }
         }
     }

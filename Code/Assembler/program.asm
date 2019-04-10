@@ -1,126 +1,6 @@
 # Example 74xx program
 #
-# Instruction set:
-#
-# NOP
-# 	Function:	Do nothing.
-# 	Example:	NOP;
-#
-# HALT
-#	Function:	Halt execution (halts CPU clock).
-#	Example:	HALT;
-#
-# MOV r1(A,B,C,D) r2(A,B,C,D)
-#	Function:	Copy value from register r1 to register r2.
-#	Example:	MOV A B;
-#
-# MVI r(A,B,C,D) byte
-#	Function: 	Store immediate value (hex) into register r.
-#	Example:	MVI A 0xff;
-#
-# LD r(A,B) h-address l-address
-#	Function:	
-#	Example:	
-#
-# ST r(A,B) h-address l-address
-#	Function:	
-#	Example:	
-#
-# MVA r(A,B,C,D) alu(A,B)
-#	Function: 	Copy value from register r to ALU internal register alu.
-#	Example: 	MVA D A
-#
-# ADD r(A,B,C,D)
-#	Function: 
-#	Example:	
-#
-# ADC r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# SUB r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# SBC r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# AND r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# OR r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# XOR r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# NOT r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# INC r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# DEC r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# CMP r(A,C,D)
-#	Function:	
-#	Example:	
-#
-# JMP label
-#	Function:	
-#	Example:	
-#
-# JZ label
-#	Function:	
-#	Example:	
-#
-# JNZ label
-#	Function:	
-#	Example:	
-#
-# JC label
-#	Function:	
-#	Example:	
-#
-# JNC label
-#	Function:	
-#	Example:	
-#
-# JEQ label
-#	Function:	
-#	Example:	
-#
-# JLT label
-#	Function:	
-#	Example:	
-#
-# JGT label
-#	Function:	
-#	Example:	
-#
-# CALL label
-#	Function:	
-#	Example:	
-#
-# RET
-#	Function:	
-#	Example:	
-#
-# IN r(A,B,C,D)
-#	Function:	
-#	Example:	
-#
-# OUT o(1,2) r(A,B,C,D)
-#	Function:	
-#	Example:	
+# See `74xx-Assembly-Language.md` for complete reference.
 #
 
 :data
@@ -130,8 +10,8 @@
 
 	0x3000: 0xA0 0xB1 0xC2 0xD3;
 	0x3010: 0x01 0x02 0x03 0x04
-			0x05 0x06 0x07 0x08;
-
+			0x05 0x06 0x07 0x08;	# Note the use of the ; at the end. This is required to end the block of data.
+	0x3100: "Hello world!";			# You can define character strings like this.
 
 :main
 

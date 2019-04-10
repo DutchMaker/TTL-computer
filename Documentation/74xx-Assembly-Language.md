@@ -23,7 +23,8 @@ The following code example demonstrates how to define **labels**, define and use
 
 	0x3000: 0xA0 0xB1 0xC2 0xD3;
 	0x3010: 0x01 0x02 0x03 0x04
-			0x05 0x06 0x07 0x08;	# Note the use of the ; at the end!
+			0x05 0x06 0x07 0x08;	# Note the use of the ; at the end. This is required to end the block of data.
+	0x3100: "Hello world!";			# You can define character strings like this.
 	
 :main
 
