@@ -15,19 +15,15 @@ _All circuit diagrams need to be updated according to the Logisim design!_
 
 I've built a [**microcode compiler**](https://github.com/DutchMaker/TTL-computer/tree/master/Code/Microcode) for the Controller's ROM image. This takes a source file which defines all the microcode and compiles it into a binary image that is loaded into the microcode ROM.
 
-I've built an [**assembler**](https://github.com/DutchMaker/TTL-computer/tree/master/Code/Assembler) to convert 74xx assembly to machine code. The example `program.asm` file describes the entire definition of the assembly language.
+The 74xx Computer's **instruction set** has been implemented, its **[assembly language](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/74xx-Assembly-Language.md)** is fully documented and I've built an [**assembler**](https://github.com/DutchMaker/TTL-computer/tree/master/Code/Assembler) to convert assembly programs to machine code.
 
 The entire computer has been built in [**Logisim**](https://github.com/DutchMaker/TTL-computer/tree/master/Documentation/Logisim) to verify that the way I had everything in mind is actually going to work.
-
-The 74xx Computer's **instruction set** has been implemented and its **[assembly language](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/74xx-Assembly-Language.md)** is fully documented.
-
-While working on the Logisim design, I made several changes to the architecture and some to circuits. These changes still need to be applied to all previous work (architecture design, circuit diagrams, etc.)
 
 
 
 ## TODO's / Plans:
 
-- Updated previously made circuit diagrams according to latest Logisim design.
+- Update previously designed circuit diagrams according to latest Logisim design.
 - Write additional/updated documentation on all modules.
 - Build the computer in real life.
 
