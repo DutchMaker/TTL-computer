@@ -325,6 +325,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`.                     |
 |                   | Supports *address variables*.                                |
+|                   | Supports zero page addressing.                               |
 
 **Opcodes for LD**
 
@@ -352,6 +353,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`. 					   |
 |                   | Supports *address variables*.                                |
+|                   | Supports zero page addressing.                               |
 
 **Opcodes for ST**
 
@@ -515,15 +517,15 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 | Sets flags:       | Clears/sets the `Fc` and `Fz` flags                          |
 | Notes:            | See notes under Opcodes.                                     |
 |                   | Overrides data in registers `C` and `D`.                     |
+|                   | Supports zero page addressing.                               |
 |                   | Currently does **not** support *address variables*.          |
 
 **Opcodes for LDX**
 
 The number of operations required by this instruction could not be performed within the limit of 16 t-states. Therefore this instruction has no opcodes of its own, but the assembler translates it into the following set of instructions:
 ```
-LD D {address}      # Load value at {address} into register D
-MOV D AX            # Copy D to AX
-MVI AY 0x00         # Load value 0x00 into AY
+LD AX {address}     # Load value at {address} into ALU register AX
+MVI AY 0x00         # Load value 0x00 into ALU register AY
 LD C {address + 1}  # Load value at {address+1} into register C
 ADD D               # Load the value of AX (AX + 0x00 == AX) into register D
 LDR {R}             # Load the value from the memory address stored
@@ -545,15 +547,15 @@ LDR {R}             # Load the value from the memory address stored
 | Sets flags:       | Clears/sets the `Fc` and `Fz` flags                          |
 | Notes:            | See notes under Opcodes.                                     |
 |                   | Overrides data in registers `C` and `D`.                     |
+|                   | Supports zero page addressing.                               |
 |                   | Currently does **not** support *address variables*.          |
 
 **Opcodes for STX**
 
 The number of operations required by this instruction could not be performed within the limit of 16 t-states. Therefore this instruction has no opcodes of its own, but the assembler translates it into the following set of instructions:
 ```
-LD D {address}      # Load value at {address} into register D
-MOV D AX            # Copy D to AX
-MVI AY 0x00         # Load value 0x00 into AY
+LD AX {address}     # Load value at {address} into ALU register AX
+MVI AY 0x00         # Load value 0x00 into ALU register AY
 LD C {address + 1}  # Load value at {address+1} into register C
 ADD D               # Load the value of AX (AX + 0x00 == AX) into register D
 STR {R}             # Store the value of register {R} at 

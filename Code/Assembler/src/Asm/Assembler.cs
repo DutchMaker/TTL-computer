@@ -335,24 +335,35 @@ namespace Asm
                     string address = parts[2];
                     string addressPlusOne = $"0x{(Convert.ToInt32(address, 16) + 1):X4}";
 
+                    instruction = instruction.Substring(0, 2) + "R";
+                    string instructionCode = string.Empty;
+
                     if (address.Length == 4)
                     {
-                        throw new AssemblerException($"Zero page indexing not supported for {instruction} instruction.");
+                        addressPlusOne = $"0x{(Convert.ToInt32(address, 16) + 1):X2}";
+
+                        instructionCode = $@"
+                            LD AX {address}
+                            MVI AY 0x00
+
+                            LD D {addressPlusOne}
+                            MOV D C
+                            ADD D
+
+                            {instruction} {register} #DONE";
                     }
+                    else
+                    {
+                        instructionCode = $@"
+                            LD AX {address}
+                            MVI AY 0x00
 
-                    instruction = instruction.Substring(0, 2) + "R";
+                            LD C {addressPlusOne}
 
-                    string instructionCode = $@"
-                        LD D {address}
+                            ADD D
 
-                        MOV D AX
-                        MVI AY 0x00
-
-                        LD C {addressPlusOne}
-
-                        ADD D
-
-                        {instruction} {register} #DONE";
+                            {instruction} {register} #DONE";
+                    }
 
                     var instructionCodeLines = RemoveWhitespace(instructionCode)
                         .Replace("\r", string.Empty)

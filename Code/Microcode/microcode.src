@@ -258,7 +258,7 @@ MICROCODE
 		0 { MAR_PC_load	}
 		1 { MEM_out;C_load;PC_inc }
 		2 { C_out;MAR_LB_load;MAR_ZP }
-		3 { (r1)_load;MEM_out }
+		3 { MEM_out;(r1)_load }
 		4 { TSTATE_reset }
 	}
 

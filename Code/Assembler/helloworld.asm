@@ -12,7 +12,7 @@
 	ST A 0x01		# Store lower byte of memory address pointing to current character
 					# This gets stored in zero page memory
 
-	LDX A 0xFE00	# Load character from memory (zero page indexing not supported).
+	LDX A 0x00		# Load character from memory (zero page indexing supported)
 	OUT 1 A
 
 	LD AX 0x01		
