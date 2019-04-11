@@ -39,6 +39,10 @@ The following code example demonstrates how to define **labels**, define and use
 	*i = 0x4000		# You can define address variables, which
 	ST D *i 		# can be used in instructions that refer to an address.
 	LD A *i
+	
+	LD B 0x45		# 8-bit addresses refer to zero page memory (256 bytes available).
+					# This example refers to 0xFE45.
+	                # See section on Memory Layout in this reference.
 
 	CALL example	# Jump to subroutine (with the ability to return).
 
@@ -97,18 +101,18 @@ There is currently no way of feeding in the program code, other than flipping sw
 The different modes results in two possible memory layouts.
 Memory layout when running in **boot from ROM** mode:
 
-| Offset | |
-| ------ | |
-| 0x0000 | ROM              | 
+| Offset | Purpose          |
+| ------ | ---------------- |
+| 0x0000 | ROM              |
 | 0x4000 | RAM              |
 | 0xFE00 | Zero page memory |
 | 0xFF00 | Stack space      |
 
 Memory layout when running in **RAM only** mode:
 
-| Offset | |
-| ------ | |
-| 0x0000 | RAM              | 
+| Offset | Purpose          |
+| ------ | ---------------- |
+| 0x0000 | RAM              |
 | 0xFE00 | Zero page memory |
 | 0xFF00 | Stack space      |
 
