@@ -319,6 +319,8 @@ namespace Asm
                     string address = parts[2];
                     string addressPlusOne = $"0x{(Convert.ToInt16(address, 16) + 1):X4}";
 
+                    instruction = instruction.Substring(0, 2) + "R";
+                    
                     string instructionCode = $@"
                         LD D {address}
 

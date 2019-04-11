@@ -1,7 +1,8 @@
 # 74xx Computer
 
 My attempt at building a computer from scratch with 74xxx logic chips.  
-Work in progress!
+
+
 
 ## Status as of April 10th, 2019:
 

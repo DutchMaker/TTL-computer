@@ -92,6 +92,8 @@ The following code example demonstrates how to define **labels**, define and use
   - [MVI](#MVI)
   - [LD](#LD)
   - [ST](#ST)
+  - [LDR](#LDR)
+  - [STR](#STR)
   - [LDX](#LDX)
   - [STX](#STX)
   - [OUT](#OUT)
@@ -272,7 +274,8 @@ The following code example demonstrates how to define **labels**, define and use
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
 | T-states:         | 10                                                           |
 | Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`. Supports *address variables*. |
+| Notes:            | Overrides data in registers `C` and `D`.                     |
+|                   | Supports *address variables*.                                |
 
 **Opcodes for LD**
 
@@ -293,12 +296,13 @@ The following code example demonstrates how to define **labels**, define and use
 
 |                   | Store data from register *R* at memory *address*             |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | ST *R*`(A,B,C,D)` *address*`(16-bit hex)`                    |
+| Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                    |
 | Example:          | `ST A 0x40F3`                                                |
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
 | T-states:         | 10                                                           |
 | Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`. Supports *address variables*. |
+| Notes:            | Overrides data in registers `C` and `D`. 					   |
+|                   | Supports *address variables*.                                |
 
 **Opcodes for ST**
 
@@ -306,8 +310,54 @@ The following code example demonstrates how to define **labels**, define and use
 | :------- | --------------------- | ------------ |
 | `ST A`   | `0010110`             | `0x16`       |
 | `ST B`   | `0010111`             | `0x17`       |
-| `ST C`   | `1110011`             | `0x73`       |
-| `ST D`   | `1110100`             | `0x74`       |
+
+
+
+------
+<a name="LDR"></a>
+#### LDR
+
+|                   | Load data from the memory address stored in register *C* (low byte) and *D* (high byte) into register *R* |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | LDR *R*`(A,B,C,D)`                                           |
+| Example:          | `LDR A`                                                      |
+| Instruction data: | `opcode` (1 byte)                                            |
+| T-states:         | 6                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Registers `C` and `D` must contain a memory address.         |
+|                   | Overrides data in registers `C` and `D` during operation.    |
+
+**Opcodes for LDR**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `LDR A`  | `1101101`             | `0x6D`       |
+| `LDR B`  | `1101110`             | `0x6E`       |
+| `LDR C`  | `1110101`             | `0x75`       |
+| `LDR D`  | `1110110`             | `0x76`       |
+
+
+
+------
+<a name="STR"></a>
+#### STR
+
+|                   | Store data from register *R* at the memory address stored in register *C* (low byte) and *D* (high byte) |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | STR *R*`(A,B)`                                               |
+| Example:          | `STR A`                                                      |
+| Instruction data: | `opcode` (1 byte)                                            |
+| T-states:         | 6                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Registers `C` and `D` must contain a memory address.         |
+|                   | Overrides data in registers `C` and `D` during operation.    |
+
+**Opcodes for STR**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `STR A`  | `1101111`             | `0x6F`       |
+| `STR B`  | `1110000`             | `0x70`       |
 
 
 
@@ -315,24 +365,29 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="LDX"></a>
 #### LDX
 
-|                   | Load data from memory address stored at *address* into register *R* (indirect load) |
+|                   | Load data from the memory address stored at *address* into register *R* (indirect load) |
 | :---------------- | :----------------------------------------------------------- |
 | Syntax:           | LDX *R*`(A,B,C,D)` *address*`(16-bit hex)`                   |
 | Example:          | `LDX A 0x40F3`                                               |
-| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
+| Instruction data: | 11 bytes *(see notes under Opcodes)*                         |
 | T-states:         | 40                                                           |
-| Sets flags:       | *?*                                                          |
-| Notes:            | The assembler translates this instruction to a set of multiple instructions. This is done because the operations could not be done within the maximum of 16 t-states. |
-|                   | Overrides data in registers `C` and `D`. Currently does **not** support *address variables*. |
+| Sets flags:       | Clears/sets the `Fc` and `Fz` flags                          |
+| Notes:            | See notes under Opcodes.                                     |
+|                   | Overrides data in registers `C` and `D`.                     |
+|                   | Currently does **not** support *address variables*.          |
 
 **Opcodes for LDX**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `LDX A`   | `1101101`             | `0x6D`       |
-| `LDX B`   | `1101110`             | `0x6E`       |
-| `LDX C`   | `1110101`             | `0x75`       |
-| `LDX D`   | `1110110`             | `0x76`       |
+The number of operations required by this instruction could not be performed within the limit of 16 t-states. Therefore this instruction has no opcodes of its own, but the assembler translates it into the following set of instructions:
+```
+LD D {address}      # Load value at {address} into register D
+MOV D AX            # Copy D to AX
+MVI AY 0x00         # Load value 0x00 into AY
+LD C {address + 1}  # Load value at {address+1} into register C
+ADD D               # Load the value of AX (AX + 0x00 == AX) into register D
+LDR {R}             # Load the value from the memory address stored
+	                #   in register C and D into register {R}.
+```
 
 
 
@@ -340,24 +395,29 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="STX"></a>
 #### STX
 
-|                   | Load data from memory address stored at *address* into register *R* (indirect store) |
+|                   | Store data from register *R* at the memory address stored at *address* into  (indirect store) |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | STX *R*`(A,B,C,D)` *address*`(16-bit hex)`                   |
+| Syntax:           | STX *R*`(A,B)` *address*`(16-bit hex)`                       |
 | Example:          | `STX A 0x40F3`                                               |
-| Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
+| Instruction data: | 11 bytes ((see notes under Opcodes)*                         |
 | T-states:         | 40                                                           |
-| Sets flags:       | *?*                                                          |
-| Notes:            | The assembler translates this instruction to a set of multiple instructions. This is done because the operations could not be done within the maximum of 16 t-states. |
-|                   | Overrides data in registers `C` and `D`. Currently does **not** support *address variables*. |
+| Sets flags:       | Clears/sets the `Fc` and `Fz` flags                          |
+| Notes:            | See notes under Opcodes.                                     |
+|                   | Overrides data in registers `C` and `D`.                     |
+|                   | Currently does **not** support *address variables*.          |
 
 **Opcodes for STX**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `STX A`   | `1101111`             | `0x6F`       |
-| `STX B`   | `1110000`             | `0x70`       |
-| `STX C`   | `1110111`             | `0x77`       |
-| `STX D`   | `1111000`             | `0x78`       |
+The number of operations required by this instruction could not be performed within the limit of 16 t-states. Therefore this instruction has no opcodes of its own, but the assembler translates it into the following set of instructions:
+```
+LD D {address}      # Load value at {address} into register D
+MOV D AX            # Copy D to AX
+MVI AY 0x00         # Load value 0x00 into AY
+LD C {address + 1}  # Load value at {address+1} into register C
+ADD D               # Load the value of AX (AX + 0x00 == AX) into register D
+STR {R}             # Store the value of register {R} at 
+                    #   the memory address stored in register C and D.
+```
 
   
 

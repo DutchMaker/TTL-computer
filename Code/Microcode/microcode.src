@@ -165,18 +165,18 @@ INSTRUCTIONS
 	LD AX(3):1101010;
 	LD AY(3):1101011;
 	JNE(3):1101100;
-	LDX A(1):1101101;
-	LDX B(1):1101110;
-	STX A(1):1101111;
-	STX B(1):1110000;
+	LDR A(1):1101101;
+	LDR B(1):1101110;
+	STR A(1):1101111;
+	STR B(1):1110000;
 	LD C(3):1110001;
 	LD D(3):1110010;
-	ST C(3):1110011;
-	ST D(3):1110100;
-	LDX C(1):1110101;
-	LDX D(1):1110110;
-	STX C(1):1110111;
-	STX D(1):1111000;
+	LDR C(1):1110101;
+	LDR D(1):1110110;
+	#STR C(1):1110111;
+	#STR D(1):1111000;
+	#ST C(3):1110011;
+	#ST D(3):1110100;
 }
 
 CONTROLLINES
@@ -232,14 +232,14 @@ MICROCODE
 		7 { TSTATE_reset }
 	}
 
-	LDX (r1) {
+	LDR (r1) {
 		0 { C_out;MAR_LB_load }
 		1 { D_out;MAR_HB_load }
 		2 { MEM_out;(r1)_load }
 		3 { TSTATE_reset }
 	}
 
-	STX (r1) {
+	STR (r1) {
 		0 { C_out;MAR_LB_load }
 		1 { D_out;MAR_HB_load }
 		2 { (r1)_out;MEM_RAM_load }
