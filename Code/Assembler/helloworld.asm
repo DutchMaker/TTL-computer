@@ -4,17 +4,18 @@
 :main
 
 	MVI A 0x30
-	ST A 0x4000		# 0x4000: 0x30
+	ST A 0x00		# Will be automatically converted to zero page instruction STZ.
 
 	MVI A 0x00
 
 :nextchar
-	ST A 0x4001		# Store lower byte of memory address pointing to current character
+	ST A 0x01		# Store lower byte of memory address pointing to current character
+					# This gets stored in zero page memory
 
-	LDX A 0x4000	# Load character from memory
+	LDX A 0xFE00	# Load character from memory (zero page indexing not supported).
 	OUT 1 A
 
-	LD AX 0x4001
+	LD AX 0x01		
 	INC A			# Increase lower byte of stored memory address
 
 	MVI AY 0x1B		# Compare AX to 0x1B (decimal 27, length of the string)

@@ -173,15 +173,23 @@ INSTRUCTIONS
 	LD D(3):1110010;
 	LDR C(1):1110101;
 	LDR D(1):1110110;
-	#STR C(1):1110111;
-	#STR D(1):1111000;
-	#ST C(3):1110011;
-	#ST D(3):1110100;
+	LDZ A(2):1110111;
+	LDZ B(2):1111000;
+	LDZ AX(2):1110011;
+	LDZ D(2):1110100;
+	STZ A(2):1100000;
+	STZ B(2):1111001;
+	LDRZ A(1):1111010;
+	LDRZ B(1):1111011;
+	LDRZ AX(1):1111100;
+	LDRZ D(1):1111101;
+	STRZ A(1):1111110;
+	STRZ B(1):1111111;
 }
 
 CONTROLLINES
 {
-	NC;				NC;			NC;			FLAGS_Fc_set;	FLAGS_Fc_clear;	FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
+	NC;				NC;			MAR_ZP;		FLAGS_Fc_set;	FLAGS_Fc_clear;	FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
 	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;			TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
 	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		ALU_shr;		ALU_m;			ALU_s3;
 	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;		AX_load;		STK_reset;		STK_dec;		STK_inc;
@@ -244,6 +252,34 @@ MICROCODE
 		1 { D_out;MAR_HB_load }
 		2 { (r1)_out;MEM_RAM_load }
 		3 { TSTATE_reset }
+	}
+
+	LDZ (r1) {
+		0 { MAR_PC_load	}
+		1 { MEM_out;C_load;PC_inc }
+		2 { C_out;MAR_LB_load;MAR_ZP }
+		3 { (r1)_load;MEM_out }
+		4 { TSTATE_reset }
+	}
+
+	STZ (r1) {
+		0 { MAR_PC_load }
+		1 { MEM_out;C_load;PC_inc }
+		2 { C_out;MAR_LB_load;MAR_ZP }
+		3 { (r1)_out;MEM_RAM_load }
+		4 { TSTATE_reset }
+	}
+
+	LDRZ (r1) {
+		0 { C_out;MAR_LB_load;MAR_ZP }
+		1 { MEM_out;(r1)_load }
+		2 { TSTATE_reset }
+	}
+
+	STRZ (r1) {
+		0 { C_out;MAR_LB_load;MAR_ZP }
+		1 { (r1)_out;MEM_RAM_load }
+		2 { TSTATE_reset }
 	}
 
 	ADD (r1) {

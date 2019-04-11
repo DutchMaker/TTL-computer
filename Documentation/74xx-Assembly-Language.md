@@ -7,6 +7,7 @@ This document is the complete reference to the 74xx Computer Assembly Language.
 - [Structure](#structure)
 - [Registers](#registers)
 - [Flags](#flags)
+- [Memory](#memory)
 - [Instructions](#instructions)
 
 
@@ -67,6 +68,7 @@ The following code example demonstrates how to define **labels**, define and use
 | AY       | Write-only register for the ALU (*operand*).                 |
 | OUT1     | Write-only register used for output control. Can only be written to using the *OUT 1* instruction. |
 
+
 <a name="flags"></a>
 ## Flags
 
@@ -77,6 +79,49 @@ The following code example demonstrates how to define **labels**, define and use
 | Flt  | AX < AY |
 | Feq  | AX == AY |
 | Fgt  | AX > AY |
+
+
+<a name="memory"></a>
+## Memory
+
+The 74xx Computer has two modes of operation:
+
+**1. Boot from ROM**  
+This enables 16kb of ROM which the program counter starts at.  
+Running in this modes leaves 48k of addressable RAM.
+
+**2. RAM only**  
+In this mode there is no ROM at all, just 64k of RAM.  
+There is currently no way of feeding in the program code, other than flipping switches and clocking it in manually.
+
+The different modes results in two possible memory layouts.
+Memory layout when running in **boot from ROM** mode:
+
+| Offset | |
+| ------ | |
+| 0x0000 | ROM              | 
+| 0x4000 | RAM              |
+| 0xFE00 | Zero page memory |
+| 0xFF00 | Stack space      |
+
+Memory layout when running in **RAM only** mode:
+
+| Offset | |
+| ------ | |
+| 0x0000 | RAM              | 
+| 0xFE00 | Zero page memory |
+| 0xFF00 | Stack space      |
+
+### Zero page indexing
+
+Instructions LD, ST, LDR and STR all have a zero page based counterpart: LDZ, STR, LDRZ, STRZ.  
+For example: `LD A 0xFE35` may be replaced with `LDZ A 0x35` to save a few clock cycles.  
+
+The assembler will automatically convert these instructions if zero page indexing was used.
+For example: `LD A 0x35` is automatically replaced with `LDZ A 0x35` by the assembler.
+
+Note that **not** all registers supported by LD (etc.) are also supported by their counterpart (LDZ, etc.)!
+
 
 <a name="instructions"></a>
 ## Instructions
@@ -92,8 +137,12 @@ The following code example demonstrates how to define **labels**, define and use
   - [MVI](#MVI)
   - [LD](#LD)
   - [ST](#ST)
+  - [LDZ](#LDZ)
+  - [STZ](#STZ)
   - [LDR](#LDR)
   - [STR](#STR)
+  - [LDRZ](#LDRZ)
+  - [STRZ](#STRZ)
   - [LDX](#LDX)
   - [STX](#STX)
   - [OUT](#OUT)
@@ -288,7 +337,7 @@ The following code example demonstrates how to define **labels**, define and use
 | `LD AX`  | `1101010`             | `0x6A`       |
 | `LD AY`  | `1101011`             | `0x6B`       |
 
-  
+
 
 ------
 <a name="ST"></a>
@@ -296,7 +345,7 @@ The following code example demonstrates how to define **labels**, define and use
 
 |                   | Store data from register *R* at memory *address*             |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                    |
+| Syntax:           | ST *R*`(A,B)` *address*`(16-bit hex)`                        |
 | Example:          | `ST A 0x40F3`                                                |
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
 | T-states:         | 10                                                           |
@@ -314,6 +363,54 @@ The following code example demonstrates how to define **labels**, define and use
 
 
 ------
+<a name="LDZ"></a>
+#### LDZ
+
+|                   | Load data from zero-page memory *address* into register *R*  |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | LD *R*`(A,B,D,AX)` *address*`(8-bit hex)`                    |
+| Example:          | `LD A 0xF3`                                                  |
+| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                  |
+| T-states:         | 7                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Overrides data in register `C`.                              |
+|                   | Supports *address variables*.                                |
+
+**Opcodes for LDZ**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `LDZ A`  | `1110111`             | `0x77`       |
+| `LDZ B`  | `1111000`             | `0x78`       |
+| `LDZ D`  | `1110100`             | `0x74`       |
+| `LDZ AX` | `1110011`             | `0x73`       |
+
+
+
+------
+<a name="STZ"></a>
+#### STZ
+
+|                   | Store data from register *R* at zero-page memory *address*   |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | ST *R*`(A,B)` *address*`(8-bit hex)`                         |
+| Example:          | `ST A 0xF3`                                                  |
+| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                  |
+| T-states:         | 7                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Overrides data in register `C`. 					           |
+|                   | Supports *address variables*.                                |
+
+**Opcodes for STZ**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `STZ A`  | `1100000`             | `0x60`       |
+| `STZ B`  | `1111001`             | `0x79`       |
+
+
+
+------
 <a name="LDR"></a>
 #### LDR
 
@@ -325,7 +422,6 @@ The following code example demonstrates how to define **labels**, define and use
 | T-states:         | 6                                                            |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Registers `C` and `D` must contain a memory address.         |
-|                   | Overrides data in registers `C` and `D` during operation.    |
 
 **Opcodes for LDR**
 
@@ -350,7 +446,6 @@ The following code example demonstrates how to define **labels**, define and use
 | T-states:         | 6                                                            |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Registers `C` and `D` must contain a memory address.         |
-|                   | Overrides data in registers `C` and `D` during operation.    |
 
 **Opcodes for STR**
 
@@ -358,6 +453,52 @@ The following code example demonstrates how to define **labels**, define and use
 | :------- | --------------------- | ------------ |
 | `STR A`  | `1101111`             | `0x6F`       |
 | `STR B`  | `1110000`             | `0x70`       |
+
+
+
+------
+<a name="LDRZ"></a>
+#### LDRZ
+
+|                   | Load data from the zero-page memory address stored in register *C* into register *R* |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | LDRZ *R*`(A,B,D,AX)`                                         |
+| Example:          | `LDRZ A`                                                     |
+| Instruction data: | `opcode` (1 byte)                                            |
+| T-states:         | 5                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Register `C` must contain a zero-page memory address.        |
+
+**Opcodes for LDRZ**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `LDRZ A` | `1111010`             | `0x7A`       |
+| `LDRZ B` | `1111011`             | `0x7B`       |
+| `LDRZ D` | `1111101`             | `0x7D`       |
+| `LDRZ AZ`| `1111100`             | `0x7C`       |
+
+
+
+------
+<a name="STRZ"></a>
+#### STRZ
+
+|                   | Store data from register *R* at the zero-page memory address stored in register *C* |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | STRZ *R*`(A,B)`                                              |
+| Example:          | `STR A`                                                      |
+| Instruction data: | `opcode` (1 byte)                                            |
+| T-states:         | 5                                                            |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Register `C` must contain a zero-page memory address.        |
+
+**Opcodes for STRZ**
+
+| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| :------- | --------------------- | ------------ |
+| `STRZ A` | `1111110`             | `0xFE`       |
+| `STRZ B` | `1111111`             | `0xFF`       |
 
 
 

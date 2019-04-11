@@ -16,7 +16,7 @@ namespace Asm
             /*args = new [] 
             {
                 @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src",
-                @"e:\Personal\Projects\Active\TTL-Computer\Code\Assembler\test.asm"
+                @"e:\Personal\Projects\Active\TTL-Computer\Code\Assembler\helloworld.asm"
             };*/
 
             if (args.Length == 0)

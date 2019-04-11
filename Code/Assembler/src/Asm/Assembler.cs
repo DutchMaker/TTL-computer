@@ -10,6 +10,12 @@ namespace Asm
     public class Assembler
     {
         private readonly string[] LABEL_INSTRUCTIONS = { "JMP", "JZ", "JNZ", "JC", "JNC", "JEQ", "JNE", "JLT", "JGT", "CALL" };
+        private readonly Dictionary<string, string> ZEROPAGE_TRANSLATIONS = new Dictionary<string, string>
+        {
+            { "LD A", "LDZ A" }, { "LD B", "LDZ B" },
+            { "LD D", "LDZ D" }, { "LD AX", "LDZ AX" },
+            { "ST A", "STZ A" }, { "ST B", "STZ B" }
+        };
 
         private static Assembler _assembler;
         private MicrocodeCompiler microcodeCompiler;
@@ -183,8 +189,18 @@ namespace Asm
                     }
                     else if (instructionLength == 3)
                     {
+                        // Check if we need to translate to a zero page instruction.
+                        if (parts[parts.Length - 1].Length == 4 && ZEROPAGE_TRANSLATIONS.ContainsKey(instruction.Key))
+                        {
+                            // Replace instruction with zero page instruction and process line again.
+                            lines[l] = line.Replace(instruction.Key, ZEROPAGE_TRANSLATIONS[instruction.Key]);
+                            l--;
+                            address--;
+                            continue;
+                        }
+
                         // There is one operand which is a hex value representing two bytes. 
-                        var bytes = BitConverter.GetBytes(Convert.ToInt16(parts[parts.Length - 1], 16));
+                        var bytes = BitConverter.GetBytes(Convert.ToInt32(parts[parts.Length - 1], 16));
                         machineCode[address++] = bytes[1];
                         machineCode[address++] = bytes[0];
                     }
@@ -317,10 +333,15 @@ namespace Asm
                     string instruction = parts[0];
                     string register = parts[1];
                     string address = parts[2];
-                    string addressPlusOne = $"0x{(Convert.ToInt16(address, 16) + 1):X4}";
+                    string addressPlusOne = $"0x{(Convert.ToInt32(address, 16) + 1):X4}";
+
+                    if (address.Length == 4)
+                    {
+                        throw new AssemblerException($"Zero page indexing not supported for {instruction} instruction.");
+                    }
 
                     instruction = instruction.Substring(0, 2) + "R";
-                    
+
                     string instructionCode = $@"
                         LD D {address}
 
