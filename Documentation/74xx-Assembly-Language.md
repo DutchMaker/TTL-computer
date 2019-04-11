@@ -65,7 +65,7 @@ The following code example demonstrates how to define **labels**, define and use
 ## Registers
 
 | Register | Purpose                                                      |
-| -------- | ------------------------------------------------------------ |
+| :------- | :----------------------------------------------------------- |
 | A, B     | General purpose bi-directional registers.                    |
 | C, D     | Bi-directional registers that may be used for general purpose, but are also used for temporary address storage by some instructions. Address *low byte* is stored in register C, while the *high byte* is stored in D. |
 | AX       | Write-only register for the ALU (*accumulator*).             |
@@ -77,7 +77,7 @@ The following code example demonstrates how to define **labels**, define and use
 ## Flags
 
 | Flag | Purpose                                                                                    _ |
-| ---- | ------- |
+| :--- | :------ |
 | Fc   | ALU operation resulted in a carry |
 | Fz   | ALU operation resulted in zero |
 | Flt  | AX < AY |
@@ -102,7 +102,7 @@ The different modes results in two possible memory layouts.
 Memory layout when running in **boot from ROM** mode:
 
 | Offset | Purpose          |
-| ------ | ---------------- |
+| :----- | :--------------- |
 | 0x0000 | ROM              |
 | 0x4000 | RAM              |
 | 0xFE00 | Zero page memory |
@@ -111,17 +111,17 @@ Memory layout when running in **boot from ROM** mode:
 Memory layout when running in **RAM only** mode:
 
 | Offset | Purpose          |
-| ------ | ---------------- |
+| :----- | :--------------- |
 | 0x0000 | RAM              |
 | 0xFE00 | Zero page memory |
 | 0xFF00 | Stack space      |
 
-### Zero page indexing
+### Zero page addressing
 
 Instructions LD, ST, LDR and STR all have a zero page based counterpart: LDZ, STR, LDRZ, STRZ.  
 For example: `LD A 0xFE35` may be replaced with `LDZ A 0x35` to save a few clock cycles.  
 
-The assembler will automatically convert these instructions if zero page indexing was used.
+The assembler will automatically convert these instructions if zero page addressing was used.
 For example: `LD A 0x35` is automatically replaced with `LDZ A 0x35` by the assembler.
 
 Note that **not** all registers supported by LD (etc.) are also supported by their counterpart (LDZ, etc.)!
