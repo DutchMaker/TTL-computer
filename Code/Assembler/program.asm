@@ -20,13 +20,13 @@
 	# or the first one after the :data label.
 	
 	MVI A 0xB1
-	MOV A B
+	MOV B A
 
 	MVI C 0xA2
-	MOV C A
+	MOV A C
 
 	MVI D 0xC3
-	MOV D C
+	MOV C D
 
 	MVI D 0xD4
 
@@ -38,7 +38,7 @@
 	JMP label3
 
 :testlabel
-	MOV A B
+	MOV B A
 
 	HALT
 

@@ -347,7 +347,7 @@ namespace Asm
                             MVI AY 0x00
 
                             LD D {addressPlusOne}
-                            MOV D C
+                            MOV C D
                             ADD D
 
                             {instruction} {register} #DONE";

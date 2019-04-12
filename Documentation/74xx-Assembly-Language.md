@@ -50,7 +50,7 @@ The following code example demonstrates how to define **labels**, define and use
 
 :example
 
-	MOV A B
+	MOV B A
 	... more instructions here ...
 	
 	RET				# Jump back to the caller address.
@@ -254,10 +254,10 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 #### MOV
 
-|                   | Copy data from register *R1* to register *R2* |
+|                   | Copy data from register *R2* into register *R1* |
 | :---------------- | --------------------------------------------- |
-| Syntax:           | MOV *R1*`(A,B,C,D)` *R2*`(A,B,C,D,AX,AY)`     |
-| Example:          | `MOV B AX`                                    |
+| Syntax:           | MOV *R1*`(A,B,C,D,AX,AY)` *R2*`(A,B,C,D)`     |
+| Example:          | `MOV AX B`                                    |
 | Instruction data: | `opcode` (1 byte)                             |
 | T-states:         | 4                                             |
 | Sets flags:       | *none*                                        |
@@ -267,26 +267,26 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 | Mnemonic   | Opcode (7-bit binary) | Opcode (hex) |
 | :--------- | --------------------- | ------------ |
-| `MOV A B`  | `0000010`             | `0x02`       |
-| `MOV A C`  | `0000011`             | `0x03`       |
-| `MOV A D`  | `0000100`             | `0x04`       |
-| `MOV B A`  | `0000101`             | `0x05`       |
-| `MOV B C`  | `0000110`             | `0x06`       |
-| `MOV B D`  | `0000111`             | `0x07`       |
-| `MOV C A`  | `0001000`             | `0x08`       |
-| `MOV C B`  | `0001001`             | `0x09`       |
-| `MOV C D`  | `0001010`             | `0x0A`       |
-| `MOV D A`  | `0001011`             | `0x0B`       |
-| `MOV D B`  | `0001100`             | `0x0C`       |
-| `MOV D C`  | `0001101`             | `0x0D`       |
-| `MOV A AX` | `1010101`             | `0x55`       |
-| `MOV B AX` | `1010110`             | `0x56`       |
-| `MOV C AX` | `1010111`             | `0x57`       |
-| `MOV D AX` | `1011000`             | `0x58`       |
-| `MOV A AY` | `1011001`             | `0x59`       |
-| `MOV B AY` | `1011010`             | `0x5A`       |
-| `MOV C AY` | `1011011`             | `0x5B`       |
-| `MOV D AY` | `1011100`             | `0x5C`       |
+| `MOV B A`  | `0000010`             | `0x02`       |
+| `MOV C A`  | `0000011`             | `0x03`       |
+| `MOV D A`  | `0000100`             | `0x04`       |
+| `MOV A B`  | `0000101`             | `0x05`       |
+| `MOV C B`  | `0000110`             | `0x06`       |
+| `MOV D B`  | `0000111`             | `0x07`       |
+| `MOV A C`  | `0001000`             | `0x08`       |
+| `MOV B C`  | `0001001`             | `0x09`       |
+| `MOV D C`  | `0001010`             | `0x0A`       |
+| `MOV A D`  | `0001011`             | `0x0B`       |
+| `MOV B D`  | `0001100`             | `0x0C`       |
+| `MOV C D`  | `0001101`             | `0x0D`       |
+| `MOV AX A` | `1010101`             | `0x55`       |
+| `MOV AX B` | `1010110`             | `0x56`       |
+| `MOV AX C` | `1010111`             | `0x57`       |
+| `MOV AX D` | `1011000`             | `0x58`       |
+| `MOV AY A` | `1011001`             | `0x59`       |
+| `MOV AY B` | `1011010`             | `0x5A`       |
+| `MOV AY C` | `1011011`             | `0x5B`       |
+| `MOV AY D` | `1011100`             | `0x5C`       |
 
   
 
