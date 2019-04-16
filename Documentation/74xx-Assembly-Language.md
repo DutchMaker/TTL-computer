@@ -374,13 +374,14 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 |                   | Load data from zero-page memory *address* into register *R*  |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | LD *R*`(A,B,D,AX)` *address*`(8-bit hex)`                    |
-| Example:          | `LD A 0xF3`                                                  |
+| Syntax:           | LDZ *R*`(A,B,D,AX)` *address*`(8-bit hex)`                   |
+| Example:          | `LDZ A 0xF3`                                                 |
 | Instruction data: | `opcode` `zero-page address byte` (2 bytes)                  |
 | T-states:         | 7                                                            |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in register `C`.                              |
 |                   | Supports *address variables*.                                |
+|                   | Cannot operate on C and AX register because there are not enough opcodes available. |
 
 **Opcodes for LDZ**
 
@@ -397,15 +398,15 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 <a name="STZ"></a>
 #### STZ
 
-|                   | Store data from register *R* at zero-page memory *address*   |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | ST *R*`(A,B)` *address*`(8-bit hex)`                         |
-| Example:          | `ST A 0xF3`                                                  |
-| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                  |
-| T-states:         | 7                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in register `C`. 					           |
-|                   | Supports *address variables*.                                |
+|                   | Store data from register *R* at zero-page memory *address* |
+| :---------------- | :--------------------------------------------------------- |
+| Syntax:           | STZ *R*`(A,B)` *address*`(8-bit hex)`                      |
+| Example:          | `STZ A 0xF3`                                               |
+| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                |
+| T-states:         | 7                                                          |
+| Sets flags:       | *none*                                                     |
+| Notes:            | Overrides data in register `C`.                            |
+|                   | Supports *address variables*.                              |
 
 **Opcodes for STZ**
 
