@@ -329,7 +329,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`.                     |
 |                   | Supports *address variables*.                                |
-|                   | Supports zero page addressing.                               |
+|                   | Supports zero page addressing, but **not on C & AY** register! |
 
 **Opcodes for LD**
 

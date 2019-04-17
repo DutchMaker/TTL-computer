@@ -12,7 +12,6 @@
 	ST A 0x01		# 
 
 	MVI A 0xFF		# Reset LCD display by sending 0xFF.
-	OUT 1 A			#
 	OUT 2 A			#
 
 	MVI B 0x3F		# Start counter at 64.
@@ -22,7 +21,6 @@
 
 	LDX A 0xFE00	# Load byte from VRAM address that is stored at 0xFE00 (zero page 0x00).
 					# Leaves C & D filled with low/high byte of VRAM address.
-	OUT 1 A			#
 	OUT 2 A			# Output byte to LCD display.
 	
 	MOV AX C 		# Increase low VRAM address byte (A).
