@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="877e7441-5607-496b-ab93-378d9da535df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/ALU/ALU.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/ALU/ALU.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/ALU/ALU.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/ALU/ALU.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.net" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.net" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Clock/Clock.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Controller-Sequencer/Controller-Sequencer.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Controller-Sequencer/Controller-Sequencer.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Controller-Sequencer/Controller-Sequencer.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Controller-Sequencer/Controller-Sequencer.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory-Access-Register/Memory-Access-Register.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory-Access-Register/Memory-Access-Register.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory-Access-Register/Memory-Access-Register.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory-Access-Register/Memory-Access-Register.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory/Memory.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory/Memory.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory/Memory.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Memory/Memory.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Program-Counter/Program-Counter.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Program-Counter/Program-Counter.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Program-Counter/Program-Counter.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Program-Counter/Program-Counter.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-A/Register-A.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-A/Register-A.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-A/Register-A.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-A/Register-A.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-B/Register-B.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-B/Register-B.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-B/Register-B.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-B/Register-B.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-C/Register-C.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-C/Register-C.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-C/Register-C.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-C/Register-C.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-D/Register-D.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-D/Register-D.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-D/Register-D.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-D/Register-D.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Flags/Register-Flags.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Flags/Register-Flags.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Flags/Register-Flags.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Flags/Register-Flags.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Instruction/Register-Instruction.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Instruction/Register-Instruction.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Instruction/Register-Instruction.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Register-Instruction/Register-Instruction.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Stack-Pointer/Stack-Pointer.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Stack-Pointer/Stack-Pointer.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Stack-Pointer/Stack-Pointer.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/Stack-Pointer/Stack-Pointer.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.bck" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.bck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.dcm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.dcm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer-Components.lib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Circuits/Schematics-KiCad/TTL-Computer.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../app/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../display.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../display.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../helloworld.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../program.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../program.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Asm.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/Asm.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/Asm.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/Assembler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/Assembler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/AssemblerException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/AssemblerException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/MicrocodeCompiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/MicrocodeCompiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/MicrocodeCompilerException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/MicrocodeCompilerException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asm/Properties/PublishProfiles/FolderProfile.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/Asm/Properties/PublishProfiles/FolderProfile.pubxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/app/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/app/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/microcode.src" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/microcode.src" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc/Compiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc/Compiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc/CompilerException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc/CompilerException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc/Mcc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc/Mcc.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Microcode/src/Mcc/Properties/PublishProfiles/FolderProfile.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Microcode/src/Mcc/Properties/PublishProfiles/FolderProfile.pubxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Documentation/74xx-Assembly-Language.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Documentation/74xx-Assembly-Language.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Documentation/Modules/Controller.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Documentation/Modules/Controller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Documentation/Modules/Memory.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Documentation/Modules/Memory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/74xx-Computer.circ" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/74xx-Computer.circ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/libraries/74181 v2.circ" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/libraries/74181 v2.circ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/libraries/74191.circ" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/libraries/74191.circ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/tests/ALU-test.circ" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/tests/ALU-test.circ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Logisim/tests/RAM-ROM_enable.circ" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Logisim/tests/RAM-ROM_enable.circ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../README.md" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Asm/Assembler.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="435" selection-start-line="435" selection-end-line="435" />
+              <folding>
+                <marker date="1555678600645" expanded="false" signature="6:128" ph="..." />
+                <marker date="1555678600645" expanded="true" signature="143:16135" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="172:16133" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="422:596" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="1227:1565" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="1663:1821" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="1854:2224" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="2265:4367" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="2322:2442" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="2490:2597" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="3220:4273" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="3280:3441" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="3698:3851" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="3872:4099" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="4142:4259" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="4407:9392" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="5008:8013" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="5122:5241" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="5295:5426" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="6193:6468" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="6232:6340" ph="/* Current instruction refers to a label. ... */" />
+                <marker date="1555678600645" expanded="true" signature="6516:7999" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="6758:6988" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="7041:7981" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="7267:7641" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="8132:8495" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="8610:8901" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="8669:8796" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9005:9350" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9132:9336" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9195:9318" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9471:9951" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9519:9914" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="9700:9825" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10012:10708" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10060:10671" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10411:10507" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10528:10627" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10768:11740" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="10814:11704" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="11017:11095" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="11447:11574" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="11813:14094" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="11927:13962" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="12055:13948" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="12583:13028" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="13053:13375" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="14134:14491" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="14189:14262" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="14360:14481" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="14563:14821" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="14873:14975" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15030:15542" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15150:15230" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15283:15372" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15421:15504" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15581:16127" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15632:16117" ph="{...}" />
+                <marker date="1555678600645" expanded="true" signature="15812:15900" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Asm/Asm.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Asm/Assembler.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Asm/Assembler.cs" />
+        <option value="$PROJECT_DIR$/Asm/Asm.csproj" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="277" />
+    <option name="y" value="57" />
+    <option name="width" value="1400" />
+    <option name="height" value="967" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Asm" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../app/linux" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Publish to folder.Publish Asm to folder">
+    <configuration name="Publish Asm to folder" type="DotNetFolderPublish" factoryName="Publish to folder" temporary="true">
+      <riderPublish runtime="linux-x64" self_contained="true" target_folder="$PROJECT_DIR$/../app/linux" target_framework="netcoreapp2.1" uuid_high="4711721582824146347" uuid_low="-5680768680579877906" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Default" />
+      <item itemvalue="Publish to folder.Publish Asm to folder" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Publish to folder.Publish Asm to folder" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="877e7441-5607-496b-ab93-378d9da535df" name="Default Changelist" comment="" />
+      <created>1555614554487</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555614554487</updated>
+      <workItem from="1555614561037" duration="124000" />
+      <workItem from="1555615062063" duration="326000" />
+      <workItem from="1555677823520" duration="1036000" />
+      <workItem from="1555679464191" duration="1573000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3059000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1920" height="1014" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18729989" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32897863" />
+      <window_info anchor="bottom" id="NuGet" order="7" sideWeight="0.4994664" weight="0.32992035" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4985229" weight="0.32819906" />
+      <window_info anchor="bottom" id="Unit Tests" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50213444" side_tool="true" visible="true" weight="0.21843003" />
+      <window_info anchor="bottom" id="Build" order="13" sideWeight="0.49786553" visible="true" weight="0.21843003" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Asm/Assembler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="435" selection-start-line="435" selection-end-line="435" />
+          <folding>
+            <marker date="1555678600645" expanded="false" signature="6:128" ph="..." />
+            <marker date="1555678600645" expanded="true" signature="143:16135" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="172:16133" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="422:596" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="1227:1565" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="1663:1821" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="1854:2224" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="2265:4367" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="2322:2442" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="2490:2597" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="3220:4273" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="3280:3441" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="3698:3851" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="3872:4099" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="4142:4259" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="4407:9392" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="5008:8013" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="5122:5241" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="5295:5426" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="6193:6468" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="6232:6340" ph="/* Current instruction refers to a label. ... */" />
+            <marker date="1555678600645" expanded="true" signature="6516:7999" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="6758:6988" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="7041:7981" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="7267:7641" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="8132:8495" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="8610:8901" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="8669:8796" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9005:9350" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9132:9336" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9195:9318" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9471:9951" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9519:9914" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="9700:9825" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10012:10708" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10060:10671" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10411:10507" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10528:10627" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10768:11740" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="10814:11704" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="11017:11095" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="11447:11574" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="11813:14094" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="11927:13962" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="12055:13948" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="12583:13028" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="13053:13375" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="14134:14491" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="14189:14262" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="14360:14481" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="14563:14821" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="14873:14975" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15030:15542" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15150:15230" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15283:15372" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15421:15504" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15581:16127" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15632:16117" ph="{...}" />
+            <marker date="1555678600645" expanded="true" signature="15812:15900" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asm/Asm.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

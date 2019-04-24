@@ -436,8 +436,6 @@ namespace Asm
 
         private void RemoveComments()
         {
-            int i = 0;
-
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
