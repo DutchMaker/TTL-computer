@@ -62,10 +62,10 @@ namespace Mcc
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
-                int commentEnd = source.IndexOf("\n", commentStart);
+                int commentEnd = source.IndexOf("\r\n", commentStart);
 
                 string beforeComment = source.Substring(0, commentStart);
-                string afterComment = source.Substring(commentEnd + 1);
+                string afterComment = source.Substring(commentEnd + 2);
 
                 source = beforeComment + afterComment;
             }
@@ -148,7 +148,7 @@ namespace Mcc
                     if (!tstate.Contains("["))
                     {
                         // If no flags state was defined, simply add the state with the irrelevant flags state.
-                        flagstates.Add("xxxxx", tstate);
+                        flagstates.Add("xxx", tstate);
                     }
                     else
                     {
@@ -301,7 +301,7 @@ namespace Mcc
                     {
                         // Remember that tstate 0 and 1 are hardwired in the CPU.
                         // We need to increase our tstate by 2 before converting to binary.
-                        string tstateBits = Convert.ToString(tstate + 2, 2).PadLeft(4, '0');
+                        string tstateBits = Convert.ToString(tstate + 2, 2).PadLeft(5, '0');
 
                         foreach (string flagsStateBits in microSourceCode[mnemonic][tstate].Keys)
                         {
@@ -315,7 +315,7 @@ namespace Mcc
                                 // Construct ROM memory address:
                                 // 
                                 // [flags][instruction][t-state][bank]
-                                // [00000][0000000][0000][000]
+                                // [0000][00000000][0000][000]
                                 string addressString = flagsStateBits + instructionBits + tstateBits + bankBits;
                                 string dataString = controlWord.Substring(bank * 8, 8);
 

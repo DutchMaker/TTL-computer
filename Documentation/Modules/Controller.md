@@ -43,35 +43,35 @@ The memory address at which this is stored is constructed using the following va
 - Bank number (i.e. byte number, one bank for each of the 6 bytes).
   *3 bits*
 - CPU flags state.
-  *5 bits*
+  *3 bits*
 - Instruction OP-code.
-  *7 bits*
+  *8 bits*
 - Instruction T-state.
-  *4 bits*
+  *5 bits*
 
 This leads to an 19 bit address which is exactly what is supported by the 29C040 ROM we are using. 
 
 The final memory address is laid out as such:
 
 `[flags][instruction][t-state][bank]`
-`[00000][0000000][0000][000]`
+`[000][00000000][00000][000]`
 
 Flags are ordered as such:
 
-| Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
-| ----- | ----- | ----- | ----- | ----- |
-| `Fgt` | `Feq` | `Flt` | `Fz`  | `Fc`  |
+| Bit 2  | Bit 1 | Bit 0 |
+| ------ | ----- | ----- |
+| `Fcmp` | `Fz`  | `Fc`  |
 
 ### Data layout
 
-|            | Bit 7          | Bit 6         | Bit 5         | Bit 4         | Bit 3          | Bit 2        | Bit 1     | Bit 0          |
-| ---------- | -------------- | ------------- | ------------- | ------------- | -------------- | ------------ | --------- | -------------- |
-| **Bank 0** |                |               |               |               |                |              |           |                |
-| **Bank 1** |                | `OUT2_in`     | `OUT1_in`     | `IN_out`      | `TSTATE_reset` | `CLOCK_halt` | `MEM_out` | `MEM_RAM_load` |
-| **Bank 2** | `MAR_STK_load` | `MAR_PC_load` | `MAR_HB_load` | `MAR_LB_load` | `ALU_out`      | `ALU_cn`     | `ALU_m`   | `ALU_s3`       |
-| **Bank 3** | `ALU_s2`       | `ALU_s1`      | `ALU_s0`      | `ALU_B_in`    | `ALU_A_in`     | `STK_reset`  | `STK_dec` | `STK_inc`      |
-| **Bank 4** | `PC_HB_out`    | `PC_LB_out`   | `PC_HB_load`  | `PC_LB_load`  | `PC_dec`       | `PC_inc`     | `IR_load` | `FLAGS_load`   |
-| **Bank 5** | `D_load`       | `D_out`       | `C_load`      | `C_out`       | `B_load`       | `B_out`      | `A_load`  | `A_out`        |
+|            | Bit 7            | Bit 6         | Bit 5         | Bit 4          | Bit 3            | Bit 2           | Bit 1            | Bit 0            |
+| ---------- | ---------------- | ------------- | ------------- | -------------- | ---------------- | --------------- | ---------------- | ---------------- |
+| **Bank 0** |                  |               | `MAR_ZP`      | `FLAGS_Fc_set` | `FLAGS_Fc_clear` | `FLAGS_Fc_load` | `FLAGS_Flt_load` | `FLAGS_Feq_load` |
+| **Bank 1** | `FLAGS_Fgt_load` | `OUT2_in`     | `OUT1_in`     | `IN_out`       | `TSTATE_reset`   | `CLOCK_halt`    | `MEM_out`        | `MEM_RAM_load`   |
+| **Bank 2** | `MAR_STK_load`   | `MAR_PC_load` | `MAR_HB_load` | `MAR_LB_load`  | `ALU_out`        | `ALU_cn`        | `ALU_m`          | `ALU_s3`         |
+| **Bank 3** | `ALU_s2`         | `ALU_s1`      | `ALU_s0`      | `ALU_B_in`     | `ALU_A_in`       | `STK_reset`     | `STK_dec`        | `STK_inc`        |
+| **Bank 4** | `PC_HB_out`      | `PC_LB_out`   | `PC_HB_load`  | `PC_LB_load`   | `PC_dec`         | `PC_inc`        | `IR_load`        | `FLAGS_load`     |
+| **Bank 5** | `D_load`         | `D_out`       | `C_load`      | `C_out`        | `B_load`         | `B_out`         | `A_load`         | `A_out`          |
 
 ## Microcode
 

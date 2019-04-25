@@ -2,6 +2,13 @@
 
 This document is the complete reference to the 74xx Computer Assembly Language.
 
+**TODO:**
+
+- Update opcodes
+- Update branching instructions
+- Add microcode for LDX & STX
+- Update Logisim
+
 **Contents:**
 
 - [Structure](#structure)
@@ -77,15 +84,13 @@ The following code example demonstrates how to define **labels**, define and use
 ## Flags
 
 | Flag | Purpose                                                                                    _ |
-| :--- | :------ |
-| Fc   | ALU operation resulted in a carry |
-| Fz   | ALU operation resulted in zero |
-| Flt  | AX < AY |
-| Feq  | AX == AY |
-| Fgt  | AX > AY |
-
+| :--- | :----------------------------------------------------------- |
+| Fc   | ALU operation resulted in a carry                            |
+| Fz   | ALU operation resulted in zero                               |
+| Fcmp | Result of the last `CMP` operation                           |
 
 <a name="memory"></a>
+
 ## Memory
 
 The 74xx Computer has two modes of operation:
@@ -172,7 +177,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
   - [JC](#JC)
   - [JNC](#JNC)
   - [JEQ](#JEQ)
-  - [JNE](#JNE)
+  - [JNEQ](#JNEQ)
   - [JLT](#JLT)
   - [JGT](#JGT)
   - [CALL](#CALL)
@@ -206,6 +211,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 ------
 <a name="HALT"></a>
+
 #### HALT
 
 |                   | Halt CPU execution |
@@ -892,20 +898,24 @@ STR {R}             # Store the value of register {R} at
 <a name="CMP"></a>
 #### CMP
 
-|                   | Perform different comparisons on `AX` and `AY`               |
+|                   | Perform comparison operation on `AX` and `AY`                |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | CMP                                                          |
-| Example:          | `CMP`                                                        |
+| Syntax:           | CMP *F*`(EQ,LT,GT)`                                          |
+| Example:          | `CMP EQ`                                                     |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 7                                                            |
-| Sets flags:       | Clears the `Fc` flag before the operation, then loads the `Flt`, `Feq` and `Fgt` flag from ALU during the operation. `Fz` is set when `AX` is zero. |
-| Notes:            | *none*                                                       |
+| T-states:         | 4 (`EQ` & `GT`) or 5 (`LT`)                                  |
+| Sets flags:       | Clears or sets the `Fc` flag before the operation, then stores the result of the comparison as the  `Fcmp` flag. |
+| Notes:            | `CMP EQ` performs `AX == AY` comparison                      |
+|                   | `CMP LT` performs `AX < AY` comparison                       |
+|                   | `CMP GT` performs `AX > AY` comparison                       |
 
 **Opcodes for CMP**
 
 | Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `CMP`    | `0111100`             | `0x3C`       |
+| `CMP EQ` | `0111100`             | `0x3C`       |
+| `CMP LT` | `0000000`             | `0x00`       |
+| `CMP GT` | `0000000`             | `0x00`       |
 
 
 
@@ -1037,23 +1047,24 @@ STR {R}             # Store the value of register {R} at
 
 
 ------
-<a name="JNE"></a>
-#### JNE
+<a name="JNEQ"></a>
+
+#### JNEQ
 
 |                   | Perform a jump when the `Feq` flag is *not* set              |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JNE *label*                                                  |
-| Example:          | `JNE target`                                                 |
+| Syntax:           | JNEQ *label*                                                 |
+| Example:          | `JNEQ target`                                                |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
 | T-states:         | 9                                                            |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`                      |
 
-**Opcodes for JNE**
+**Opcodes for JNEQ**
 
 | Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `JNE`    | `1101100`             | `0x6C`       |
+| `JNEQ`   | `1101100`             | `0x6C`       |
 
 
 
