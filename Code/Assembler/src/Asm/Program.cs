@@ -15,8 +15,8 @@ namespace Asm
 
             args = new [] 
             {
-                @"e:\Personal\Projects\Active\TTL-Computer\Code\Microcode\microcode.src",
-                @"e:\Personal\Projects\Active\TTL-Computer\Code\Assembler\display.asm"
+                @"/media/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Code/Microcode/microcode.src",
+                @"/media/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Code/Assembler/program.asm"
             };
 
             if (args.Length == 0)

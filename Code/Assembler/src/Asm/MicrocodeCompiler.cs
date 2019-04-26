@@ -62,10 +62,10 @@ namespace Asm
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
-                int commentEnd = source.IndexOf("\n", commentStart);
+                int commentEnd = source.IndexOf("\r\n", commentStart);
 
                 string beforeComment = source.Substring(0, commentStart);
-                string afterComment = source.Substring(commentEnd + 1);
+                string afterComment = source.Substring(commentEnd + 2);
 
                 source = beforeComment + afterComment;
             }
@@ -148,7 +148,7 @@ namespace Asm
                     if (!tstate.Contains("["))
                     {
                         // If no flags state was defined, simply add the state with the irrelevant flags state.
-                        flagstates.Add("xxxxx", tstate);
+                        flagstates.Add("xxx", tstate);
                     }
                     else
                     {

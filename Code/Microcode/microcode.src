@@ -410,6 +410,90 @@ MICROCODE
 		7 { TSTATE_reset }
 	}
 
+	RETC Z {
+		0 { 
+			[x0x] TSTATE_reset
+			[x1x] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	RETC NZ {
+		0 { 
+			[x1x] TSTATE_reset
+			[x0x] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	RETC C {
+		0 { 
+			[xx0] TSTATE_reset
+			[xx1] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	RETC NC {
+		0 { 
+			[xx1] TSTATE_reset
+			[xx0] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	RETC CMP {
+		0 { 
+			[0xx] TSTATE_reset
+			[1xx] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
+	RETC NCMP {
+		0 { 
+			[1xx] TSTATE_reset
+			[0xx] STK_dec 
+		}
+		1 { MAR_STK_load }
+		2 { MEM_out;C_load;STK_dec }
+		3 { MAR_STK_load }
+		4 { MEM_out;D_load }
+		5 { C_out;PC_LB_load }
+		6 { D_out;PC_HB_load }
+		7 { TSTATE_reset }
+	}
+
 	JMP {
 		0 { MAR_PC_load }
 		1 { MEM_out;D_load;PC_inc }

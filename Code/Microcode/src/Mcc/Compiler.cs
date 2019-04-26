@@ -315,7 +315,7 @@ namespace Mcc
                                 // Construct ROM memory address:
                                 // 
                                 // [flags][instruction][t-state][bank]
-                                // [0000][00000000][0000][000]
+                                // [000][00000000][00000][000]
                                 string addressString = flagsStateBits + instructionBits + tstateBits + bankBits;
                                 string dataString = controlWord.Substring(bank * 8, 8);
 

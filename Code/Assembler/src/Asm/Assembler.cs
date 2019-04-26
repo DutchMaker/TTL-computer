@@ -9,7 +9,12 @@ namespace Asm
 {
     public class Assembler
     {
-        private readonly string[] LABEL_INSTRUCTIONS = { "JMP", "JZ", "JNZ", "JC", "JNC", "JEQ", "JNE", "JLT", "JGT", "CALL" };
+        private readonly string[] LABEL_INSTRUCTIONS = 
+        { 
+            "JMP", "JMPC Z", "JMPC NZ", "JMPC C", "JMPC NC", "JMPC CMP", "JMPC NCMP",
+            "CALL", "CALLC Z", "CALLC NZ", "CALLC C", "CALLC NC", "CALLC CMP", "CALLC NCMP"
+        };
+        
         private readonly Dictionary<string, string> ZEROPAGE_TRANSLATIONS = new Dictionary<string, string>
         {
             { "LD A", "LDZ A" }, { "LD B", "LDZ B" },
@@ -160,8 +165,17 @@ namespace Asm
                 line = ReplaceVariablesInLine(line);
 
                 // Find instruction definition for current line.
-                var instruction = microcodeCompiler.Instructions.OrderByDescending(x => x.Key.Length)
-                    .First(x => line.StartsWith(x.Key));
+                KeyValuePair<string, string> instruction;
+                
+                try
+                {
+                    instruction = microcodeCompiler.Instructions.OrderByDescending(x => x.Key.Length)
+                        .First(x => line.StartsWith(x.Key));
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new AssemblerException($"Instruction not defined: {line}");
+                }
 
                 byte instructionByte = Convert.ToByte(instruction.Value, 2);
                 int instructionLength = microcodeCompiler.InstructionLengths[instruction.Key];
@@ -439,7 +453,7 @@ namespace Asm
             while (source.Contains("#"))
             {
                 int commentStart = source.IndexOf("#");
-                int commentEnd = source.IndexOf("\n", commentStart) - 1;
+                int commentEnd = source.IndexOf("\r\n", commentStart) - 1;
 
                 if (commentEnd < 0)
                 {
@@ -447,7 +461,7 @@ namespace Asm
                 }
 
                 string beforeComment = source.Substring(0, commentStart);
-                string afterComment = source.Substring(commentEnd + 1);
+                string afterComment = source.Substring(commentEnd + 2);
 
                 source = beforeComment + afterComment;
             }

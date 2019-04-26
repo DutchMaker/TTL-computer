@@ -4,10 +4,10 @@ This document is the complete reference to the 74xx Computer Assembly Language.
 
 **TODO:**
 
-- Update opcodes
-- Update branching instructions
+- Update all 7-bit opcodes to 8 bit
+- Update branching instructions (done in doc)
 - Add microcode for LDX & STX
-- Update Logisim
+- Add PUSH / POP
 
 **Contents:**
 
@@ -172,16 +172,11 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
   - [CMP](#CMP)
 - Branching instructions:
   - [JMP](#JMP)
-  - [JZ](#JZ)
-  - [JNZ](#JNZ)
-  - [JC](#JC)
-  - [JNC](#JNC)
-  - [JEQ](#JEQ)
-  - [JNEQ](#JNEQ)
-  - [JLT](#JLT)
-  - [JGT](#JGT)
+  - [JMPC](#JMPC)
   - [CALL](#CALL)
+  - [CALLC](#CALLC)
   - [RET](#RET)
+  - [RETC](#RETC)
 
 
 
@@ -378,25 +373,26 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 <a name="LDZ"></a>
 #### LDZ
 
-|                   | Load data from zero-page memory *address* into register *R*  |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | LDZ *R*`(A,B,D,AX)` *address*`(8-bit hex)`                   |
-| Example:          | `LDZ A 0xF3`                                                 |
-| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                  |
-| T-states:         | 7                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in register `C`.                              |
-|                   | Supports *address variables*.                                |
-|                   | Cannot operate on C and AX register because there are not enough opcodes available. |
+|                   | Load data from zero-page memory *address* into register *R* |
+| :---------------- | :---------------------------------------------------------- |
+| Syntax:           | LDZ *R*`(A,B,D,AX)` *address*`(8-bit hex)`                  |
+| Example:          | `LDZ A 0xF3`                                                |
+| Instruction data: | `opcode` `zero-page address byte` (2 bytes)                 |
+| T-states:         | 7                                                           |
+| Sets flags:       | *none*                                                      |
+| Notes:            | Overrides data in register `C`.                             |
+|                   | Supports *address variables*.                               |
 
 **Opcodes for LDZ**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `LDZ A`  | `1110111`             | `0x77`       |
-| `LDZ B`  | `1111000`             | `0x78`       |
-| `LDZ D`  | `1110100`             | `0x74`       |
-| `LDZ AX` | `1110011`             | `0x73`       |
+| `LDZ A`  | `01110111`            | `0x77`       |
+| `LDZ B`  | `01111000`            | `0x78`       |
+| `LDZ C`  | `10000000`            | `0x80`       |
+| `LDZ D`  | `01110100`            | `0x74`       |
+| `LDZ AX` | `01110011`            | `0x73`       |
+| `LDZ AY` | `10000001`            | `0x81`       |
 
 
 
@@ -438,17 +434,20 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for LDR**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `LDR A`  | `1101101`             | `0x6D`       |
-| `LDR B`  | `1101110`             | `0x6E`       |
-| `LDR C`  | `1110101`             | `0x75`       |
-| `LDR D`  | `1110110`             | `0x76`       |
+| `LDR A`  | `01101101`            | `0x6D`       |
+| `LDR B`  | `01101110`            | `0x6E`       |
+| `LDR C`  | `01110101`            | `0x75`       |
+| `LDR D`  | `01110110`            | `0x76`       |
+| `LDR AX` | `10000010`            | `0x82`       |
+| `LDR AY` | `10000011`            | `0x83`       |
 
 
 
 ------
 <a name="STR"></a>
+
 #### STR
 
 |                   | Store data from register *R* at the memory address stored in register *C* (low byte) and *D* (high byte) |
@@ -484,12 +483,14 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for LDRZ**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `LDRZ A` | `1111010`             | `0x7A`       |
-| `LDRZ B` | `1111011`             | `0x7B`       |
-| `LDRZ D` | `1111101`             | `0x7D`       |
-| `LDRZ AZ`| `1111100`             | `0x7C`       |
+| Mnemonic  | Opcode (8-bit binary) | Opcode (hex) |
+| :-------- | --------------------- | ------------ |
+| `LDRZ A`  | `01111010`            | `0x7A`       |
+| `LDRZ B`  | `01111011`            | `0x7B`       |
+| `LDRZ C`  | `10000100`            | `0x84`       |
+| `LDRZ D`  | `01111101`            | `0x7D`       |
+| `LDRZ AX` | `01111100`            | `0x7C`       |
+| `LDRZ AY` | `10000101`            | `0x85`       |
 
 
 
@@ -903,7 +904,7 @@ STR {R}             # Store the value of register {R} at
 | Syntax:           | CMP *F*`(EQ,LT,GT)`                                          |
 | Example:          | `CMP EQ`                                                     |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4 (`EQ` & `GT`) or 5 (`LT`)                                  |
+| T-states:         | 4 (`EQ` / `GT`) or 5 (`LT`)                                  |
 | Sets flags:       | Clears or sets the `Fc` flag before the operation, then stores the result of the comparison as the  `Fcmp` flag. |
 | Notes:            | `CMP EQ` performs `AX == AY` comparison                      |
 |                   | `CMP LT` performs `AX < AY` comparison                       |
@@ -911,11 +912,11 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for CMP**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `CMP EQ` | `0111100`             | `0x3C`       |
-| `CMP LT` | `0000000`             | `0x00`       |
-| `CMP GT` | `0000000`             | `0x00`       |
+| `CMP EQ` | `00111100`            | `0x3C`       |
+| `CMP LT` | `10010010`            | `0x92`       |
+| `CMP GT` | `10010011`            | `0x93`       |
 
 
 
@@ -935,178 +936,41 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for JMP**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
 | `JMP`    | `0111111`             | `0x3F`       |
 
 
 
 ------
-<a name="JZ"></a>
-#### JZ
+<a name="JMPC"></a>
+#### JMPC
 
-|                   | Perform a jump when the `Fz` flag is set                     |
+|                   | Perform a conditional jump                                   |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JZ *label*                                                   |
-| Example:          | `JZ target`                                                  |
+| Syntax:           | JMPC *condition*`(Z,NZ,C,NC,CMP,NCMP)` *label*               |
+| Example:          | `JMPC NC target`                                             |
 | Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
 | T-states:         | 9                                                            |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`                      |
+| Conditions:       | **Z**: `Fz == 1`                                             |
+|                   | **NZ**: `Fz == 0`                                            |
+|                   | **C**: `Fc == 1`                                             |
+|                   | **NC**: `Fc == 0`                                            |
+|                   | **CMP**: `Fcmp == 1`                                         |
+|                   | **NCMP**: `Fcmp == 0`                                        |
 
-**Opcodes for JZ**
+**Opcodes for JMPC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JZ`     | `1000000`             | `0x40`       |
-
-
-
-------
-<a name="JNZ"></a>
-#### JNZ
-
-|                   | Perform a jump when the `Fz` flag is *not* set               |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JNZ *label*                                                  |
-| Example:          | `JNZ target`                                                 |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JNZ**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JNZ`    | `1000001`             | `0x41`       |
-
-
-
-------
-<a name="JC"></a>
-#### JC
-
-|                   | Perform a jump when the `Fc` flag is set                     |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JC *label*                                                   |
-| Example:          | `JC target`                                                  |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JC**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JC`     | `1000010`             | `0x42`       |
-
-
-
-------
-<a name="JNC"></a>
-#### JNC
-
-|                   | Perform a jump when the `Fz` flag is *not* set               |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JNC *label*                                                  |
-| Example:          | `JNC target`                                                 |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JNC**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JNC`    | `1000011`             | `0x43`       |
-
-
-
-------
-<a name="JEQ"></a>
-#### JEQ
-
-|                   | Perform a jump when the `Feq` flag is set                    |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JEQ *label*                                                  |
-| Example:          | `JEQ target`                                                 |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JEQ**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JEQ`    | `1000100`             | `0x44`       |
-
-
-
-------
-<a name="JNEQ"></a>
-
-#### JNEQ
-
-|                   | Perform a jump when the `Feq` flag is *not* set              |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JNEQ *label*                                                 |
-| Example:          | `JNEQ target`                                                |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JNEQ**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JNEQ`   | `1101100`             | `0x6C`       |
-
-
-
-------
-<a name="JLT"></a>
-#### JLT
-
-|                   | Perform a jump when the `Flt` flag is set                    |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JLT *label*                                                  |
-| Example:          | `JLT target`                                                 |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JLT**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JLT`    | `1000101`             | `0x45`       |
-
-
-
-------
-<a name="JGT"></a>
-#### JGT
-
-|                   | Perform a jump when the `Fgt` flag is set                    |
-| :---------------- | :----------------------------------------------------------- |
-| Syntax:           | JGT *label*                                                  |
-| Example:          | `JGT target`                                                 |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
-| T-states:         | 9                                                            |
-| Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`                      |
-
-**Opcodes for JGT**
-
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
-| :------- | --------------------- | ------------ |
-| `JGT`    | `1000110`             | `0x46`       |
+| Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
+| :---------- | --------------------- | ------------ |
+| `JMPC Z`    | `1000000`             | `0x40`       |
+| `JMPC NZ`   | `1000001`             | `0x41`       |
+| `JMPC C`    | `1000010`             | `0x42`       |
+| `JMPC NC`   | `1000011`             | `0x43`       |
+| `JMPC CMP`  | `1000100`             | `0x44`       |
+| `JMPC NCMP` | `1000101`             | `0x45`       |
 
 
 
@@ -1125,9 +989,41 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for CALL**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
 | `CALL`   | `1000111`             | `0x47`       |
+
+
+
+------
+<a name="CALLC"></a>
+#### CALLC
+
+|                   | Perform a conditional jump with the ability to return        |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | CALLC *condition*`(Z,NZ,C,NC,CMP,NCMP)` *label*              |
+| Example:          | `CALLC NC target`                                            |
+| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
+| T-states:         | 14                                                           |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Overrides data in registers `C` and `D`                      |
+| Conditions:       | **Z**: `Fz == 1`                                             |
+|                   | **NZ**: `Fz == 0`                                            |
+|                   | **C**: `Fc == 1`                                             |
+|                   | **NC**: `Fc == 0`                                            |
+|                   | **CMP**: `Fcmp == 1`                                         |
+|                   | **NCMP**: `Fcmp == 0`                                        |
+
+**Opcodes for CALLC**
+
+| Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
+| :---------- | --------------------- | ------------ |
+| `CALLC Z`   | `10000110`             | `0x86`       |
+| `CALLC NZ`   | `10000111`             | `0x87`       |
+| `CALLC C`    | `10001000`             | `0x88`       |
+| `CALLC NC`   | `10001001`             | `0x89`       |
+| `CALLC CMP`  | `10001010`             | `0x8A`       |
+| `CALLC NCMP` | `10001011`             | `0x8B`       |
 
 
 
@@ -1135,11 +1031,11 @@ STR {R}             # Store the value of register {R} at
 <a name="RET"></a>
 #### RET
 
-|                   | Jump back to the program location of the last CALL instruction |
+|                   | Perform an unconditional jump back to the program location of the last CALL or CALLC instruction |
 | :---------------- | :----------------------------------------------------------- |
 | Syntax:           | RET                                                          |
 | Example:          | `RET`                                                        |
-| Instruction data: | `opcode` `target address high byte` `target address low byte` (3 bytes) |
+| Instruction data: | `opcode` (1 byte)                                            |
 | T-states:         | 10                                                           |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`                      |
@@ -1149,3 +1045,37 @@ STR {R}             # Store the value of register {R} at
 | Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
 | `RET`    | `1001000`             | `0x48`       |
+
+
+
+------
+<a name="RETC"></a>
+#### RETC
+
+|                   | Perform a conditional jump back to the program location of the last CALL or CALLC instruction |
+| :---------------- | :----------------------------------------------------------- |
+| Syntax:           | RETC *condition*`(Z,NZ,C,NC,CMP,NCMP)`                       |
+| Example:          | `RETC NC`                                                    |
+| Instruction data: | `opcode` (1 byte)                                            |
+| T-states:         | ??                                                           |
+| Sets flags:       | *none*                                                       |
+| Notes:            | Overrides data in registers `C` and `D`                      |
+| Conditions:       | **Z**: `Fz == 1`                                             |
+|                   | **NZ**: `Fz == 0`                                            |
+|                   | **C**: `Fc == 1`                                             |
+|                   | **NC**: `Fc == 0`                                            |
+|                   | **CMP**: `Fcmp == 1`                                         |
+|                   | **NCMP**: `Fcmp == 0`                                        |
+
+**Opcodes for RETC**
+
+| Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
+| :---------- | --------------------- | ------------ |
+| `RETC Z` | `10001100`             | `0x8C`       |
+| `RETC NZ`   | `10001101`             | `0x8D`       |
+| `RETC C`    | `10001110`             | `0x8E`       |
+| `RETC NC`   | `10001111`             | `0x8F`       |
+| `RETC CMP`  | `10010000`             | `0x90`       |
+| `RETC NCMP` | `10010001`             | `0x91`       |
+
+
