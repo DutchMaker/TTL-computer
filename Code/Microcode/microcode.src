@@ -399,6 +399,120 @@ MICROCODE
 		12 { C_out;PC_LB_load }
 	}
 
+	CALLC Z {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[x0x] TSTATE_reset
+			[x1x] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	CALLC NZ {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[x1x] TSTATE_reset
+			[x0x] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	CALLC C {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[xx0] TSTATE_reset
+			[xx1] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	CALLC NC {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[xx1] TSTATE_reset
+			[xx0] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	CALLC CMP {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[0xx] TSTATE_reset
+			[1xx] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
+	CALLC NCMP {
+		0 { PC_inc }
+		1 { PC_inc }
+		2 { 
+			[1xx] TSTATE_reset
+			[0xx] PC_LB_out;C_load	
+		}
+		3 { PC_HB_out;D_load }
+		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { MAR_STK_load }
+		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		7 { MAR_PC_load }
+		8 { MEM_out;D_load;PC_inc }
+		9 { MAR_PC_load }
+		10 { MEM_out;C_load;PC_inc }
+		11 { D_out;PC_HB_load }
+		12 { C_out;PC_LB_load }
+	}
+
 	RET {
 		0 { STK_dec }
 		1 { MAR_STK_load }
