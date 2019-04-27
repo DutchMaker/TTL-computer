@@ -2,13 +2,6 @@
 
 This document is the complete reference to the 74xx Computer Assembly Language.
 
-**TODO:**
-
-- Update all 7-bit opcodes to 8 bit
-- Update branching instructions (done in doc)
-- Add microcode for LDX & STX
-- Add PUSH / POP
-
 **Contents:**
 
 - [Structure](#structure)
@@ -83,7 +76,7 @@ The following code example demonstrates how to define **labels**, define and use
 <a name="flags"></a>
 ## Flags
 
-| Flag | Purpose                                                                                    _ |
+| Flag | Purpose                                                      |
 | :--- | :----------------------------------------------------------- |
 | Fc   | ALU operation resulted in a carry                            |
 | Fz   | ALU operation resulted in zero                               |
@@ -155,6 +148,8 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
   - [LDX](#LDX)
   - [STX](#STX)
   - [OUT](#OUT)
+  - [PUSH](#PUSH)
+  - [POP](#POP)
 - Arithmetic instructions: 
   - [ADD](#ADD)
   - [ADC](#ADC)
@@ -198,9 +193,9 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for NOP**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `NOP`    | `0000000`             | `0x00`       |
+| `NOP`    | `00000000`            | `0x00`       |
 
   
 
@@ -220,9 +215,9 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for HALT**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `HALT`   | `0000001`             | `0x01`       |
+| `HALT`   | `00000001`            | `0x01`       |
 
   
 
@@ -241,10 +236,10 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for SC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `SC 0`   | `1101000`             | `0x68`       |
-| `SC 1`   | `1101001`             | `0x69`       |
+| `SC 0`   | `01101000`            | `0x68`       |
+| `SC 1`   | `01101001`            | `0x69`       |
 
   
 
@@ -266,28 +261,28 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for MOV**
 
-| Mnemonic   | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic   | Opcode (8-bit binary) | Opcode (hex) |
 | :--------- | --------------------- | ------------ |
-| `MOV B A`  | `0000010`             | `0x02`       |
-| `MOV C A`  | `0000011`             | `0x03`       |
-| `MOV D A`  | `0000100`             | `0x04`       |
-| `MOV A B`  | `0000101`             | `0x05`       |
-| `MOV C B`  | `0000110`             | `0x06`       |
-| `MOV D B`  | `0000111`             | `0x07`       |
-| `MOV A C`  | `0001000`             | `0x08`       |
-| `MOV B C`  | `0001001`             | `0x09`       |
-| `MOV D C`  | `0001010`             | `0x0A`       |
-| `MOV A D`  | `0001011`             | `0x0B`       |
-| `MOV B D`  | `0001100`             | `0x0C`       |
-| `MOV C D`  | `0001101`             | `0x0D`       |
-| `MOV AX A` | `1010101`             | `0x55`       |
-| `MOV AX B` | `1010110`             | `0x56`       |
-| `MOV AX C` | `1010111`             | `0x57`       |
-| `MOV AX D` | `1011000`             | `0x58`       |
-| `MOV AY A` | `1011001`             | `0x59`       |
-| `MOV AY B` | `1011010`             | `0x5A`       |
-| `MOV AY C` | `1011011`             | `0x5B`       |
-| `MOV AY D` | `1011100`             | `0x5C`       |
+| `MOV B A`  | `00000010`            | `0x02`       |
+| `MOV C A`  | `00000011`            | `0x03`       |
+| `MOV D A`  | `00000100`            | `0x04`       |
+| `MOV A B`  | `00000101`            | `0x05`       |
+| `MOV C B`  | `00000110`            | `0x06`       |
+| `MOV D B`  | `00000111`            | `0x07`       |
+| `MOV A C`  | `00001000`            | `0x08`       |
+| `MOV B C`  | `00001001`            | `0x09`       |
+| `MOV D C`  | `00001010`            | `0x0A`       |
+| `MOV A D`  | `00001011`            | `0x0B`       |
+| `MOV B D`  | `00001100`            | `0x0C`       |
+| `MOV C D`  | `00001101`            | `0x0D`       |
+| `MOV AX A` | `01010101`            | `0x55`       |
+| `MOV AX B` | `01010110`            | `0x56`       |
+| `MOV AX C` | `01010111`            | `0x57`       |
+| `MOV AX D` | `01011000`            | `0x58`       |
+| `MOV AY A` | `01011001`            | `0x59`       |
+| `MOV AY B` | `01011010`            | `0x5A`       |
+| `MOV AY C` | `01011011`            | `0x5B`       |
+| `MOV AY D` | `01011100`            | `0x5C`       |
 
   
 
@@ -306,14 +301,14 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for MVI**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `MVI A`  | `0001110`             | `0x0E`       |
-| `MVI B`  | `0001111`             | `0x0F`       |
-| `MVI C`  | `0010000`             | `0x10`       |
-| `MVI D`  | `0010001`             | `0x11`       |
-| `MVI AX` | `0111101`             | `0x3D`       |
-| `MVI AY` | `0111110`             | `0x3E`       |
+| `MVI A`  | `00001110             | `0x0E`       |
+| `MVI B`  | `00001111`            | `0x0F`       |
+| `MVI C`  | `00010000`            | `0x10`       |
+| `MVI D`  | `00010001`            | `0x11`       |
+| `MVI AX` | `00111101`            | `0x3D`       |
+| `MVI AY` | `00111110`            | `0x3E`       |
 
   
 
@@ -334,14 +329,14 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for LD**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `LD A`   | `0010010`             | `0x12`       |
-| `LD B`   | `0010011`             | `0x13`       |
-| `LD C`   | `1110001`             | `0x71`       |
-| `LD D`   | `1110010`             | `0x72`       |
-| `LD AX`  | `1101010`             | `0x6A`       |
-| `LD AY`  | `1101011`             | `0x6B`       |
+| `LD A`   | `00010010`            | `0x12`       |
+| `LD B`   | `00010011`            | `0x13`       |
+| `LD C`   | `01110001`            | `0x71`       |
+| `LD D`   | `01110010`            | `0x72`       |
+| `LD AX`  | `01101010`            | `0x6A`       |
+| `LD AY`  | `01101011`            | `0x6B`       |
 
 
 
@@ -356,16 +351,16 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 | Instruction data: | `opcode` `address high byte` `address low byte` (3 bytes)    |
 | T-states:         | 10                                                           |
 | Sets flags:       | *none*                                                       |
-| Notes:            | Overrides data in registers `C` and `D`. 					   |
+| Notes:            | Overrides data in registers `C` and `D`.                     |
 |                   | Supports *address variables*.                                |
 |                   | Supports zero page addressing.                               |
 
 **Opcodes for ST**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `ST A`   | `0010110`             | `0x16`       |
-| `ST B`   | `0010111`             | `0x17`       |
+| `ST A`   | `00010110`            | `0x16`       |
+| `ST B`   | `00010111`            | `0x17`       |
 
 
 
@@ -412,10 +407,10 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for STZ**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `STZ A`  | `1100000`             | `0x60`       |
-| `STZ B`  | `1111001`             | `0x79`       |
+| `STZ A`  | `01100000`            | `0x60`       |
+| `STZ B`  | `01111001`            | `0x79`       |
 
 
 
@@ -461,10 +456,10 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for STR**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `STR A`  | `1101111`             | `0x6F`       |
-| `STR B`  | `1110000`             | `0x70`       |
+| `STR A`  | `01101111`            | `0x6F`       |
+| `STR B`  | `01110000`            | `0x70`       |
 
 
 
@@ -509,10 +504,10 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 **Opcodes for STRZ**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `STRZ A` | `1111110`             | `0xFE`       |
-| `STRZ B` | `1111111`             | `0xFF`       |
+| `STRZ A` | `01111110`            | `0x7E`       |
+| `STRZ B` | `01111111`            | `0x7F`       |
 
 
 
@@ -541,7 +536,7 @@ MVI AY 0x00         # Load value 0x00 into ALU register AY
 LD C {address + 1}  # Load value at {address+1} into register C
 ADD D               # Load the value of AX (AX + 0x00 == AX) into register D
 LDR {R}             # Load the value from the memory address stored
-	                #   in register C and D into register {R}.
+                    #   in register C and D into register {R}.
 ```
 
 
@@ -591,16 +586,66 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for OUT**
 
-| Mnemonic  | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic  | Opcode (8-bit binary) | Opcode (hex) |
 | :-------- | --------------------- | ------------ |
-| `OUT 1 A` | `1001101`             | `0x4D`       |
-| `OUT 1 B` | `1001110`             | `0x4E`       |
-| `OUT 1 C` | `1001111`             | `0x4F`       |
-| `OUT 1 D` | `1010000`             | `0x50`       |
-| `OUT 2 A` | `1010001`             | `0x51`       |
-| `OUT 2 B` | `1010010`             | `0x52`       |
-| `OUT 2 C` | `1010011`             | `0x53`       |
-| `OUT 2 D` | `1010100`             | `0x54`       |
+| `OUT 1 A` | `01001101`            | `0x4D`       |
+| `OUT 1 B` | `01001110`            | `0x4E`       |
+| `OUT 1 C` | `01001111`            | `0x4F`       |
+| `OUT 1 D` | `01010000`            | `0x50`       |
+| `OUT 2 A` | `01010001`            | `0x51`       |
+| `OUT 2 B` | `01010010`            | `0x52`       |
+| `OUT 2 C` | `01010011`            | `0x53`       |
+| `OUT 2 D` | `01010100`            | `0x54`       |
+
+
+
+------
+<a name="PUSH"></a>
+#### PUSH
+
+|                   | Push data from register *R* on to the stack  |
+| :---------------- | :------------------------------------------- |
+| Syntax:           | PUSH *R*`(A,B,C,D)`                          |
+| Example:          | `PUSH A`                                     |
+| Instruction data: | `opcode` (1 byte)                            |
+| T-states:         | 5                                            |
+| Sets flags:       | *none*                                       |
+| Notes:            | *none*                                       |
+
+**Opcodes for PUSH**
+
+| Mnemonic  | Opcode (8-bit binary) | Opcode (hex) |
+| :-------- | --------------------- | ------------ |
+| `PUSH A`  | `10010100`            | `0x94`       |
+| `PUSH B`  | `10010101`            | `0x95`       |
+| `PUSH C`  | `10010110`            | `0x96`       |
+| `PUSH D`  | `10010111`            | `0x97`       |
+
+
+
+------
+<a name="POP"></a>
+#### POP
+
+|                   | Pop data from the stack to register *R*      |
+| :---------------- | :------------------------------------------- |
+| Syntax:           | POP *R*`(A,B,C,D,AX,AY)`                     |
+| Example:          | `POP A`                                      |
+| Instruction data: | `opcode` (1 byte)                            |
+| T-states:         | 6                                            |
+| Sets flags:       | *none*                                       |
+| Notes:            | *none*                                       |
+
+**Opcodes for POP**
+
+| Mnemonic  | Opcode (8-bit binary) | Opcode (hex) |
+| :-------- | --------------------- | ------------ |
+| `POP A`   | `10011001`            | `0x98`       |
+| `POP B`   | `10011010`            | `0x99`       |
+| `POP C`   | `10011011`            | `0x9A`       |
+| `POP D`   | `10011100`            | `0x9B`       |
+| `POP AX`  | `10011101`            | `0x9C`       |
+| `POP AY`  | `10011110`            | `0x9D`       |
 
 
 
@@ -621,12 +666,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for ADD**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `ADD A`  | `0011010`             | `0x1A`       |
-| `ADD B`  | `1100001`             | `0x61`       |
-| `ADD C`  | `0011011`             | `0x1B`       |
-| `ADD D`  | `0011100`             | `0x1C`       |
+| `ADD A`  | `00011010`            | `0x1A`       |
+| `ADD B`  | `01100001`            | `0x61`       |
+| `ADD C`  | `00011011`            | `0x1B`       |
+| `ADD D`  | `00011100`            | `0x1C`       |
 
 
 
@@ -645,12 +690,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for ADC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `ADC A`  | `0011101`             | `0x1D`       |
-| `ADC B`  | `1100010`             | `0x62`       |
-| `ADC C`  | `0011110`             | `0x1E`       |
-| `ADC D`  | `0011111`             | `0x1F`       |
+| `ADC A`  | `00011101`            | `0x1D`       |
+| `ADC B`  | `01100010`            | `0x62`       |
+| `ADC C`  | `00011110`            | `0x1E`       |
+| `ADC D`  | `00011111`            | `0x1F`       |
 
 
 
@@ -669,12 +714,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for SUB**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `SUB A`  | `0100000`             | `0x20`       |
-| `SUB B`  | `1100011`             | `0x63`       |
-| `SUB C`  | `0100001`             | `0x21`       |
-| `SUB D`  | `0100010`             | `0x22`       |
+| `SUB A`  | `00100000`            | `0x20`       |
+| `SUB B`  | `01100011`            | `0x63`       |
+| `SUB C`  | `00100001`            | `0x21`       |
+| `SUB D`  | `00100010`            | `0x22`       |
 
 
 
@@ -693,12 +738,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for SBC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `SBC A`  | `0100011`             | `0x23`       |
-| `SBC B`  | `1100100`             | `0x64`       |
-| `SBC C`  | `0100100`             | `0x24`       |
-| `SBC D`  | `0100101`             | `0x25`       |
+| `SBC A`  | `00100011`            | `0x23`       |
+| `SBC B`  | `01100100`            | `0x64`       |
+| `SBC C`  | `00100100`            | `0x24`       |
+| `SBC D`  | `00100101`            | `0x25`       |
 
 
 
@@ -717,12 +762,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for INC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `INC A`  | `0110100`             | `0x34`       |
-| `INC B`  | `0110101`             | `0x35`       |
-| `INC C`  | `0110110`             | `0x36`       |
-| `INC D`  | `0110111`             | `0x37`       |
+| `INC A`  | `00110100`            | `0x34`       |
+| `INC B`  | `00110101`            | `0x35`       |
+| `INC C`  | `00110110`            | `0x36`       |
+| `INC D`  | `00110111`            | `0x37`       |
 
 
 
@@ -741,12 +786,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for DEC**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `DEC A`  | `0111000`             | `0x38`       |
-| `DEC B`  | `0111001`             | `0x39`       |
-| `DEC C`  | `0111010`             | `0x3A`       |
-| `DEC D`  | `0111011`             | `0x3B`       |
+| `DEC A`  | `00111000`            | `0x38`       |
+| `DEC B`  | `00111001`            | `0x39`       |
+| `DEC C`  | `00111010`            | `0x3A`       |
+| `DEC D`  | `00111011`            | `0x3B`       |
 
 
 
@@ -766,12 +811,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for AND**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `AND A`  | `0100110`             | `0x26`       |
-| `AND B`  | `1100101`             | `0x65`       |
-| `AND C`  | `0100111`             | `0x27`       |
-| `AND D`  | `0101000`             | `0x28`       |
+| `AND A`  | `00100110`            | `0x26`       |
+| `AND B`  | `01100101`            | `0x65`       |
+| `AND C`  | `00100111`            | `0x27`       |
+| `AND D`  | `00101000`            | `0x28`       |
 
 
 
@@ -790,12 +835,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for OR**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `OR A`   | `0101001`             | `0x29`       |
-| `OR B`   | `1100110`             | `0x66`       |
-| `OR C`   | `0101010`             | `0x2A`       |
-| `OR D`   | `0101011`             | `0x2B`       |
+| `OR A`   | `00101001`            | `0x29`       |
+| `OR B`   | `01100110`            | `0x66`       |
+| `OR C`   | `00101010`            | `0x2A`       |
+| `OR D`   | `00101011`            | `0x2B`       |
 
 
 
@@ -814,12 +859,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for XOR**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `XOR A`  | `0101100`             | `0x2C`       |
-| `XOR B`  | `0101101`             | `0x2D`       |
-| `XOR C`  | `0101110`             | `0x2E`       |
-| `XOR D`  | `0101111`             | `0x2F`       |
+| `XOR A`  | `00101100`            | `0x2C`       |
+| `XOR B`  | `00101101`            | `0x2D`       |
+| `XOR C`  | `00101110`            | `0x2E`       |
+| `XOR D`  | `00101111`            | `0x2F`       |
 
 
 
@@ -838,12 +883,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for NOT**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `NOT A`  | `0110000`             | `0x30`       |
-| `NOT B`  | `0110001`             | `0x31`       |
-| `NOT C`  | `0110010`             | `0x32`       |
-| `NOT D`  | `0110011`             | `0x33`       |
+| `NOT A`  | `00110000`            | `0x30`       |
+| `NOT B`  | `00110001`            | `0x31`       |
+| `NOT C`  | `00110010`            | `0x32`       |
+| `NOT D`  | `00110011`            | `0x33`       |
 
 
 
@@ -862,12 +907,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for SHL**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `SHL A`  | `0010100`             | `0x14`       |
-| `SHL B`  | `0010101`             | `0x15`       |
-| `SHL C`  | `0011000`             | `0x18`       |
-| `SHL D`  | `0011001`             | `0x19`       |
+| `SHL A`  | `00010100`            | `0x14`       |
+| `SHL B`  | `00010101`            | `0x15`       |
+| `SHL C`  | `00011000`            | `0x18`       |
+| `SHL D`  | `00011001`            | `0x19`       |
 
 
 
@@ -886,12 +931,12 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for SHR**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `SHR A`  | `1011101`             | `0x5D`       |
-| `SHR B`  | `1011110`             | `0x5E`       |
-| `SHR C`  | `1011111`             | `0x5F`       |
-| `SHR D`  | `1100111`             | `0x67`       |
+| `SHR A`  | `01011101`            | `0x5D`       |
+| `SHR B`  | `01011110`            | `0x5E`       |
+| `SHR C`  | `01011111`            | `0x5F`       |
+| `SHR D`  | `01100111`            | `0x67`       |
 
 
 
@@ -938,7 +983,7 @@ STR {R}             # Store the value of register {R} at
 
 | Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `JMP`    | `0111111`             | `0x3F`       |
+| `JMP`    | `00111111`            | `0x3F`       |
 
 
 
@@ -965,12 +1010,12 @@ STR {R}             # Store the value of register {R} at
 
 | Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
 | :---------- | --------------------- | ------------ |
-| `JMPC Z`    | `1000000`             | `0x40`       |
-| `JMPC NZ`   | `1000001`             | `0x41`       |
-| `JMPC C`    | `1000010`             | `0x42`       |
-| `JMPC NC`   | `1000011`             | `0x43`       |
-| `JMPC CMP`  | `1000100`             | `0x44`       |
-| `JMPC NCMP` | `1000101`             | `0x45`       |
+| `JMPC Z`    | `01000000`            | `0x40`       |
+| `JMPC NZ`   | `01000001`            | `0x41`       |
+| `JMPC C`    | `01000010`            | `0x42`       |
+| `JMPC NC`   | `01000011`            | `0x43`       |
+| `JMPC CMP`  | `01000100`            | `0x44`       |
+| `JMPC NCMP` | `01000101`            | `0x45`       |
 
 
 
@@ -991,7 +1036,7 @@ STR {R}             # Store the value of register {R} at
 
 | Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `CALL`   | `1000111`             | `0x47`       |
+| `CALL`   | `01000111`            | `0x47`       |
 
 
 
@@ -1016,14 +1061,14 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for CALLC**
 
-| Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
-| :---------- | --------------------- | ------------ |
-| `CALLC Z`   | `10000110`             | `0x86`       |
-| `CALLC NZ`   | `10000111`             | `0x87`       |
-| `CALLC C`    | `10001000`             | `0x88`       |
-| `CALLC NC`   | `10001001`             | `0x89`       |
-| `CALLC CMP`  | `10001010`             | `0x8A`       |
-| `CALLC NCMP` | `10001011`             | `0x8B`       |
+| Mnemonic     | Opcode (8-bit binary) | Opcode (hex) |
+| :----------- | --------------------- | ------------ |
+| `CALLC Z`    | `10000110`            | `0x86`       |
+| `CALLC NZ`   | `10000111`            | `0x87`       |
+| `CALLC C`    | `10001000`            | `0x88`       |
+| `CALLC NC`   | `10001001`            | `0x89`       |
+| `CALLC CMP`  | `10001010`            | `0x8A`       |
+| `CALLC NCMP` | `10001011`            | `0x8B`       |
 
 
 
@@ -1042,9 +1087,9 @@ STR {R}             # Store the value of register {R} at
 
 **Opcodes for RET**
 
-| Mnemonic | Opcode (7-bit binary) | Opcode (hex) |
+| Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `RET`    | `1001000`             | `0x48`       |
+| `RET`    | `01001000`            | `0x48`       |
 
 
 
@@ -1057,7 +1102,7 @@ STR {R}             # Store the value of register {R} at
 | Syntax:           | RETC *condition*`(Z,NZ,C,NC,CMP,NCMP)`                       |
 | Example:          | `RETC NC`                                                    |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | ??                                                           |
+| T-states:         | 10                                                           |
 | Sets flags:       | *none*                                                       |
 | Notes:            | Overrides data in registers `C` and `D`                      |
 | Conditions:       | **Z**: `Fz == 1`                                             |
@@ -1071,11 +1116,11 @@ STR {R}             # Store the value of register {R} at
 
 | Mnemonic    | Opcode (8-bit binary) | Opcode (hex) |
 | :---------- | --------------------- | ------------ |
-| `RETC Z` | `10001100`             | `0x8C`       |
-| `RETC NZ`   | `10001101`             | `0x8D`       |
-| `RETC C`    | `10001110`             | `0x8E`       |
-| `RETC NC`   | `10001111`             | `0x8F`       |
-| `RETC CMP`  | `10010000`             | `0x90`       |
-| `RETC NCMP` | `10010001`             | `0x91`       |
+| `RETC Z`    | `10001100`            | `0x8C`       |
+| `RETC NZ`   | `10001101`            | `0x8D`       |
+| `RETC C`    | `10001110`            | `0x8E`       |
+| `RETC NC`   | `10001111`            | `0x8F`       |
+| `RETC CMP`  | `10010000`            | `0x90`       |
+| `RETC NCMP` | `10010001`            | `0x91`       |
 
 

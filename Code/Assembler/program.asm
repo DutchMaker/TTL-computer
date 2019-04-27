@@ -1,18 +1,12 @@
 :main
 
-	MVI AX 0x00
-	MVI AY 0x01
-	ADD CMP
+	MVI A 0x12
+	PUSH A
 
-	CALLC C carry
-	MVI B 0x02
+	MVI A 0x21
+	PUSH A
 
-	HALT
+	POP C
+	POP D
 
-:carry
-	MVI A 0x01
-	RET
-
-:carry2
-	MVI A 0x01
 	HALT

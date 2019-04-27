@@ -211,6 +211,18 @@ INSTRUCTIONS
 
 	CMP LT(1):10010010;
 	CMP GT(1):10010011;
+
+	PUSH A(1):10010100;
+	PUSH B(1):10010101;
+	PUSH C(1):10010110;
+	PUSH D(1):10010111;
+	
+	POP A(1):10011000;
+	POP B(1):10011001;
+	POP C(1):10011010;
+	POP D(1):10011011;
+	POP AX(1):10011100;
+	POP AY(1):10011101;
 }
 
 CONTROLLINES
@@ -756,5 +768,18 @@ MICROCODE
 	OUT 2 (r1) {
 		0 { (r1)_out;OUT2_load }
 		1 { TSTATE_reset }
+	}
+
+	PUSH (r1) {
+		0 { MAR_STK_load }
+		1 { (r1)_out;MEM_RAM_load;STK_inc }
+		2 { TSTATE_reset }
+	}
+
+	POP (r1) {
+		0 { STK_dec }
+		1 { MAR_STK_load }
+		2 { MEM_out;(r1)_load }
+		3 { TSTATE_reset }
 	}
 }
