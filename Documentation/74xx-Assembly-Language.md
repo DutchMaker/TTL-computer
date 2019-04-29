@@ -124,6 +124,12 @@ For example: `LD A 0x35` is automatically replaced with `LDZ A 0x35` by the asse
 
 Note that **not** all registers supported by LD (etc.) are also supported by their counterpart (LDZ, etc.)!
 
+### *VRAM*
+
+*VRAM starts at 0xDE00 and is 128x64 bytes long (ending at 0xFE00).*
+
+
+
 
 <a name="instructions"></a>
 ## Instructions
