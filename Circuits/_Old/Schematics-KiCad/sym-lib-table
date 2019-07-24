@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name TTL-Computer-rescue)(type Legacy)(uri ${KIPRJMOD}/TTL-Computer-rescue.lib)(options "")(descr ""))
+  (lib (name TTL-Computer-Components)(type Legacy)(uri ${KIPRJMOD}/TTL-Computer-Components.lib)(options "")(descr ""))
+)
