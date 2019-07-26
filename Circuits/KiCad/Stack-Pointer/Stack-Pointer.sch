@@ -1,0 +1,526 @@
+EESchema Schematic File Version 4
+LIBS:Program-Counter-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+NoConn ~ 4450 3450
+NoConn ~ 4450 4750
+Wire Wire Line
+	4450 3250 4550 3250
+Wire Wire Line
+	4550 3250 4550 3800
+Wire Wire Line
+	4550 3800 2850 3800
+Wire Wire Line
+	2850 3800 2850 4850
+Wire Wire Line
+	2400 3300 2400 4600
+Wire Wire Line
+	2400 4600 3050 4600
+Wire Wire Line
+	2550 4500 3050 4500
+Wire Wire Line
+	2550 4500 2550 3200
+Wire Wire Line
+	3050 3450 2700 3450
+Wire Wire Line
+	2700 3000 2700 3450
+Text GLabel 2350 3000 0    60   Input ~ 0
+~CLK_EN
+Wire Wire Line
+	2700 3000 2350 3000
+Text GLabel 3750 1900 2    60   Input ~ 0
+~CLK_EN
+Wire Wire Line
+	2700 4750 3050 4750
+Connection ~ 2700 3450
+Wire Wire Line
+	2850 4850 3050 4850
+Wire Wire Line
+	2400 3300 3050 3300
+Wire Wire Line
+	2550 3200 3050 3200
+Wire Wire Line
+	2700 3450 2700 4750
+$Comp
+L 74xx-Computer-Symbols:74LS191 U2
+U 1 1 5D3C442B
+P 3750 3150
+F 0 "U2" H 3750 3250 50  0000 C CNN
+F 1 "74x191" H 3750 3150 50  0000 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 3750 3150 50  0001 C CNN
+F 3 "" H 3750 3150 50  0001 C CNN
+	1    3750 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:74LS191 U3
+U 1 1 5D3C4551
+P 3750 4450
+F 0 "U3" H 3750 4550 50  0000 C CNN
+F 1 "74x191" H 3750 4450 50  0000 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 3750 4450 50  0001 C CNN
+F 3 "" H 3750 4450 50  0001 C CNN
+	1    3750 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:7402 U1
+U 1 1 5D3C46EC
+P 3150 850
+F 0 "U1" H 3150 900 50  0000 C CNN
+F 1 "74x02" H 3150 800 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 3150 850 50  0001 C CNN
+F 3 "" H 3150 850 50  0001 C CNN
+	1    3150 850 
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:7402 U1
+U 2 1 5D3CCBD1
+P 3150 1400
+F 0 "U1" H 3150 1450 50  0000 C CNN
+F 1 "74x02" H 3150 1350 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 3150 1400 50  0001 C CNN
+F 3 "" H 3150 1400 50  0001 C CNN
+	2    3150 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:7402 U1
+U 3 1 5D3CCC58
+P 3150 1900
+F 0 "U1" H 3150 1950 50  0000 C CNN
+F 1 "74x02" H 3150 1850 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 3150 1900 50  0001 C CNN
+F 3 "" H 3150 1900 50  0001 C CNN
+	3    3150 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x16_Male J2
+U 1 1 5D3CCFEC
+P 5950 1900
+F 0 "J2" V 5785 1827 50  0000 C CNN
+F 1 "MEMORY ADDRESS" V 5876 1827 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 5950 1900 50  0001 C CNN
+F 3 "~" H 5950 1900 50  0001 C CNN
+	1    5950 1900
+	-1   0    0    1   
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:GND #PWR01
+U 1 1 5D3D1ABB
+P 1000 1450
+F 0 "#PWR01" H 1000 1200 50  0001 C CNN
+F 1 "GND" H 1005 1277 50  0000 C CNN
+F 2 "" H 1000 1450 50  0001 C CNN
+F 3 "" H 1000 1450 50  0001 C CNN
+	1    1000 1450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	850  1600 1000 1600
+Wire Wire Line
+	1000 1600 1000 1500
+$Comp
+L 74xx-Computer-Symbols:+5V #PWR02
+U 1 1 5D3D613D
+P 1200 1450
+F 0 "#PWR02" H 1200 1300 50  0001 C CNN
+F 1 "+5V" H 1215 1623 50  0000 C CNN
+F 2 "" H 1200 1450 50  0001 C CNN
+F 3 "" H 1200 1450 50  0001 C CNN
+	1    1200 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  1700 1200 1700
+Wire Wire Line
+	1200 1700 1200 1450
+$Comp
+L 74xx-Computer-Symbols:PWR_FLAG #FLG01
+U 1 1 5D3DA956
+P 1500 1450
+F 0 "#FLG01" H 1500 1525 50  0001 C CNN
+F 1 "PWR_FLAG" H 1500 1624 50  0000 C CNN
+F 2 "" H 1500 1450 50  0001 C CNN
+F 3 "" H 1500 1450 50  0001 C CNN
+	1    1500 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:PWR_FLAG #FLG02
+U 1 1 5D3DA993
+P 1500 1700
+F 0 "#FLG02" H 1500 1775 50  0001 C CNN
+F 1 "PWR_FLAG" H 1500 1874 50  0000 C CNN
+F 2 "" H 1500 1700 50  0001 C CNN
+F 3 "" H 1500 1700 50  0001 C CNN
+	1    1500 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 1450 1500 1500
+Wire Wire Line
+	1500 1500 1000 1500
+Connection ~ 1000 1500
+Wire Wire Line
+	1000 1500 1000 1450
+Wire Wire Line
+	1200 1700 1500 1700
+Connection ~ 1200 1700
+Text GLabel 1000 1900 2    50   Input ~ 0
+STK_INC
+Text GLabel 1000 2000 2    50   Input ~ 0
+STK_DEC
+Text GLabel 1000 1800 2    50   Input ~ 0
+CLOCK
+Text GLabel 1000 2150 2    50   Input ~ 0
+~STK_RESET
+Wire Wire Line
+	850  1800 1000 1800
+Wire Wire Line
+	1000 1900 850  1900
+Wire Wire Line
+	850  2000 1000 2000
+Text GLabel 2350 3150 0    50   Input ~ 0
+~STK_RESET
+Text GLabel 3800 850  2    60   Output ~ 0
+DOWN_~UP
+Text GLabel 2350 3300 0    60   Input ~ 0
+DOWN_~UP
+Text GLabel 2350 3550 0    50   Input ~ 0
+CLOCK
+Wire Wire Line
+	2350 3300 2400 3300
+Connection ~ 2400 3300
+Wire Wire Line
+	2350 3550 3050 3550
+Wire Wire Line
+	2350 3150 2550 3150
+Wire Wire Line
+	2550 3150 2550 3200
+Connection ~ 2550 3200
+Text GLabel 2400 750  0    50   Input ~ 0
+STK_INC
+Text GLabel 2400 1500 0    50   Input ~ 0
+STK_DEC
+Wire Wire Line
+	2550 950  2550 1100
+Wire Wire Line
+	2550 1100 3750 1100
+Wire Wire Line
+	3750 1100 3750 1400
+Wire Wire Line
+	3750 850  3800 850 
+Wire Wire Line
+	3750 850  3750 1050
+Wire Wire Line
+	3750 1050 3300 1050
+Wire Wire Line
+	3300 1050 3300 1150
+Wire Wire Line
+	3300 1150 2550 1150
+Wire Wire Line
+	2550 1150 2550 1300
+Connection ~ 3750 850 
+Wire Wire Line
+	2400 1500 2450 1500
+Wire Wire Line
+	2400 750  2500 750 
+Wire Wire Line
+	2500 750  2500 1800
+Wire Wire Line
+	2500 1800 2550 1800
+Connection ~ 2500 750 
+Wire Wire Line
+	2500 750  2550 750 
+Wire Wire Line
+	2450 1500 2450 2000
+Wire Wire Line
+	2450 2000 2550 2000
+Connection ~ 2450 1500
+Wire Wire Line
+	2450 1500 2550 1500
+Wire Wire Line
+	4450 4050 4650 4050
+Wire Wire Line
+	4650 4050 4650 3150
+Wire Wire Line
+	4650 3150 4950 3150
+Wire Wire Line
+	4450 4150 4700 4150
+Wire Wire Line
+	4700 4150 4700 3250
+Wire Wire Line
+	4700 3250 5050 3250
+Wire Wire Line
+	4450 4250 4750 4250
+Wire Wire Line
+	4750 4250 4750 3350
+Wire Wire Line
+	4750 3350 5150 3350
+Wire Wire Line
+	4450 4350 4800 4350
+Wire Wire Line
+	4800 4350 4800 3450
+Wire Wire Line
+	4800 3450 5250 3450
+Wire Wire Line
+	4450 3050 4850 3050
+Wire Wire Line
+	4450 2950 4750 2950
+Wire Wire Line
+	4450 2850 4650 2850
+Wire Wire Line
+	4450 2750 4550 2750
+Wire Wire Line
+	4550 1750 4550 2600
+Wire Wire Line
+	4650 1750 4650 2500
+Wire Wire Line
+	4750 1750 4750 2400
+Wire Wire Line
+	4850 1750 4850 2300
+Wire Wire Line
+	4950 1750 4950 2200
+Wire Wire Line
+	5050 1750 5050 2100
+Wire Wire Line
+	5150 1750 5150 2000
+Wire Wire Line
+	5250 1750 5250 1900
+$Comp
+L LED:HDSP-4830_2 BAR1
+U 1 1 5DB5CD65
+P 4950 1550
+F 0 "BAR1" H 4950 900 50  0000 C CNN
+F 1 "HDSP-4830_2" H 4950 2126 50  0001 C CNN
+F 2 "Display:HDSP-4830" H 4950 750 50  0001 C CNN
+F 3 "https://docs.broadcom.com/docs/AV02-1798EN" H 2950 1750 50  0001 C CNN
+	1    4950 1550
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	5750 1900 5250 1900
+Connection ~ 5250 1900
+Wire Wire Line
+	5250 1900 5250 3450
+Wire Wire Line
+	5750 2000 5150 2000
+Connection ~ 5150 2000
+Wire Wire Line
+	5150 2000 5150 3350
+Wire Wire Line
+	5750 2100 5050 2100
+Connection ~ 5050 2100
+Wire Wire Line
+	5050 2100 5050 3250
+Wire Wire Line
+	5750 2200 4950 2200
+Connection ~ 4950 2200
+Wire Wire Line
+	4950 2200 4950 3150
+Wire Wire Line
+	5750 2300 4850 2300
+Connection ~ 4850 2300
+Wire Wire Line
+	4850 2300 4850 3050
+Wire Wire Line
+	5750 2400 4750 2400
+Connection ~ 4750 2400
+Wire Wire Line
+	4750 2400 4750 2950
+Wire Wire Line
+	5750 2500 4650 2500
+Connection ~ 4650 2500
+Wire Wire Line
+	4650 2500 4650 2850
+Wire Wire Line
+	5750 2600 4550 2600
+Connection ~ 4550 2600
+Wire Wire Line
+	4550 2600 4550 2750
+NoConn ~ 4450 1750
+NoConn ~ 5350 1750
+NoConn ~ 5350 1350
+NoConn ~ 4450 1350
+$Comp
+L Device:R_Network08 RN1
+U 1 1 5DD466C3
+P 4950 1100
+F 0 "RN1" V 5350 1100 50  0000 C CNN
+F 1 "470" V 5450 1100 50  0000 C CNN
+F 2 "Resistor_THT:R_Array_SIP9" V 5425 1100 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 4950 1100 50  0001 C CNN
+	1    4950 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:GND #PWR05
+U 1 1 5DD46888
+P 4550 900
+F 0 "#PWR05" H 4550 650 50  0001 C CNN
+F 1 "GND" V 4555 772 50  0000 R CNN
+F 2 "" H 4550 900 50  0001 C CNN
+F 3 "" H 4550 900 50  0001 C CNN
+	1    4550 900 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4550 1300 4550 1350
+Wire Wire Line
+	4650 1350 4650 1300
+Wire Wire Line
+	4750 1300 4750 1350
+Wire Wire Line
+	4850 1350 4850 1300
+Wire Wire Line
+	4950 1300 4950 1350
+Wire Wire Line
+	5050 1350 5050 1300
+Wire Wire Line
+	5150 1350 5150 1300
+$Comp
+L 74xx-Computer-Symbols:VCC #PWR03
+U 1 1 5DEE8B1C
+P 1750 1700
+F 0 "#PWR03" H 1750 1550 50  0001 C CNN
+F 1 "VCC" H 1767 1873 50  0000 C CNN
+F 2 "" H 1750 1700 50  0001 C CNN
+F 3 "" H 1750 1700 50  0001 C CNN
+	1    1750 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 1700 1750 1700
+Connection ~ 1500 1700
+$Comp
+L Connector:Conn_01x06_Male J1
+U 1 1 5D3DB709
+P 650 1800
+F 0 "J1" H 756 2087 50  0000 C CNN
+F 1 "Conn_01x06_Male" H 756 2087 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 650 1800 50  0001 C CNN
+F 3 "~" H 650 1800 50  0001 C CNN
+	1    650  1800
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4450 4550
+Wire Wire Line
+	850  2100 950  2100
+Wire Wire Line
+	950  2100 950  2150
+Wire Wire Line
+	950  2150 1000 2150
+Wire Wire Line
+	5250 1300 5250 1350
+Wire Wire Line
+	5750 1800 5700 1800
+Wire Wire Line
+	5700 1800 5700 1700
+Wire Wire Line
+	5700 1700 5750 1700
+Wire Wire Line
+	5700 1700 5700 1600
+Wire Wire Line
+	5700 1600 5750 1600
+Connection ~ 5700 1700
+Wire Wire Line
+	5750 1500 5700 1500
+Wire Wire Line
+	5700 1500 5700 1600
+Connection ~ 5700 1600
+Wire Wire Line
+	5750 1400 5700 1400
+Wire Wire Line
+	5700 1400 5700 1500
+Connection ~ 5700 1500
+Wire Wire Line
+	5750 1300 5700 1300
+Wire Wire Line
+	5700 1300 5700 1400
+Connection ~ 5700 1400
+Wire Wire Line
+	5750 1200 5700 1200
+Wire Wire Line
+	5700 1200 5700 1300
+Connection ~ 5700 1300
+Wire Wire Line
+	5750 1100 5700 1100
+Wire Wire Line
+	5700 1100 5700 1200
+Connection ~ 5700 1200
+$Comp
+L 74xx-Computer-Symbols:+5V #PWR06
+U 1 1 5D53FE51
+P 5700 1100
+F 0 "#PWR06" H 5700 950 50  0001 C CNN
+F 1 "+5V" H 5715 1273 50  0000 C CNN
+F 2 "" H 5700 1100 50  0001 C CNN
+F 3 "" H 5700 1100 50  0001 C CNN
+	1    5700 1100
+	1    0    0    -1  
+$EndComp
+Connection ~ 5700 1100
+Wire Wire Line
+	3050 4350 3000 4350
+Wire Wire Line
+	3000 4350 3000 4250
+Wire Wire Line
+	3000 4250 3050 4250
+Wire Wire Line
+	3050 4150 3000 4150
+Wire Wire Line
+	3000 4150 3000 4250
+Connection ~ 3000 4250
+Wire Wire Line
+	3050 4050 3000 4050
+Wire Wire Line
+	3000 4050 3000 4150
+Connection ~ 3000 4150
+Wire Wire Line
+	3050 2950 3000 2950
+Wire Wire Line
+	3000 2950 3000 3050
+Wire Wire Line
+	3000 3050 3050 3050
+Wire Wire Line
+	3050 2850 3000 2850
+Wire Wire Line
+	3000 2850 3000 2950
+Connection ~ 3000 2950
+Wire Wire Line
+	3050 2750 3000 2750
+Wire Wire Line
+	3000 2750 3000 2850
+Connection ~ 3000 2850
+Wire Wire Line
+	3000 3050 3000 4050
+Connection ~ 3000 3050
+Connection ~ 3000 4050
+$Comp
+L 74xx-Computer-Symbols:GND #PWR04
+U 1 1 5D55CD8C
+P 3000 2750
+F 0 "#PWR04" H 3000 2500 50  0001 C CNN
+F 1 "GND" H 3005 2577 50  0000 C CNN
+F 2 "" H 3000 2750 50  0001 C CNN
+F 3 "" H 3000 2750 50  0001 C CNN
+	1    3000 2750
+	-1   0    0    1   
+$EndComp
+Connection ~ 3000 2750
+$EndSCHEMATC
