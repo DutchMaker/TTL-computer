@@ -75,7 +75,7 @@ U 1 1 5ACE1782
 P 2750 2700
 F 0 "R3" V 2575 2700 50  0000 C CNN
 F 1 "1M" V 2650 2700 50  0000 C CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-10-V05_Vertical" H 2750 2700 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 2750 2700 50  0001 C CNN
 F 3 "" H 2750 2700 50  0001 C CNN
 	1    2750 2700
 	0    1    1    0   
@@ -567,7 +567,7 @@ U 1 1 5AD4C08D
 P 7300 2600
 F 0 "SW2" H 7300 2770 50  0000 C CNN
 F 1 "SW_Push_SPDT" H 7300 2400 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7300 2600 50  0001 C CNN
+F 2 "74xx-Computer-Footprints:Switch" H 7300 2600 50  0001 C CNN
 F 3 "" H 7300 2600 50  0001 C CNN
 	1    7300 2600
 	0    -1   -1   0   
@@ -578,7 +578,7 @@ U 1 1 5AD4F306
 P 8550 5650
 F 0 "SW3" H 8550 5820 50  0000 C CNN
 F 1 "SW_Push_SPDT" H 8550 5450 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8550 5650 50  0001 C CNN
+F 2 "74xx-Computer-Footprints:Switch" H 8550 5650 50  0001 C CNN
 F 3 "" H 8550 5650 50  0001 C CNN
 	1    8550 5650
 	0    -1   -1   0   
