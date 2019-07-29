@@ -1,12 +1,12 @@
 G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,5.0.2+dfsg1-1*
-G04 #@! TF.CreationDate,2019-07-27T20:03:22+02:00*
+G04 #@! TF.CreationDate,2019-07-29T21:30:37+02:00*
 G04 #@! TF.ProjectId,Flags-Register,466c6167-732d-4526-9567-69737465722e,rev?*
 G04 #@! TF.SameCoordinates,Original*
 G04 #@! TF.FileFunction,Copper,L1,Top*
 G04 #@! TF.FilePolarity,Positive*
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 5.0.2+dfsg1-1) date za 27 jul 2019 20:03:22 CEST*
+G04 Created by KiCad (PCBNEW 5.0.2+dfsg1-1) date ma 29 jul 2019 21:30:37 CEST*
 %MOMM*%
 %LPD*%
 G01*
@@ -45,19 +45,19 @@ G04 APERTURE END LIST*
 D10*
 G04 #@! TO.P,J2,2*
 G04 #@! TO.N,Net-(J2-Pad2)*
-X110490000Y-48260000D03*
+X109220000Y-48260000D03*
 D11*
 G04 #@! TO.P,J2,1*
 G04 #@! TO.N,Net-(J2-Pad1)*
-X110490000Y-45720000D03*
+X109220000Y-45720000D03*
 G04 #@! TD*
 G04 #@! TO.P,J3,1*
 G04 #@! TO.N,Net-(J3-Pad1)*
-X110490000Y-86360000D03*
+X109220000Y-86360000D03*
 D10*
 G04 #@! TO.P,J3,2*
 G04 #@! TO.N,Net-(J3-Pad2)*
-X110490000Y-88900000D03*
+X109220000Y-88900000D03*
 G04 #@! TD*
 D11*
 G04 #@! TO.P,J1,1*
