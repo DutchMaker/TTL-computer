@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:Program-Counter-cache
+LIBS:Stack-Pointer-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -111,13 +111,13 @@ $EndComp
 $Comp
 L Connector:Conn_01x16_Male J2
 U 1 1 5D3CCFEC
-P 5950 1900
-F 0 "J2" V 5785 1827 50  0000 C CNN
-F 1 "MEMORY ADDRESS" V 5876 1827 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 5950 1900 50  0001 C CNN
-F 3 "~" H 5950 1900 50  0001 C CNN
-	1    5950 1900
-	-1   0    0    1   
+P 8100 3450
+F 0 "J2" V 7935 3377 50  0000 C CNN
+F 1 "MEMORY ADDRESS" V 8026 3377 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 8100 3450 50  0001 C CNN
+F 3 "~" H 8100 3450 50  0001 C CNN
+	1    8100 3450
+	-1   0    0    -1  
 $EndComp
 $Comp
 L 74xx-Computer-Symbols:GND #PWR01
@@ -286,22 +286,6 @@ Wire Wire Line
 	4450 2850 4650 2850
 Wire Wire Line
 	4450 2750 4550 2750
-Wire Wire Line
-	4550 1750 4550 2600
-Wire Wire Line
-	4650 1750 4650 2500
-Wire Wire Line
-	4750 1750 4750 2400
-Wire Wire Line
-	4850 1750 4850 2300
-Wire Wire Line
-	4950 1750 4950 2200
-Wire Wire Line
-	5050 1750 5050 2100
-Wire Wire Line
-	5150 1750 5150 2000
-Wire Wire Line
-	5250 1750 5250 1900
 $Comp
 L LED:HDSP-4830_2 BAR1
 U 1 1 5DB5CD65
@@ -313,46 +297,6 @@ F 3 "https://docs.broadcom.com/docs/AV02-1798EN" H 2950 1750 50  0001 C CNN
 	1    4950 1550
 	0    1    -1   0   
 $EndComp
-Wire Wire Line
-	5750 1900 5250 1900
-Connection ~ 5250 1900
-Wire Wire Line
-	5250 1900 5250 3450
-Wire Wire Line
-	5750 2000 5150 2000
-Connection ~ 5150 2000
-Wire Wire Line
-	5150 2000 5150 3350
-Wire Wire Line
-	5750 2100 5050 2100
-Connection ~ 5050 2100
-Wire Wire Line
-	5050 2100 5050 3250
-Wire Wire Line
-	5750 2200 4950 2200
-Connection ~ 4950 2200
-Wire Wire Line
-	4950 2200 4950 3150
-Wire Wire Line
-	5750 2300 4850 2300
-Connection ~ 4850 2300
-Wire Wire Line
-	4850 2300 4850 3050
-Wire Wire Line
-	5750 2400 4750 2400
-Connection ~ 4750 2400
-Wire Wire Line
-	4750 2400 4750 2950
-Wire Wire Line
-	5750 2500 4650 2500
-Connection ~ 4650 2500
-Wire Wire Line
-	4650 2500 4650 2850
-Wire Wire Line
-	5750 2600 4550 2600
-Connection ~ 4550 2600
-Wire Wire Line
-	4550 2600 4550 2750
 NoConn ~ 4450 1750
 NoConn ~ 5350 1750
 NoConn ~ 5350 1350
@@ -407,17 +351,6 @@ $EndComp
 Wire Wire Line
 	1500 1700 1750 1700
 Connection ~ 1500 1700
-$Comp
-L Connector:Conn_01x06_Male J1
-U 1 1 5D3DB709
-P 650 1800
-F 0 "J1" H 756 2087 50  0000 C CNN
-F 1 "Conn_01x06_Male" H 756 2087 50  0001 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 650 1800 50  0001 C CNN
-F 3 "~" H 650 1800 50  0001 C CNN
-	1    650  1800
-	1    0    0    -1  
-$EndComp
 NoConn ~ 4450 4550
 Wire Wire Line
 	850  2100 950  2100
@@ -427,54 +360,6 @@ Wire Wire Line
 	950  2150 1000 2150
 Wire Wire Line
 	5250 1300 5250 1350
-Wire Wire Line
-	5750 1800 5700 1800
-Wire Wire Line
-	5700 1800 5700 1700
-Wire Wire Line
-	5700 1700 5750 1700
-Wire Wire Line
-	5700 1700 5700 1600
-Wire Wire Line
-	5700 1600 5750 1600
-Connection ~ 5700 1700
-Wire Wire Line
-	5750 1500 5700 1500
-Wire Wire Line
-	5700 1500 5700 1600
-Connection ~ 5700 1600
-Wire Wire Line
-	5750 1400 5700 1400
-Wire Wire Line
-	5700 1400 5700 1500
-Connection ~ 5700 1500
-Wire Wire Line
-	5750 1300 5700 1300
-Wire Wire Line
-	5700 1300 5700 1400
-Connection ~ 5700 1400
-Wire Wire Line
-	5750 1200 5700 1200
-Wire Wire Line
-	5700 1200 5700 1300
-Connection ~ 5700 1300
-Wire Wire Line
-	5750 1100 5700 1100
-Wire Wire Line
-	5700 1100 5700 1200
-Connection ~ 5700 1200
-$Comp
-L 74xx-Computer-Symbols:+5V #PWR06
-U 1 1 5D53FE51
-P 5700 1100
-F 0 "#PWR06" H 5700 950 50  0001 C CNN
-F 1 "+5V" H 5715 1273 50  0000 C CNN
-F 2 "" H 5700 1100 50  0001 C CNN
-F 3 "" H 5700 1100 50  0001 C CNN
-	1    5700 1100
-	1    0    0    -1  
-$EndComp
-Connection ~ 5700 1100
 Wire Wire Line
 	3050 4350 3000 4350
 Wire Wire Line
@@ -523,4 +408,206 @@ F 3 "" H 3000 2750 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Connection ~ 3000 2750
+$Comp
+L 74xx-Computer-Symbols:74LS245 U4
+U 1 1 5D448412
+P 6400 3250
+F 0 "U4" H 6400 3550 50  0000 C CNN
+F 1 "74x245" H 6400 3450 50  0000 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 6400 3250 50  0001 C CNN
+F 3 "" H 6400 3250 50  0001 C CNN
+	1    6400 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:74LS245 U5
+U 1 1 5D448484
+P 6400 4650
+F 0 "U5" H 6400 4950 50  0000 C CNN
+F 1 "74x245" H 6400 4850 50  0000 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 6400 4650 50  0001 C CNN
+F 3 "" H 6400 4650 50  0001 C CNN
+	1    6400 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5250 1750 5250 3450
+Wire Wire Line
+	5150 1750 5150 3350
+Wire Wire Line
+	5050 1750 5050 3250
+Wire Wire Line
+	4550 1750 4550 2750
+Wire Wire Line
+	4650 1750 4650 2850
+Wire Wire Line
+	4750 1750 4750 2950
+Wire Wire Line
+	4850 1750 4850 3050
+Wire Wire Line
+	4950 1750 4950 3150
+Wire Wire Line
+	4550 2750 5700 2750
+Connection ~ 4550 2750
+Wire Wire Line
+	5700 2850 4650 2850
+Connection ~ 4650 2850
+Wire Wire Line
+	4750 2950 5700 2950
+Connection ~ 4750 2950
+Wire Wire Line
+	5700 3050 4850 3050
+Connection ~ 4850 3050
+Wire Wire Line
+	4950 3150 5700 3150
+Connection ~ 4950 3150
+Connection ~ 5050 3250
+Wire Wire Line
+	5700 3350 5150 3350
+Connection ~ 5150 3350
+Wire Wire Line
+	5700 3450 5250 3450
+Connection ~ 5250 3450
+Wire Wire Line
+	5050 3250 5700 3250
+$Comp
+L 74xx-Computer-Symbols:+5V #PWR06
+U 1 1 5D46F911
+P 5700 3650
+F 0 "#PWR06" H 5700 3500 50  0001 C CNN
+F 1 "+5V" H 5715 3823 50  0000 C CNN
+F 2 "" H 5700 3650 50  0001 C CNN
+F 3 "" H 5700 3650 50  0001 C CNN
+	1    5700 3650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:+5V #PWR07
+U 1 1 5D46F97F
+P 5700 5050
+F 0 "#PWR07" H 5700 4900 50  0001 C CNN
+F 1 "+5V" H 5715 5223 50  0000 C CNN
+F 2 "" H 5700 5050 50  0001 C CNN
+F 3 "" H 5700 5050 50  0001 C CNN
+	1    5700 5050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5700 4150 5700 4250
+Connection ~ 5700 4250
+Wire Wire Line
+	5700 4250 5700 4350
+Connection ~ 5700 4350
+Wire Wire Line
+	5700 4350 5700 4450
+Connection ~ 5700 4450
+Wire Wire Line
+	5700 4450 5700 4550
+Connection ~ 5700 4550
+Wire Wire Line
+	5700 4550 5700 4650
+Connection ~ 5700 4650
+Wire Wire Line
+	5700 4650 5700 4750
+Connection ~ 5700 4750
+Wire Wire Line
+	5700 4750 5700 4850
+Connection ~ 5700 4850
+Wire Wire Line
+	5700 4850 5700 5050
+Connection ~ 5700 5050
+Wire Wire Line
+	5700 3750 5400 3750
+Wire Wire Line
+	5400 3750 5400 5150
+Wire Wire Line
+	5400 5150 5700 5150
+Text GLabel 1000 2300 2    50   Input ~ 0
+~STK_OUT
+$Comp
+L Connector:Conn_01x07_Male J1
+U 1 1 5D4775B6
+P 650 1900
+F 0 "J1" H 756 2287 50  0000 C CNN
+F 1 "Conn_01x07_Male" H 756 2287 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical" H 650 1900 50  0001 C CNN
+F 3 "~" H 650 1900 50  0001 C CNN
+	1    650  1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 2300 900  2300
+Wire Wire Line
+	900  2300 900  2200
+Wire Wire Line
+	900  2200 850  2200
+Text GLabel 5300 5150 0    50   Input ~ 0
+~STK_OUT
+Wire Wire Line
+	5300 5150 5400 5150
+Connection ~ 5400 5150
+Wire Wire Line
+	7100 2750 7900 2750
+Wire Wire Line
+	7900 2850 7100 2850
+Wire Wire Line
+	7100 2950 7900 2950
+Wire Wire Line
+	7900 3050 7100 3050
+Wire Wire Line
+	7100 3150 7900 3150
+Wire Wire Line
+	7900 3250 7100 3250
+Wire Wire Line
+	7100 3350 7900 3350
+Wire Wire Line
+	7900 3450 7100 3450
+Wire Wire Line
+	7100 4150 7150 4150
+Wire Wire Line
+	7150 4150 7150 3550
+Wire Wire Line
+	7150 3550 7900 3550
+Wire Wire Line
+	7900 3650 7200 3650
+Wire Wire Line
+	7200 3650 7200 4250
+Wire Wire Line
+	7200 4250 7100 4250
+Wire Wire Line
+	7100 4350 7250 4350
+Wire Wire Line
+	7250 4350 7250 3750
+Wire Wire Line
+	7250 3750 7900 3750
+Wire Wire Line
+	7900 3850 7300 3850
+Wire Wire Line
+	7300 3850 7300 4450
+Wire Wire Line
+	7300 4450 7100 4450
+Wire Wire Line
+	7100 4550 7350 4550
+Wire Wire Line
+	7350 4550 7350 3950
+Wire Wire Line
+	7350 3950 7900 3950
+Wire Wire Line
+	7900 4050 7400 4050
+Wire Wire Line
+	7400 4050 7400 4650
+Wire Wire Line
+	7400 4650 7100 4650
+Wire Wire Line
+	7100 4750 7450 4750
+Wire Wire Line
+	7450 4750 7450 4150
+Wire Wire Line
+	7450 4150 7900 4150
+Wire Wire Line
+	7900 4250 7500 4250
+Wire Wire Line
+	7500 4250 7500 4850
+Wire Wire Line
+	7500 4850 7100 4850
 $EndSCHEMATC
