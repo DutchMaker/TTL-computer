@@ -116,7 +116,7 @@ Memory layout when running in **RAM only** mode:
 
 ### Zero page addressing
 
-Instructions LD, ST, LDR and STR all have a zero page based counterpart: LDZ, STR, LDRZ, STRZ.  
+Instructions LD, ST, LDR and STR all have a zero page based counterpart: LDZ, STZ, LDRZ, STRZ.  
 For example: `LD A 0xFE35` may be replaced with `LDZ A 0x35` to save a few clock cycles.  
 
 The assembler will automatically convert these instructions if zero page addressing was used.

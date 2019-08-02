@@ -229,7 +229,7 @@ CONTROLLINES
 {
 	NC;				NC;			MAR_ZP;		FLAGS_Fc_set;	FLAGS_Fc_clear;	FLAGS_Fc_load;	FLAGS_Flt_load;	FLAGS_Feq_load;
 	FLAGS_Fgt_load;	OUT2_load;	OUT1_load;	IN_out;			TSTATE_reset;	CLOCK_halt;		MEM_out;		MEM_RAM_load;
-	MAR_STK_load;	MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		ALU_shr;		ALU_m;			ALU_s3;
+	STK_out;		MAR_PC_load;MAR_HB_load;MAR_LB_load;	ALU_out;		ALU_shr;		ALU_m;			ALU_s3;
 	ALU_s2;			ALU_s1;		ALU_s0;		AY_load;		AX_load;		STK_reset;		STK_dec;		STK_inc;
 	PC_HB_out;		PC_LB_out;	PC_HB_load;	PC_LB_load;		PC_dec;			PC_inc;			IR_load;		FLAGS_Fz_load;
 	D_load;			D_out;		C_load;		C_out;			B_load;			B_out;			A_load;			A_out;
@@ -400,8 +400,8 @@ MICROCODE
 		1 { PC_inc }
 		2 { PC_LB_out;C_load }
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -419,8 +419,8 @@ MICROCODE
 			[x1x] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -438,8 +438,8 @@ MICROCODE
 			[x0x] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -457,8 +457,8 @@ MICROCODE
 			[xx1] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -476,8 +476,8 @@ MICROCODE
 			[xx0] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -495,8 +495,8 @@ MICROCODE
 			[1xx] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -514,8 +514,8 @@ MICROCODE
 			[0xx] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { MAR_STK_load;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { MAR_STK_load }
+		4 { STK_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
+		5 { STK_out }
 		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
 		7 { MAR_PC_load }
 		8 { MEM_out;D_load;PC_inc }
@@ -527,9 +527,9 @@ MICROCODE
 
 	RET {
 		0 { STK_dec }
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -541,9 +541,9 @@ MICROCODE
 			[x0x] TSTATE_reset
 			[x1x] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -555,9 +555,9 @@ MICROCODE
 			[x1x] TSTATE_reset
 			[x0x] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -569,9 +569,9 @@ MICROCODE
 			[xx0] TSTATE_reset
 			[xx1] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -583,9 +583,9 @@ MICROCODE
 			[xx1] TSTATE_reset
 			[xx0] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -597,9 +597,9 @@ MICROCODE
 			[0xx] TSTATE_reset
 			[1xx] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -611,9 +611,9 @@ MICROCODE
 			[1xx] TSTATE_reset
 			[0xx] STK_dec 
 		}
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;C_load;STK_dec }
-		3 { MAR_STK_load }
+		3 { STK_out }
 		4 { MEM_out;D_load }
 		5 { C_out;PC_LB_load }
 		6 { D_out;PC_HB_load }
@@ -771,14 +771,14 @@ MICROCODE
 	}
 
 	PUSH (r1) {
-		0 { MAR_STK_load }
+		0 { STK_out }
 		1 { (r1)_out;MEM_RAM_load;STK_inc }
 		2 { TSTATE_reset }
 	}
 
 	POP (r1) {
 		0 { STK_dec }
-		1 { MAR_STK_load }
+		1 { STK_out }
 		2 { MEM_out;(r1)_load }
 		3 { TSTATE_reset }
 	}
