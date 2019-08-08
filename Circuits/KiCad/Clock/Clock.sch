@@ -556,7 +556,7 @@ U 1 1 5AD4BFF4
 P 4150 2400
 F 0 "SW1" H 4200 2500 50  0000 L CNN
 F 1 "SW_Push" H 4150 2340 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4150 2600 50  0001 C CNN
+F 2 "74xx-Computer-Footprints:SW_6mm_Tact" H 4150 2600 50  0001 C CNN
 F 3 "" H 4150 2600 50  0001 C CNN
 	1    4150 2400
 	0    -1   -1   0   
