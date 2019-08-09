@@ -106,9 +106,10 @@ namespace Mcc
             string sectionCode = ExtractSection(SECTION_CONTROLLINES);
 
             controlLines = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
                 .ToList();
 
-            Console.WriteLine($"Loaded {controlLines.Count} control lines.");
+            Console.WriteLine($"Loaded {controlLines.Count} control lines:\n{string.Join('\n', controlLines.ToArray())}");
         }
 
         private void LoadMicroSourceCode()

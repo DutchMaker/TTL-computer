@@ -106,6 +106,7 @@ namespace Asm
             string sectionCode = ExtractSection(SECTION_CONTROLLINES);
 
             controlLines = sectionCode.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
                 .ToList();
 
             Console.WriteLine($"Loaded {controlLines.Count} control lines.");
