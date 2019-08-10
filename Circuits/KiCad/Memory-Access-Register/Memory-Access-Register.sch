@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:Memory-Access-Register-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -2048,6 +2047,34 @@ Wire Wire Line
 Connection ~ 9100 900 
 Wire Wire Line
 	9100 900  9050 900 
+$Comp
+L Connector:Conn_01x16_Male J4
+U 1 1 5D6D3C33
+P 3400 9750
+F 0 "J4" H 3450 10550 50  0000 R CNN
+F 1 "Conn_01x16_Male" V 3250 10100 50  0001 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 3400 9750 50  0001 C CNN
+F 3 "~" H 3400 9750 50  0001 C CNN
+F 4 "Not connected" V 3350 9750 50  0000 C CNN "Field4"
+	1    3400 9750
+	-1   0    0    -1  
+$EndComp
+NoConn ~ 3200 9050
+NoConn ~ 3200 9150
+NoConn ~ 3200 9250
+NoConn ~ 3200 9350
+NoConn ~ 3200 9450
+NoConn ~ 3200 9550
+NoConn ~ 3200 9650
+NoConn ~ 3200 9750
+NoConn ~ 3200 9850
+NoConn ~ 3200 9950
+NoConn ~ 3200 10050
+NoConn ~ 3200 10150
+NoConn ~ 3200 10250
+NoConn ~ 3200 10350
+NoConn ~ 3200 10450
+NoConn ~ 3200 10550
 Wire Bus Line
 	3200 3700 3200 4750
 Wire Bus Line

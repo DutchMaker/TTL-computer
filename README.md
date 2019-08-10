@@ -26,4 +26,5 @@ The entire computer has been built in [**Logisim**](https://github.com/DutchMake
 - Update previously designed circuit diagrams according to latest Logisim design (**IN PROGRESS**)
 - Build the computer in real life (**IN PROGRESS**)
 - Write additional/updated documentation on all modules.
-
+- Planned features
+-- Continue after halt (increase PC and restart fetch cycle)

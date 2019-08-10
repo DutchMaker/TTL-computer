@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:Memory-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -1496,6 +1495,94 @@ F 3 "" H 5300 5100 50  0001 C CNN
 	1    5300 5100
 	0    -1   -1   0   
 $EndComp
+$Comp
+L 74xx:74LS04 U1
+U 7 1 5D50B58F
+P 9050 5900
+F 0 "U1" H 9000 5900 50  0000 C CNN
+F 1 "74x04" H 9050 5700 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 9050 5900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS04" H 9050 5900 50  0001 C CNN
+	7    9050 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L 74xx:74LS00 U2
+U 5 1 5D50E1AF
+P 9550 5900
+F 0 "U2" H 9550 5900 50  0000 C CNN
+F 1 "74x00" H 9550 5674 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 9550 5900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls00" H 9550 5900 50  0001 C CNN
+	5    9550 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L 74xx:74LS02 U3
+U 5 1 5D5106E7
+P 10050 5900
+F 0 "U3" H 10050 5900 50  0000 C CNN
+F 1 "74x02" H 10050 5700 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 10050 5900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74ls02" H 10050 5900 50  0001 C CNN
+	5    10050 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L 74xx:74LS32 U4
+U 5 1 5D5135FD
+P 10500 5900
+F 0 "U4" H 10500 5900 50  0000 C CNN
+F 1 "74x32" H 10500 5700 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 10500 5900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS32" H 10500 5900 50  0001 C CNN
+	5    10500 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L 74xx-Computer-Symbols:+5V #PWR?
+U 1 1 5D51D1F8
+P 10650 6400
+F 0 "#PWR?" H 10650 6250 50  0001 C CNN
+F 1 "+5V" V 10665 6528 50  0000 L CNN
+F 2 "" H 10650 6400 50  0001 C CNN
+F 3 "" H 10650 6400 50  0001 C CNN
+	1    10650 6400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10650 6400 10500 6400
+Connection ~ 9550 6400
+Wire Wire Line
+	9550 6400 9050 6400
+Connection ~ 10050 6400
+Wire Wire Line
+	10050 6400 9550 6400
+Connection ~ 10500 6400
+Wire Wire Line
+	10500 6400 10050 6400
+$Comp
+L 74xx-Computer-Symbols:GND #PWR?
+U 1 1 5D5384D9
+P 10650 5400
+F 0 "#PWR?" H 10650 5150 50  0001 C CNN
+F 1 "GND" V 10655 5272 50  0000 R CNN
+F 2 "" H 10650 5400 50  0001 C CNN
+F 3 "" H 10650 5400 50  0001 C CNN
+	1    10650 5400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10650 5400 10500 5400
+Connection ~ 9550 5400
+Wire Wire Line
+	9550 5400 9050 5400
+Connection ~ 10050 5400
+Wire Wire Line
+	10050 5400 9550 5400
+Connection ~ 10500 5400
+Wire Wire Line
+	10500 5400 10050 5400
 Wire Bus Line
 	10650 850  10650 1850
 Wire Bus Line
