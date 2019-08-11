@@ -7,4 +7,5 @@
 ## TODO
 
 - ALU - PCB error: LED bar graph for AX (_BAR1_) and AY (_BAR2_) have swapped places on the PCB
-- Clock - Bigger tact switch for step
+- Clock - Bigger tact switch for stepping
+- When all modules are built and tested, combine them into a single PCB.

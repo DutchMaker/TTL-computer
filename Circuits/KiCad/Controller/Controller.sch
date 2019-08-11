@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -19,7 +19,7 @@ U 1 1 5D504BE3
 P 4100 2500
 F 0 "U?" H 4100 3678 50  0000 C CNN
 F 1 "W29C040" H 4100 3587 50  0000 C CNN
-F 2 "" H 4100 2500 50  0001 C CNN
+F 2 "74xx-Computer-Footprints:ZIF-32_Socket" H 4100 2500 50  0001 C CNN
 F 3 "" H 4100 2500 50  0001 C CNN
 	1    4100 2500
 	1    0    0    -1  
