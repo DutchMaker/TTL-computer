@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name TTL-Computer-cache)(type Legacy)(uri /home/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Circuits/KiCad/TTL-Computer-cache.lib)(options "")(descr ""))
-  (lib (name TTL-Computer-Components)(type Legacy)(uri /home/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Circuits/KiCad/TTL-Computer-Components.lib)(options "")(descr ""))
-)
