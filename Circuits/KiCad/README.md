@@ -9,6 +9,7 @@
 - ALU - PCB error: LED bar graph for AX (_BAR1_) and AY (_BAR2_) have swapped places on the PCB
 - ALU: Cn input needs to be inverted
 -- This is added to the main board because ALU PCB is already made and there are no available logic gates on it
+- ALU outer margin varies from other boards
 - Clock - Bigger tact switch for stepping
 - When all modules are built and tested, combine them into a single PCB.
 - Add decoupling caps
