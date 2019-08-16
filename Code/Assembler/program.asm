@@ -303,7 +303,97 @@
 	INC A			# Carry and zero should be 1
 
 #---
-:skip
+	MVI AX 0xAA
+	MVI AY 0x55
+	AND A			# Should be 0x00
+	OR B			# Should be 0xFF
+
+	MVI AX 0xAA
+	MVI AY 0xAA
+	AND C			# Should be 0xAA
+	OR D			# Should be 0xAA
+
+	MVI AX 0xAA
+	NOT A			# Should be 0x55
+
+	MVI AX 0xFF
+	MVI AY 0x55
+	XOR B			# Should be 0xAA
+
+#---
+	MVI AX 0x5C
+	SHL A			# Should be 0xB8
+
+	MVI AX 0xBB
+	SHR B			# Should be 0x5D
 	
+	MVI AX 0xBB
+	SHL C			# Should be 0x76
+
+#---
+	MVI AX 0x01
+	MVI AY 0x02
+	CMP EQ			# Fcmp = 0
+
+	MVI AX 0x03
+	MVI AY 0x03
+	CMP EQ			# Fcmp = 1
+
+	MVI AX 0x04
+	MVI AY 0x05
+	CMP GT			# Fcmp = 0
+
+	MVI AX 0x06
+	CMP GT			# Fcmp = 1
+
+	MVI AX 0x07
+	MVI AY 0x06
+	CMP LT			# Fcmp = 0
+
+	MVI AX 0x06
+	MVI AY 0x07
+	CMP LT			# Fcmp = 1
+
+#---
 
 	HALT
+
+
+# TODO: Branch instruction tests
+:skip
+
+	#JMP continue
+	#HALT
+
+
+
+
+
+#################################
+#    Up/down counter program    #
+#################################
+
+:countup
+
+	MVI A 0x00
+	MVI AY 0xFF
+
+:countup-loop
+
+	NOT B
+	MOV AX A
+
+	CMP EQ
+	JMPC CMP countdown-loop
+
+	INC A
+	JMP countup-loop
+	
+:countdown-loop
+
+	NOT B
+	MOV AX A
+	JMPC Z countup
+
+	DEC A
+	JMP countdown-loop
