@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Memory-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -456,7 +457,7 @@ MANUAL_D6
 Text Label 1400 7100 0    50   ~ 0
 MANUAL_D7
 Text GLabel 1950 4400 0    50   Input ~ 0
-MANUAL_D[0..15]
+MANUAL_D[0..7]
 $Comp
 L Switch:SW_DPDT_x2 SW9
 U 1 1 5D54A5C7
@@ -1282,7 +1283,7 @@ MANUAL_D6
 Text Label 10050 1700 0    50   ~ 0
 MANUAL_D7
 Text GLabel 10600 850  0    50   Input ~ 0
-MANUAL_D[0..15]
+MANUAL_D[0..7]
 Wire Bus Line
 	10650 2350 10600 2350
 Wire Wire Line
