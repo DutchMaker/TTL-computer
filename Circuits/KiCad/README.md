@@ -14,3 +14,5 @@
 - When all modules are built and tested, combine them into a single PCB.
 - Add decoupling caps
 - Improve silk screen documentation (reference above component)
+- Databus LEDs missing on Main Board
+- Add hex decoders

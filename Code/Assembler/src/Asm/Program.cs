@@ -13,11 +13,7 @@ namespace Asm
             Console.WriteLine("-----------------------");
             Console.WriteLine();
 
-            args = new [] 
-            {
-                @"/media/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Code/Microcode/microcode.src",
-                @"/media/ruud/ntfs/Personal/Projects/Active/TTL-Computer/Code/Assembler/program.asm"
-            };
+            // args = new string[] { @"d:\Projects\Active\TTL-computer\Code\Microcode\microcode.src", @"d:\Projects\Active\TTL-computer\Code\Assembler\program.asm" };
 
             if (args.Length == 0)
             {

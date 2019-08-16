@@ -303,7 +303,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 | Mnemonic | Opcode (8-bit binary) | Opcode (hex) |
 | :------- | --------------------- | ------------ |
-| `MVI A`  | `00001110             | `0x0E`       |
+| `MVI A`  | `00001110`            | `0x0E`       |
 | `MVI B`  | `00001111`            | `0x0F`       |
 | `MVI C`  | `00010000`            | `0x10`       |
 | `MVI D`  | `00010001`            | `0x11`       |
@@ -420,7 +420,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 |                   | Load data from the memory address stored in register *C* (low byte) and *D* (high byte) into register *R* |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | LDR *R*`(A,B,C,D)`                                           |
+| Syntax:           | LDR *R*`(A,B,C,D,AX,AY)`                                     |
 | Example:          | `LDR A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
 | T-states:         | 6                                                            |
@@ -469,7 +469,7 @@ Note that **not** all registers supported by LD (etc.) are also supported by the
 
 |                   | Load data from the zero-page memory address stored in register *C* into register *R* |
 | :---------------- | :----------------------------------------------------------- |
-| Syntax:           | LDRZ *R*`(A,B,D,AX)`                                         |
+| Syntax:           | LDRZ *R*`(A,B,C,D,AX,AY)`                                    |
 | Example:          | `LDRZ A`                                                     |
 | Instruction data: | `opcode` (1 byte)                                            |
 | T-states:         | 5                                                            |
@@ -708,9 +708,9 @@ STR {R}             # Store the value of register {R} at
 | Syntax:           | SUB *R*`(A,B,C,D)`                                           |
 | Example:          | `SUB A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 5                                                            |
+| T-states:         | 6                                                            |
 | Sets flags:       | Set the `Fc` flag before the operation, then loads the `Fc` and `Fz` flag from ALU after the operation. |
-| Notes:            | *none*                                                       |
+| Notes:            | `Fc` flag is set as long as result is positive               |
 
 **Opcodes for SUB**
 
@@ -756,7 +756,7 @@ STR {R}             # Store the value of register {R} at
 | Syntax:           | INC *R*`(A,B,C,D)`                                           |
 | Example:          | `INC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 5                                                            |
+| T-states:         | 6                                                            |
 | Sets flags:       | Set the `Fc` flag before the operation, then loads the `Fc` and `Fz` flag from ALU after the operation. |
 | Notes:            | *none*                                                       |
 
@@ -780,9 +780,9 @@ STR {R}             # Store the value of register {R} at
 | Syntax:           | DEC *R*`(A,B,C,D)`                                           |
 | Example:          | `DEC A`                                                      |
 | Instruction data: | `opcode` (1 byte)                                            |
-| T-states:         | 4                                                            |
+| T-states:         | 5                                                            |
 | Sets flags:       | Clears the `Fc` flag before the operation, then loads the `Fc` and `Fz` flag from ALU after the operation. |
-| Notes:            | *none*                                                       |
+| Notes:            | `Fc` flag is set as long as result is positive               |
 
 **Opcodes for DEC**
 

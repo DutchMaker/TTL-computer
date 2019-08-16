@@ -28,6 +28,7 @@ namespace Asm
         private string targetFileName;
         private string source;
         private byte[] machineCode = new byte[0x4000];
+        private int totalBytes = 0;
         private Dictionary<string, int> labels = new Dictionary<string, int>() { { "main", 0 } };
         private Dictionary<int, string> labelsToTranslate = new Dictionary<int, string>();
         private Dictionary<string, int> addressVariables = new Dictionary<string, int>();
@@ -61,7 +62,7 @@ namespace Asm
             ProcessAssembly();
 
             Console.WriteLine();
-            Console.WriteLine($"Machinecode generared in {sw.ElapsedMilliseconds} ms. and saved to {targetFileName}");
+            Console.WriteLine($"{totalBytes} bytes of machinecode generated in {sw.ElapsedMilliseconds} ms. and saved to {targetFileName}");
         }
 
         private void ProcessDataBlock()
@@ -124,6 +125,8 @@ namespace Asm
                     byteCount++;
                 }
             }
+
+            totalBytes = byteCount;
 
             Console.WriteLine($"Processed {byteCount} bytes of predefined data.");
         }
@@ -257,6 +260,8 @@ namespace Asm
                     }
                 }
             }
+
+            totalBytes += address;
 
             SaveMachineCode();
         }

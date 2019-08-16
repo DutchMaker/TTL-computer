@@ -322,8 +322,9 @@ MICROCODE
 
 	ADD (r1) {
 		0 { FLAGS_Fc_clear }
-		1 { ALU_s0;ALU_s3;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		2 { TSTATE_reset }
+		1 { ALU_s0;ALU_s3;ALU_out;(r1)_load }
+		2 { ALU_s0;ALU_s3;FLAGS_Fc_load;FLAGS_Fz_load }
+		3 { TSTATE_reset }
 	}
 
 	ADC (r1) {
@@ -334,13 +335,14 @@ MICROCODE
 
 	SUB (r1) {
 		0 { FLAGS_Fc_set }
-		1 { ALU_s1;ALU_s2;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		2 { TSTATE_reset }
+		1 { ALU_s1;ALU_s2;ALU_out;(r1)_load }
+		2 { ALU_s1;ALU_s2;FLAGS_Fc_load;FLAGS_Fz_load }
+		3 { TSTATE_reset }
 	}
 
 	SBC (r1) {
 		0 { ALU_s1;ALU_s2;ALU_out;(r1)_load }
-		1 { ALU_s1;ALU_s2;ALU_out;FLAGS_Fc_load;FLAGS_Fz_load }
+		1 { ALU_s1;ALU_s2;FLAGS_Fc_load;FLAGS_Fz_load }
 		2 { TSTATE_reset }
 	}
 
@@ -361,13 +363,15 @@ MICROCODE
 
 	INC (r1) {
 		0 { FLAGS_Fc_set }
-		1 { ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		2 { TSTATE_reset }
+		1 { ALU_out;(r1)_load }
+		2 { FLAGS_Fc_load;FLAGS_Fz_load }
+		3 { TSTATE_reset }
 	}
 
 	DEC (r1) {
 		0 { FLAGS_Fc_clear;ALU_s0;ALU_s1;ALU_s2;ALU_s3;ALU_out;(r1)_load;FLAGS_Fc_load;FLAGS_Fz_load }
-		1 { TSTATE_reset }
+		1 { ALU_s0;ALU_s1;ALU_s2;ALU_s3;FLAGS_Fc_load;FLAGS_Fz_load }
+		2 { TSTATE_reset }
 	}
 
 	SHL (r1) {
