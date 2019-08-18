@@ -9,7 +9,7 @@
 
 :main
 
-	JMP skip
+	#JMP skip
 
 	MVI A 0xAA		# Immediate load into register A
 	MOV B A			# Move A into B
@@ -355,18 +355,88 @@
 	CMP LT			# Fcmp = 1
 
 #---
-
+:skip
+	MVI A 0x99
+	JMP jmptest
 	HALT
 
+:jmptest
 
-# TODO: Branch instruction tests
-:skip
+	MVI AX 0x00
+	MVI AY 0x00
+	ADD A		# A = 0x00
 
-	#JMP continue
-	#HALT
+	JMPC Z jmptestzero
+	HALT
 
+:jmptestzero
 
+	MVI AX 0x01
+	MVI AY 0x00
+	ADD A		# A = 0x01
 
+	JMPC NZ jmptestnotzerosuccess
+	JMP Z jmptestzerofail
+	HALT
+
+:jmptestzerofail
+	MVI A 0xF1
+	HALT
+
+:jmptestnotzerosuccess
+	MVI AX 0xFF
+	MVI AY 0x03
+	ADD A		# A = 0x02
+
+	JMPC C jmptestcarry
+	HALT
+
+:jmptestcarry
+	MVI AX 0x00
+	MVI AY 0x03
+	ADD A		# A = 0x03
+
+	JMPC NC jmptestnotcarry
+	JMPC C jmptestcarryfail
+	HALT
+
+:jmptestcarryfail
+	MVI A 0xF2
+	HALT
+
+:jmptestnotcarry
+	MVI A 0x04
+	CMP LT
+
+	JMPC CMP jmptestcmp
+	HALT
+
+:jmptestcmp
+	MVI A 0x05
+	CMP EQ
+
+	JMPC NCMP jmptestnotcmp
+	JMPC CMP jmptestcmpfail
+	HALT
+
+:jmptestcmpfail
+	MVI A 0xF3
+	HALT
+
+:jmptestnotcmp
+	MVI A 0x06
+
+	NOP
+	NOP
+	NOP
+	
+	MVI A 0x99
+	MVI A 0x00
+	MVI A 0x99
+	MVI A 0x00
+	MVI A 0x99
+	MVI A 0x00
+	
 
 
 #################################
