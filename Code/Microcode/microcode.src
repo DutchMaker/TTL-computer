@@ -404,15 +404,16 @@ MICROCODE
 		1 { PC_inc }
 		2 { PC_LB_out;C_load }
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC Z {
@@ -423,15 +424,16 @@ MICROCODE
 			[x1x] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC NZ {
@@ -442,15 +444,16 @@ MICROCODE
 			[x0x] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC C {
@@ -461,15 +464,16 @@ MICROCODE
 			[xx1] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC NC {
@@ -480,15 +484,16 @@ MICROCODE
 			[xx0] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		13 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC CMP {
@@ -499,15 +504,16 @@ MICROCODE
 			[1xx] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	CALLC NCMP {
@@ -518,15 +524,16 @@ MICROCODE
 			[0xx] PC_LB_out;C_load	
 		}
 		3 { PC_HB_out;D_load }
-		4 { STK_MAR_out;D_out;MEM_RAM_load;STK_inc;PC_dec }
-		5 { STK_MAR_out }
-		6 { C_out;MEM_RAM_load;STK_inc;PC_dec }
-		7 { PC_MAR_out }
-		8 { MEM_out;D_load;PC_inc }
-		9 { PC_MAR_out }
-		10 { MEM_out;C_load;PC_inc }
-		11 { D_out;PC_HB_load }
-		12 { C_out;PC_LB_load }
+		4 { STK_MAR_out }
+		5 { D_out;MEM_RAM_load;STK_inc;PC_dec }
+		6 { STK_MAR_out }
+		7 { C_out;MEM_RAM_load;STK_inc;PC_dec }
+		8 { PC_MAR_out }
+		9 { MEM_out;D_load;PC_inc }
+		10 { PC_MAR_out }
+		11 { MEM_out;C_load;PC_inc }
+		12 { D_out;PC_HB_load }
+		13 { C_out;PC_LB_load }
 	}
 
 	RET {

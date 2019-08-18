@@ -355,7 +355,6 @@
 	CMP LT			# Fcmp = 1
 
 #---
-:skip
 	MVI A 0x99
 	JMP jmptest
 	HALT
@@ -437,6 +436,48 @@
 	MVI A 0x99
 	MVI A 0x00
 	
+#---
+	MVI AX 0x00
+	CALL addanddouble
+
+	MVI AX 0x05
+	CALL addanddouble
+
+	JMP next1
+
+:addanddouble
+	INC A
+	MOV AX A
+	SHL A
+	RET
+
+:next1
+	MVI A 0x03
+
+	CALL downtozero
+	JMP next2
+
+:downtozero
+	MOV AX A
+	DEC A
+
+	RETC Z
+	JMP downtozero
+
+:next2
+	MVI A 0x99
+	MOV AX A
+	MVI AY 0x88
+
+	CMP GT
+	CALLC CMP next3
+
+	MVI B 0x55
+	JMP countup
+
+:next3
+	MVI A 0x55
+	RET
 
 
 #################################
