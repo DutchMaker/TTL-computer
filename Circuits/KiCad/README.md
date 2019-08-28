@@ -5,7 +5,6 @@
 - PCBs are initially autorouted using `./Libraries/freeRouting.jar` and traces are enhanced manually
 
 
-
 ### Known deviations/errors in current Schematic/PCB files
 
 There are a number of deviations and errors that were found in schematic/PCB designs after PCB production. They are listed here if they were not fixed in the schematic/PCB design files.
