@@ -4,7 +4,7 @@ My attempt at building a computer from scratch with 74xxx logic chips.
 
 
 
-## Status as of August 18th, 2019:
+## Status as of August 29th, 2019:
 
 [**General architecture**](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/Architecture.pdf) has been worked out as high level schematic.  
 
@@ -19,16 +19,15 @@ The 74xx Computer's **instruction set** has been implemented, its **[assembly la
 [**Circuit diagrams and PCBs**](https://github.com/DutchMaker/TTL-computer/tree/master/Circuits) have all been designed in KiCad and have been or are currently being produced:
 
 - [x] Clock (*built and tested*)
-
 - [x] Registers (*built and tested*)
 - [x] ALU (*built and tested*)
 - [x] Program Counter (*built and tested*)
 - [x] Stack Pointer (*built and tested*)
-- [ ] Flags register (*build in progress, awaiting parts*)
-- [ ] Memory (*awaiting PCB*)
-- [ ] Memory Access Register (*awaiting PCB*)
-- [ ] Controller (*awaiting PCB*)
-- [ ] Main Board (connects all modules together - *awaiting PCB*)
+- [x] Flags register (*built and tested*)
+- [x] Memory (*built and tested*)
+- [x] Memory Access Register (*built and tested*)
+- [ ] Controller (*built and in process of optimizing*)
+- [ ] Main Board (connects all modules together - *built and in process of optimizing*)
 
 
 
@@ -36,7 +35,5 @@ The 74xx Computer's **instruction set** has been implemented, its **[assembly la
 
 - Build the computer in real life (**IN PROGRESS**)
   - First revision is based on separate PCBs that are all connected together by one large main PCB.
-  - If all works out, second revision will be one large PCB that contains all modules as one circuit.
+  - If all works out, there may be a second revision will be one large PCB that contains all modules as one circuit.
 - Write additional/updated documentation on all modules.
-- Planned features
-- Continue after halt (Additional circuitry to cancel the HALT instruction. Allows for easy debugging)

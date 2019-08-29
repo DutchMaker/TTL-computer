@@ -22,10 +22,11 @@ There are a number of deviations and errors that were found in schematic/PCB des
 - **Main Board:** Forgot to add LED bar to display data bus contents.
 - **Main Board:** Forgot to add one or more expansion ports.
 - **Main Board:** Need pull-down resistors on the data bus
-- **Controller**: Needs pull-down/up resistors on control lines for initial state of modules (reset state) - this is improvised on the main board now. We also must have a boot/reset procedure, something like: 
-  - First all control line output is high impedance (this resets all modules because of the pull-down/up resistors that determine initial state). Will probably do this by cutting power to the controller during boot.
-  - Then the controller is powered up and it needs to load microcode address 0
-  - Then it can start processing instructions
+- **Controller**: There is an issue with powering up the controller: its initial state has all control lines enabled. This messes up the state of other modules.
+  - Needs pull-down/up resistors on control lines for initial state of modules (reset state) - this is improvised on the main board now. We also must have a boot/reset procedure, something like: 
+    - First all control line output is high impedance (this resets all modules because of the pull-down/up resistors that determine initial state). Will probably do this by cutting power to the controller during boot.
+    - Then the controller is powered up and it needs to load microcode address 0
+    - Then it can start processing instructions
 
 
 
