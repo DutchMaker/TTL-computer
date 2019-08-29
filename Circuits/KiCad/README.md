@@ -21,6 +21,11 @@ There are a number of deviations and errors that were found in schematic/PCB des
 - **Controller & Memory**: Drill holes for ZIF socket are too narrow (need to be 1mm).
 - **Main Board:** Forgot to add LED bar to display data bus contents.
 - **Main Board:** Forgot to add one or more expansion ports.
+- **Main Board:** Need pull-down resistors on the data bus
+- **Controller**: Needs pull-down/up resistors on control lines for initial state of modules (reset state) - this is improvised on the main board now. We also must have a boot/reset procedure, something like: 
+  - First all control line output is high impedance (this resets all modules because of the pull-down/up resistors that determine initial state). Will probably do this by cutting power to the controller during boot.
+  - Then the controller is powered up and it needs to load microcode address 0
+  - Then it can start processing instructions
 
 
 
@@ -31,7 +36,6 @@ There are a number of deviations and errors that were found in schematic/PCB des
 - When all modules are built and tested, combine them into a single PCB.
   - I may decide to never do this and just start designing the next version of the CPU.
 - Add decoupling caps (have only been added to main board now)
-- Create a reset circuit
 - Improve silk screen documentation
 - Databus LEDs missing on Main Board
 - Add hex decoders to registers / memory.
