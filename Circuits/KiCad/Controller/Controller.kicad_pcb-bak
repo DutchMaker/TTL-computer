@@ -956,7 +956,7 @@
   )
 
   (module Resistor_THT:R_Array_SIP9 (layer F.Cu) (tedit 5A14249F) (tstamp 5D6AA497)
-    (at 66.04 52.07)
+    (at 67.945 52.07)
     (descr "9-pin Resistor SIP pack")
     (tags R)
     (path /661A0D37)
@@ -4539,10 +4539,10 @@
   )
   (gr_poly (pts (xy 100.965 149.225) (xy 100.965 142.875) (xy 107.315 142.875) (xy 107.315 149.225)) (layer Margin) (width 0.1) (tstamp 5D54504C))
 
-  (zone (net 144) (net_name GND) (layer B.Cu) (tstamp 5D6AF4A2) (hatch edge 0.508)
+  (zone (net 144) (net_name GND) (layer B.Cu) (tstamp 5D56B07C) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
-    (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
+    (fill (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
         (xy 20.32 26.67) (xy 197.485 26.67) (xy 197.485 135.89) (xy 20.32 135.89)
