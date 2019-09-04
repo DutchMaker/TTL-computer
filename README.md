@@ -4,7 +4,7 @@ My attempt at building a computer from scratch with 74xxx logic chips.
 
 
 
-## Status as of August 29th, 2019:
+## Status as of September 4th, 2019:
 
 [**General architecture**](https://github.com/DutchMaker/TTL-computer/blob/master/Documentation/Architecture.pdf) has been worked out as high level schematic.  
 
@@ -26,7 +26,7 @@ The 74xx Computer's **instruction set** has been implemented, its **[assembly la
 - [x] Flags register (*built and tested*)
 - [x] Memory (*built and tested*)
 - [x] Memory Access Register (*built and tested*)
-- [ ] Controller (*built and in process of optimizing*)
+- [ ] Controller (*redesigned circuit to account for reset ciruitry - waiting for PCB production*)
 - [ ] Main Board (connects all modules together - *built and in process of optimizing*)
 
 

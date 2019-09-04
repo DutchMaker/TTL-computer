@@ -7,6 +7,14 @@ The controller logic is based on microcode that is stored in a ROM.
 
 ## Module subsystems:
 
+### Power-up
+
+When the module is powered up, all the reset lines on the 8-bit registers (74273) are pulled low (active) in order to reset the registers. At the same time a 4 bit counter (74161) starts counting and when it reached `0010` the register reset lines are pulled up so the registers are enabled and the rest of the module's subsystems are enabled.
+
+This prevents the control lines from outputting random states during power-up.
+
+All control lines have pull-up/down resistors connected to them. They determine the default state of each of the control lines. They are set up in such way that all the modules that load data from the bus (Registers, Program Counter, MAR, etc.) have their `load` line enabled so they are loading empty data (the data bus is pulled low) during power-up.
+
 ### T-state counter
 State machine that keeps track of instruction T-states. Instructions can have a maximum of 16 T-states so we use a 4 bit binary counter (74161).
 
@@ -16,11 +24,11 @@ The _data byte counter_ (74161 binary counter) result is used during composition
 
 ### Registers
 
-The 48 bit control word is stored in 8-bit registers (74377). The data byte counter determines which of the registers is used to store the current data byte. Register selection is done using a  3-to-1 multiplexer (74138). When transfer is complete, we have all the control bits ready to be used.
+The 48 bit control word is stored in 8-bit registers (74273). The data byte counter determines which of the registers is used to store the current data byte. Register selection is done using a  3-to-1 multiplexer (74138). When transfer is complete, we have all the control bits ready to be used.
 
 ### Internal clock
 
-The module has an internal clock running at relatively high speed used for the ROM bank and Load state counter and the shift registers. The Logisim circuit uses an internal clock at 64x the speed of the regular clock.
+The module has an internal clock running at relatively high speed used for the ROM bank and Load state counter and the shift registers. The Logisim circuit uses an internal clock at 8x the speed of the regular clock.
 
 ## Module inner workings
 
