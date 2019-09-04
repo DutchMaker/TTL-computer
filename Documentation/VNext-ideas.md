@@ -29,48 +29,60 @@ Ideas for improvement:
 
 ### Decrease word size (encode the control lines)
 
-Data operands (4 bits per operands, 2 operands in one microcode instruction = 8 bits):
+Operation type (2 bits)
 
-- ALU
-- A
-- B
-- H (was D)
-- L (was C)
-- Flags (treat as regular register - set/clear flag instructions use ALU operations)
-- MAR_H
-- MAR_L
-- MEM
-- PC_H
-- PC_L
-- STACK_H
-- STACK_L
-- IR
-- (add 2 more GPR?)
+- Data operation `00`
+  - Word format: `[00][operand (4)][datafunction (1)][operand (4)][datafunction (1)][alufunctions (4)]` = 16 bits
+- ALU `01`
+  - 
+- Other `10`
+  - Word format: `[01]`
+
+Data operands (4 bits per operand, 2 operands in one microcode instruction = 8 bits):
+
+- None `0000`
+- A `0001`
+- B `0010`
+- H (was D) `0011`
+- L (was C) `0100`
+- ALU `0101`
+- Flags (treat as regular register - set/clear flag instructions use ALU operations) `0110`
+- IR `0111`
+- MAR_H `1000`
+- MAR_L `1001`
+- MEM `1010`
+- PC_H `1011`
+- PC_L `1100`
+- STACK_H `1101`
+- STACK_L `1110`
+- (add 1 more GPR?)
 
 Data functions (1 bit per operand, 2 per instruction = 2 bits):
 
-- load
-- out
+- load `0`
+- out `1`
 
-Counter functions (1 bit per opererand = 2 bits):
-
-- inc
-- dec
-
-Other functions (may take up to 4 bits):
+ALU functions
 
 - ALU_f0
 - ALU_f1
 - ALU_f2
 - ALU_f3
+
+Other functions (may take up to 6 bits):
+
 - TSTATE_reset
 - CLOCK_halt
 - MAR_zp
+- STK_inc
+- STK_dec
+- PC_inc
+- PC_dec
 
 
 Example control word:
 
-- Memory out, A register load = [MEM][out][A][load][0][0000]
+- Memory out, A register load = `[operation][MEM][out][A][load]` = `[00][1001][1][0010][0]`
 
 Important changes compared to v1:
 
