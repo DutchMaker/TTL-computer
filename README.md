@@ -38,4 +38,4 @@ The 74xx Computer's **instruction set** has been implemented, its **[assembly la
   - If all works out, there may be a second revision will be one large PCB that contains all modules as one circuit.
 - Write additional/updated documentation on all modules.
 
-![https://github.com/DutchMaker/TTL-computer/raw/master/Circuits/Pictures/Main-Board-Assembled.jpg](Assembled computer)
+![Assembled computer](https://github.com/DutchMaker/TTL-computer/raw/master/Circuits/Pictures/Main-Board-Assembled.jpg)
