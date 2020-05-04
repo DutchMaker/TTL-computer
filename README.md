@@ -2,7 +2,10 @@
 
 My attempt at building a computer from scratch with 74xxx logic chips.  
 
+## Project Shelved!
 
+I have abandoned this project, but only to reboot it with a different approach.  
+Make sure to check **[The DM-02 Computer](https://github.com/DutchMaker/DM-02)** which is my second attempt at a computer from scratch!
 
 ## Status as of September 4th, 2019:
 
@@ -27,7 +30,7 @@ The 74xx Computer's **instruction set** has been implemented, its **[assembly la
 - [x] Memory (*built and tested*)
 - [x] Memory Access Register (*built and tested*)
 - [ ] Controller (*redesigned circuit to account for reset ciruitry - waiting for PCB production*)
-- [ ] Main Board (connects all modules together - *built and in process of optimizing*)
+- [x] Main Board ( *built and tested*)
 
 
 
